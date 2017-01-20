@@ -1,0 +1,118 @@
+<div class="" id="mycar-tab-content">
+ <div data-vehicle-id="192205" id="your-car-edit-mileage">
+<div class="linkedHeadingWithArrow u-smallScreenOnly">
+    <a href="/your-car?vehicleId=192205">
+        <span class="linkedHeadingWithArrow-arrow"></span><span class="linkedHeadingWithArrow-text">Your car</span>
+    </a>
+</div>
+        <form name="form" ng-submit = "form.$valid && form.$submitted && updateInfo(DataModel)" novalidate>
+            <fieldset id="mileage">
+                <div>
+                    <h5>Distance included</h5>
+                    <p>Guests will be charged 75¢ for each additional mile.</p>
+                    <p>
+                        Most cars on Corsa include 200 mi/day, 1000 mi/week, and 1500 mi/month.
+                    </p>
+                    <div id="custom-mileage">
+                        <div id="custom-mileage-holder" class="grid">
+
+                            <div class="mileageLimitPicker grid-item grid-item--4">
+                                <span class="mileageLimitPicker-dropdown styled-select-container">
+                                    <select name="daily" id="custom-mileage-daily" class="valid" ng-model="DataModel.distance.day">
+                                            <option value="100">100</option>
+                                            <option value="150">150</option>
+                                            <option selected="selected" value="200">200</option>
+                                            <option value="250">250</option>
+
+                                            <option value="300">300</option>
+
+                                            <option value="350">350</option>
+
+                                            <option value="400">400</option>
+
+                                            <option value="450">450</option>
+
+                                            <option value="500">500</option>
+
+                                        <option value="unlimited">Unlimited</option>
+                                    </select>
+                                    <span class="text">200</span>
+                                </span>
+                                <span class="mileageLimitPicker-label">
+                                    mi/day
+                                </span>
+                            </div>
+                            <div class="mileageLimitPicker grid-item grid-item--4">
+                                <span class="mileageLimitPicker-dropdown styled-select-container">
+                                    <select name="weekly" id="custom-mileage-weekly" class="valid" ng-model="DataModel.distance.week">
+                                            <option value="350">350</option>
+                                            <option value="500">500</option>
+                                            <option value="750">750</option>
+                                            <option selected="selected" value="1000">1000</option>
+
+                                            <option value="1250">1250</option>
+
+                                            <option value="1500">1500</option>
+
+                                            <option value="1750">1750</option>
+
+                                            <option value="2000">2000</option>
+
+                                            <option value="2250">2250</option>
+
+                                            <option value="2500">2500</option>
+
+                                        <option value="unlimited">Unlimited</option>
+                                    </select>
+                                    <span class="text">1000</span>
+                                </span>
+                                <span class="mileageLimitPicker-label">
+                                    mi/week
+                                </span>
+                            </div>
+                            <div class="mileageLimitPicker grid-item grid-item--4">
+                                <span class="mileageLimitPicker-dropdown styled-select-container">
+                                    <select name="monthly" id="custom-mileage-monthly" class="valid" ng-model="DataModel.distance.month">
+                                            <option value="750">750</option>
+
+                                            <option value="1125">1125</option>
+
+                                            <option selected="selected" value="1500">1500</option>
+
+                                            <option value="1875">1875</option>
+
+                                            <option value="2250">2250</option>
+
+                                            <option value="2625">2625</option>
+
+                                            <option value="3000">3000</option>
+
+                                            <option value="3375">3375</option>
+
+                                            <option value="3750">3750</option>
+
+                                        <option value="unlimited">Unlimited</option>
+                                    </select>
+                                    <span class="text">1500</span>
+                                </span>
+                                <span class="mileageLimitPicker-label">
+                                    mi/month
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+            <div class="submit">
+                <button class="submit button button--purple vehicleBtn" type="submit">
+                    Save
+                </button>
+            </div>
+        </form>
+<!-- <div class="saveConfirmation">
+    <div class="savedIndicator">
+        <div class="icon"></div>
+        <p>Changes saved</p>
+    </div>
+</div>  -->
+  </div>

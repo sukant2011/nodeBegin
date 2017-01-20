@@ -1,0 +1,308 @@
+<div class="" id="mycar-tab-content">
+
+     <div data-vehicle-id="192205" id="your-car-edit-description">
+
+          <div class="linkedHeadingWithArrow u-smallScreenOnly">
+               <a href="/your-car?vehicleId=192205">
+
+                    <span class="linkedHeadingWithArrow-arrow"></span><span class="linkedHeadingWithArrow-text">Your car</span>
+               </a>
+          </div>
+
+          <form name="form" novalidate>
+               <fieldset class="about-your-car">
+                    <h5>Tell us about your car</h5>
+                    <p>This information will be publicly visible in your listing.</p>
+                    <div class="vehicle-name form-line">
+                         <label class="subheader subheader--smallMargin" for="vehicleName">Car name</label>
+                         <input maxlength="64" type="text" class="form-control" name="plate" class="text required entry" ng-model="DataModel.name" id="" />
+                         <div ng-messages="form.DataModel.$error" ng-if="form.plate.$touched || form.$submitted">
+                              <div ng-messages-include="/elements/notifyMessages.html"></div>
+                         </div>
+
+                    </div>
+                    <div class="form-line">
+                         <div class="subheader subheader--smallMargin">Car description</div>
+                         <textarea class="textArea--mediumHeight" maxlength="10000" name="description" ng-model = "DataModel.details.description" id="description"  placeholder="Tell travelers what amkes your car unique,and why they should rent" required/>
+                    </textarea>
+                    <div ng-messages="form.description.$error" ng-if="form.description.$touched || form.$submitted">
+                         <div ng-messages-include="/elements/notifyMessages.html"></div>
+                    </div>
+
+                    <div class="textAreaDescription text--small">
+                         Describe the basics and unique features of your car. No need to include your contact info; travelers will receive it once you’ve confirmed their trip.
+                    </div>
+               </div>
+          </fieldset>
+          <fieldset class="form-line">
+               <div class="subheader subheader--smallMargin" >Select features</div>
+               <div class="grid grid--smallGutter grid--withVerticalSpacing" style="margin:0px;" ng-init = "featuresArr= ['Hybrid', 'GPS', 'Audio Input', 'Bike Rack','Ski Rack', 'Convertible', 'All-wheel driver']">
+                     <!-- <select id="multiselect" multiple="multiple" name="car_fetaures" value="1" ng-model="DataModel.details.features" placeholder="Select Car features">
+                         <option value="">Select</option>
+                         <option ng-repeat = "feature in featuresArr">{{feature}}</option>
+                    </select> -->
+
+                    <input type="checkbox" ng-model="DataModel.details.features[0]" ng-true-value="'Hybrid'" >Hybrid &nbsp;&nbsp;
+                    <input type="checkbox" ng-model="DataModel.details.features[1]" ng-true-value="'GPS'" >GPS &nbsp;&nbsp;
+                    <input type="checkbox" ng-model="DataModel.details.features[2]" ng-true-value="'Audio Input'" >Audio Input &nbsp;&nbsp;
+                    <input type="checkbox" ng-model="DataModel.details.features[3]" ng-true-value="'Bike Rack'">Bike Rack&nbsp;&nbsp;
+                    <input type="checkbox" ng-model="DataModel.details.features[4]" ng-true-value="'Ski Rack'">Ski Rack&nbsp;&nbsp;
+                    <input type="checkbox" ng-model="DataModel.details.features[5]" ng-true-value="'Convertible'">Convertible&nbsp;&nbsp;
+                    <input type="checkbox" ng-model="DataModel.details.features[6]" ng-true-value="'All-wheel driver'">All-wheel driver
+
+
+
+          </div>
+          <div ng-messages="form.car_fetaures.$error" ng-if="form.car_fetaures.$touched || form.$submitted">
+               <div ng-messages-include="/elements/notifyMessages.html"></div>
+          </div>
+     </fieldset>
+     <fieldset id="js-colorField" class="form-line vehicleColor">
+          <div class="subheader subheader--smallMargin">Car color</div>
+          <div class="vehicleColor-list">
+               <div class="vehicleColor-row">
+                    <div class="vehicleColorOption" ng-click = "setColor('Red');" ng-model="Red">
+                         <div  ng-class = "(DataModel.details.color == 'Red')?'check':''" style="background-color: rgb(208, 2, 27);" data-id="RED" class="vehicleColorOption-color  vehicleColorOption-color--RED">
+                         </div>
+                         <div class="vehicleColorOption-description ">Red</div>
+                    </div>
+                    <div class="vehicleColorOption" ng-click = "setColor('YELLOW');" ng-model="YELLOW">
+                         <div ng-class = "(DataModel.details.color == 'YELLOW')?'check':''" style="background-color: rgb(248, 231, 28);" data-id="YELLOW" class="vehicleColorOption-color  vehicleColorOption-color--YELLOW"></div>
+                         <div class="vehicleColorOption-description " ng-click = "setColor('Yellow');" ng-model="Yellow">Yellow</div>
+                    </div>
+                    <div class="vehicleColorOption" ng-click = "setColor('GREEN');" ng-model="GREEN">
+                         <div ng-class = "(DataModel.details.color == 'GREEN')?'check':''" style="background-color: rgb(65, 117, 5);" data-id="GREEN" class="vehicleColorOption-color  vehicleColorOption-color--GREEN"></div>
+                         <div class="vehicleColorOption-description " >Green</div>
+                    </div>
+                    <div class="vehicleColorOption" ng-click = "setColor('BLUE');" ng-model="BLUE">
+                         <div ng-class = "(DataModel.details.color == 'BLUE')?'check':''" style="background-color: rgb(74, 144, 226);" data-id="BLUE" class="vehicleColorOption-color  vehicleColorOption-color--BLUE"></div>
+                         <div class="vehicleColorOption-description " >Blue</div>
+                    </div>
+                    <div class="vehicleColorOption" ng-click = "setColor('GOLD');" ng-model="GOLD">
+                         <div ng-class = "(DataModel.details.color == 'GOLD')?'check':''" style="background-color: rgb(212, 175, 55);" data-id="GOLD" class="vehicleColorOption-color  vehicleColorOption-color--GOLD"></div>
+                         <div class="vehicleColorOption-description " >Gold</div>
+                    </div>
+               </div>
+               <div class="vehicleColor-row">
+                    <div class="vehicleColorOption" ng-click = "setColor('WHITE');" ng-model="white">
+                         <div ng-class = "(DataModel.details.color == 'WHITE')?'check':''"  style="background-color: rgb(255, 255, 255);" data-id="WHITE" class="vehicleColorOption-color  vehicleColorOption-color--WHITE"></div>
+                         <div class="vehicleColorOption-description " >White</div>
+                    </div>
+                    <div class="vehicleColorOption" ng-click = "setColor('BLACK');" ng-model="BLACK">
+                         <div ng-class = "(DataModel.details.color == 'BLACK')?'check':''"  style="background-color: rgb(35, 31, 32);" data-id="BLACK" class="vehicleColorOption-color  vehicleColorOption-color--BLACK"></div>
+                         <div class="vehicleColorOption-description " >Black</div>
+                    </div>
+                    <div class="vehicleColorOption" ng-click = "setColor('GRAY');" ng-model="GRAY">
+                         <div ng-class = "(DataModel.details.color == 'GRAY')?'check':''"  style="background-color: rgb(74, 74, 74);" data-id="GRAY" class="vehicleColorOption-color  vehicleColorOption-color--GRAY">
+                         </div><div class="vehicleColorOption-description ">Grey</div>
+                    </div>
+                    <div class="vehicleColorOption" ng-click = "setColor('SILVER');" ng-model="SILVER">
+                         <div ng-class = "(DataModel.details.color == 'SILVER')?'check':''"  style="background-color: rgb(220, 220, 220);" data-id="SILVER" class="vehicleColorOption-color  vehicleColorOption-color--SILVER vehicleColorOption-color--selected">
+                         </div>
+                         <div class="vehicleColorOption-description " >Silver</div>
+                    </div>
+                    <div class="vehicleColorOption" ng-click = "setColor('OTHER');" ng-model="OTHER">
+                         <div  ng-class = "(DataModel.details.color == 'OTHER')?'check':''" style="" data-id="OTHER" class="vehicleColorOption-color  vehicleColorOption-color--OTHER"></div>
+                         <div class="vehicleColorOption-description ">Other</div>
+                    </div>
+               </div></div>
+          </fieldset>
+          <input type="hidden" value="SILVER" name="color" class="js-vehicleColorInput">
+          <div class="buttonWrapper">
+               <!-- <button  ng-click = "updateInfo(DataModel)" type="submit" class="btn btn-theme btn-lg btn-t-primary btn-block" name="savedetail">Next</button> -->
+               <button class="submit button button--purple vehicleBtn" type="submit" ng-click = "updateInfo(DataModel)" >
+                    Save
+               </button>
+          </div>
+     </form>
+     <!-- <div class="saveConfirmation">
+     <div class="savedIndicator">
+     <div class="icon"></div>
+     <p>Changes saved</p>
+</div>
+</div> -->
+</div>
+
+</div>
+
+
+
+<!-- <div class="" id="mycar-tab-content">
+
+<div data-vehicle-id="192205" id="your-car-edit-description">
+
+<div class="linkedHeadingWithArrow u-smallScreenOnly">
+<a href="/your-car?vehicleId=192205">
+
+<span class="linkedHeadingWithArrow-arrow"></span><span class="linkedHeadingWithArrow-text">Your car</span>
+</a>
+</div>
+<form name="form" novalidate>
+<fieldset class="about-your-car">
+<h5>Tell us about your car</h5>
+<p>This information will be publicly visible in your listing.</p>
+<div class="vehicle-name form-line">
+<label class="subheader subheader--smallMargin" for="vehicleName">Car name</label>
+<input maxlength="64" type="text" class="form-control" name="plate" class="text required entry" ng-model="DataModel.name" id="" />
+<div ng-messages="form.DataModel.$error" ng-if="form.plate.$touched || form.$submitted">
+<div ng-messages-include="/elements/notifyMessages.html"></div>
+</div>
+
+</div>
+<div class="form-line">
+<div class="subheader subheader--smallMargin">Car description</div>
+<textarea class="textArea--mediumHeight" maxlength="10000" name="description" ng-model = "DataModel.details.description" id="description"  placeholder="Tell travelers what amkes your car unique,and why they should rent" required/>
+</textarea>
+<div ng-messages="form.description.$error" ng-if="form.description.$touched || form.$submitted">
+<div ng-messages-include="/elements/notifyMessages.html"></div>
+</div>
+
+<div class="textAreaDescription text--small">
+Describe the basics and unique features of your car. No need to include your contact info; travelers will receive it once you’ve confirmed their trip.
+</div>
+</div>
+</fieldset>
+<fieldset class="form-line">
+<div class="subheader subheader--smallMargin">Select features</div>
+<ul class="grid grid--smallGutter grid--withVerticalSpacing" ng-init = "featuresArr= ['Hybrid', 'GPS', 'Audio Input', 'Bike Rack','Ski Rack', 'Convertible', 'All-wheel driver']">
+<!-- <select id="multiselect" multiple="multiple" name="car_fetaures" value="1" ng-model="DataModel.details.features" placeholder="Select Car features">
+<option value="">Select</option>
+<option ng-repeat = "feature in featuresArr">{{feature}}</option>
+</select> -->
+<!-- <li class="grid-item grid-item--3 grid-item--medium4 grid-item--small6" ng-repeat = "feature in featuresArr">
+<input ng-model = "DataModel.details.features[$index]" type="checkbox" value="{{feature}}" name="car_fetaures" id="badgeIds1"><label for="badgeIds1">{{feature}}</label>
+</li> -->
+
+<!-- <li class="grid-item grid-item--3 grid-item--medium4 grid-item--small6">
+<input type="checkbox" checked="checked" value="4" name="badgeIds" id="badgeIds2"><label for="badgeIds2">GPS</label><input type="hidden" value="on" name="_badgeIds">
+</li>
+<li class="grid-item grid-item--3 grid-item--medium4 grid-item--small6">
+
+<input type="checkbox" checked="checked" value="5" name="badgeIds" id="badgeIds3"><label for="badgeIds3">Audio input</label><input type="hidden" value="on" name="_badgeIds">
+</li>
+<li class="grid-item grid-item--3 grid-item--medium4 grid-item--small6">
+
+<input type="checkbox" value="3" name="badgeIds" id="badgeIds4"><label for="badgeIds4">Bike rack</label><input type="hidden" value="on" name="_badgeIds">
+</li>
+
+<li class="grid-item grid-item--3 grid-item--medium4 grid-item--small6">
+
+<input type="checkbox" value="15" name="badgeIds" id="badgeIds5"><label for="badgeIds5">Ski rack</label><input type="hidden" value="on" name="_badgeIds">
+</li>
+<li class="grid-item grid-item--3 grid-item--medium4 grid-item--small6">
+
+<input type="checkbox" value="9" name="badgeIds" id="badgeIds6"><label for="badgeIds6">Convertible</label><input type="hidden" value="on" name="_badgeIds">
+</li>
+<li class="grid-item grid-item--3 grid-item--medium4 grid-item--small6">
+
+<input type="checkbox" value="6" name="badgeIds" id="badgeIds7"><label for="badgeIds7">All-wheel drive</label><input type="hidden" value="on" name="_badgeIds">
+</li> -->
+<!-- </ul>
+<div ng-messages="form.car_fetaures.$error" ng-if="form.car_fetaures.$touched || form.$submitted">
+<div ng-messages-include="/elements/notifyMessages.html"></div>
+</div>
+</fieldset>
+<fieldset id="js-colorField" class="form-line vehicleColor">
+<div class="subheader subheader--smallMargin">Car color</div>
+<div class="vehicleColor-list">
+<div class="vehicleColor-row ">
+<div class="vehicleColorOption" >
+<div class="vehicleColorOption-color" style="background-color: rgb(208, 2, 27);">
+<input type="checkbox" style="background-color: rgb(208, 2, 27);" data-id="RED" class=" vehicleColorOption-color--RED" ng-model = "DataModel.details.color[1]">
+</div>
+<div class="vehicleColorOption-description ">Red</div>
+</div>
+<div class="vehicleColorOption">
+<input type="checkbox" style="background-color: rgb(248, 231, 28);" data-id="YELLOW" class="vehicleColorOption-color  vehicleColorOption-color--YELLOW" ng-model = "DataModel.details.color[2]">
+<div class="vehicleColorOption-description ">Yellow</div>
+</div>
+<div class="vehicleColorOption">
+<input type="checkbox" style="background-color: rgb(65, 117, 5);" data-id="GREEN" class="vehicleColorOption-color  vehicleColorOption-color--GREEN" ng-model = "DataModel.details.color[3]"><div class="vehicleColorOption-description ">Green</div>
+</div>
+<div class="vehicleColorOption">
+<input type="checkbox" style="background-color: rgb(74, 144, 226);" data-id="BLUE" class="vehicleColorOption-color  vehicleColorOption-color--BLUE" ng-model = "DataModel.details.color" ng-model = "DataModel.details.color[4]"><div class="vehicleColorOption-description " >Blue</div>
+</div>
+<div class="vehicleColorOption">
+<input type="checkbox" style="background-color: rgb(212, 175, 55);" data-id="GOLD" class="vehicleColorOption-color  vehicleColorOption-color--GOLD" ng-model = "DataModel.details.color[5]"><div class="vehicleColorOption-description ">Gold</div></div>
+</div>
+<div class="vehicleColor-row">
+<div class="vehicleColorOption"><input type="checkbox" style="background-color: rgb(255, 255, 255);" data-id="WHITE" class="vehicleColorOption-color  vehicleColorOption-color--WHITE" ng-model = "DataModel.details.color[6]"><div class="vehicleColorOption-description ">White</div></div>
+<div class="vehicleColorOption"><input type="checkbox" style="background-color: rgb(35, 31, 32);" data-id="BLACK" class="vehicleColorOption-color  vehicleColorOption-color--BLACK" ng-model = "DataModel.details.color[7]"><div class="vehicleColorOption-description ">Black</div></div>
+<div class="vehicleColorOption"><input type="checkbox" style="background-color: rgb(74, 74, 74);" data-id="GRAY" class="vehicleColorOption-color  vehicleColorOption-color--GRAY" ng-model = "DataModel.details.color[8]"><div class="vehicleColorOption-description ">Grey</div></div>
+<div class="vehicleColorOption"><input type="checkbox" style="background-color: rgb(220, 220, 220);" data-id="SILVER" class="vehicleColorOption-color  vehicleColorOption-color--SILVER vehicleColorOption-color--selected" ng-model = "DataModel.details.color[9]"><div class="vehicleColorOption-description ">Silver</div></div>
+<div class="vehicleColorOption"><input type="checkbox" style="" data-id="OTHER" class="vehicleColorOption-color  vehicleColorOption-color--OTHER" ng-model = "DataModel.details.color[10]"><div class="vehicleColorOption-description ">Other</div></div>
+</div>
+</div>
+</fieldset>
+<input type="hidden" value="SILVER" name="color" class="js-vehicleColorInput">
+<div class="buttonWrapper">
+<!-- <button  ng-click = "updateInfo(DataModel)" type="submit" class="btn btn-theme btn-lg btn-t-primary btn-block" name="savedetail">Next</button> -->
+<!-- <button class="submit button button--purple" type="submit" ng-click = "updateInfo(DataModel)">
+Save
+</button>
+</div>
+</form>  -->
+<!-- <div class="saveConfirmation">
+<div class="savedIndicator">
+<div class="icon"></div>
+<p>Changes saved</p>
+</div>
+</div> -->
+<!-- </div>
+
+</div>  -->
+
+
+
+
+
+<!-- <div class="container block-section bg-color4">
+<div class="container">
+<div class="panel panel-md">
+<div class="panel-body">
+<div class="row">
+<div class="col-md-12">
+<p></p>
+<p><a  ui-sref="javascript:void(0)" class="btn btn-primary btn-theme btn-block">
+Detail</a>
+</p>
+<form name="form" novalidate>
+
+<div class="form-group">
+<label>car Name</label>
+<input type="text" class="form-control" name="plate" ng-model="DataModel.name" id="" />
+<!- <div ng-messages="form.DataModel.$error" ng-if="form.plate.$touched || form.$submitted">
+<div ng-messages-include="/elements/notifyMessages.html"></div>
+</div> -->
+<!-- </div>
+
+<div class="form-group">
+<label>Car Description</label>
+<textarea  class="form-control" name="description" ng-model = "DataModel.details.description" id="description"  placeholder="Tell travelers what amkes your car unique,and why they should rent" required/>
+</textarea> -->
+<!-- <div ng-messages="form.description.$error" ng-if="form.description.$touched || form.$submitted">
+<div ng-messages-include="/elements/notifyMessages.html"></div>
+</div> -->
+<!-- </div>
+
+<div class="form-group" ng-init = "featuresArr= ['Hybrid', 'GPS', 'Audio Input', 'Bike Rack','Ski Rack', 'Convertible', 'All-wheel driver']">
+<label>Car Fetures</label>
+<select id="multiselect" multiple="multiple" name="car_fetaures" value="1" ng-model="DataModel.details.features" placeholder="Select Car features">
+<option value="">Select</option>
+<option ng-repeat = "feature in featuresArr">{{feature}}</option>
+</select> -->
+<!-- <div ng-messages="form.car_fetaures.$error" ng-if="form.car_fetaures.$touched || form.$submitted">
+<div ng-messages-include="/elements/notifyMessages.html"></div>
+</div> -->
+<!-- </form> -->
+<!-- </div>
+
+<div class="form-group">
+<button  ng-click = "updateInfo(DataModel)" type="submit" class="btn btn-theme btn-lg btn-t-primary btn-block" name="savedetail">Next</button>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div> -->

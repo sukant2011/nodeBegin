@@ -1,0 +1,582 @@
+<div id="vehicle-listing" data-is-favorite="false" data-time-zone-offset="-25200000" data-logged-in-driver="true" data-viewer-is-owner="false" data-vehicle-id="130686">
+     <div class="container container--fluid">
+          <div id="js-vehicleImageCarousel">
+               <div data-item-selector="" data-items-per-page="1" data-item-count="2" class="js-carousel carousel u-noSelect">
+                    <div class="vehicleImageCarousel">
+                         <div>
+                              <div uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
+                                   <div uib-slide ng-repeat="photo in DataModel.gallery.photos" index="$index">
+                                        <img ng-src="{{DataModel.gallery.path + photo}}" style="margin:auto;">
+                                        <!-- <div class="carousel-caption">
+                                             <h4>{{photo}}</h4>
+                                        </div> -->
+                                   </div>
+                              </div>
+                         </div>
+                    </div>
+               </div>
+          </div>
+     </div>
+
+     <div class="container">
+          <div class="layoutSingleColumn">
+               <div class="vehicleListingSummary vehicleListingSummary--largeFontSmallScreen u-inlineBlock u-tinyScreenOnly vehicleListingSummary--longVehicleName">
+                    <div class="vehicleListingSummary-vehicleInformation">
+                         <div>{{DataModel.userId.name.first + " ’s"}}</div>
+                         <div class="vehicleListingSummary-vehicleName u-truncate">{{DataModel.specifications.model}}<span class="vehicleListingSummary-vehicleYear">2012</span></div>
+                    </div>
+                    <div class="vehicleListingSummary-vehiclePriceWrapper">
+                         <div>
+                              <span class="vehicleListingSummary-currencySymbol">$</span>
+                              <span class="vehicleListingSummary-dollars js-vehicleListingDailyAverage">{{DataModel.ridingCost}}</span>
+                         </div>
+                         <div>
+                              <div class="vehicleListingSummary-pricingUnits">per day</div>
+                         </div>
+                    </div>
+               </div>
+               <div class="section grid u-hideTinyScreen">
+                    <div class="grid-item grid-item--3 label vehicleSectionTitle u-hideSmallScreen">THE CAR</div>
+                    <div class="grid-item grid-item--9 vehicleModelAndOwner">
+                         <div class="vehicleModelAndOwner-owner" ng-if="DataModel.userId.fullname != ' '">{{DataModel.userId.fullname}}</div>
+                         <div class="vehicleModelAndOwner-owner" ng-if="DataModel.userId.fullname  == '' ">Not Present</div>
+
+                         <div class="vehicleModelAndOwner-make-model-year  u-verticalAlignBottom">
+                              <div class="vehicleModelAndOwner-make-model u-inlineBlock" >{{DataModel.specifications.model}}</div>
+                              <div class="vehicleModelAndOwner-year u-inlineBlock">{{DataModel.specifications.year}}</div>
+
+                         </div>
+                         <div class="u-smallestTopMargin">
+                              <div class="ratings ratings--vehicle ">
+                                            <div class="rating u-inlineBlock u-verticalAlignBottom">
+                                                <div ng-disabled="true" ng-init=" rating = rating + 1"></div>
+                                                <div star-rating rating-value="rating" max="5" readonly="true"></div>
+                                            </div>
+
+                                                <div class="u-inlineBlock u-verticalAlignBottom">
+                                                    <span>•</span>
+                                                    <span class="rating--trips">{{trips}} trip</span>
+                                                </div>
+                                   </div>
+
+                      </div>
+                    </div>
+
+               </div>
+          </div>
+          <div class="sidebar">
+               <div id="reservation-box">
+                    <div class="vehicleListingSummary-vehiclePriceWrapper vehicleListingSummary-vehiclePriceWrapper--sidebar">
+                         <div class="u-hideTinyScreen">
+                              <span class="vehicleListingSummary-currencySymbol vehicleListingSummary-currencySymbol--sidebar">$</span>
+                              <span class="vehicleListingSummary-dollars vehicleListingSummary-dollars--sidebar js-vehicleListingDailyAverage" ng-if="DataModel.ridingCost">{{DataModel.ridingCost}}</span>
+                              <span class="vehicleListingSummary-dollars vehicleListingSummary-dollars--sidebar js-vehicleListingDailyAverage"ng-if="!DataModel.ridingCost">0</span>
+                              <div class="vehicleListingSummary-pricingUnits vehicleListingSummary-pricingUnits--sidebar">per day</div>
+                         </div>
+                         <hr class="vehicleSidebarDivider--noMargin u-hideTinyScreen">
+                    </div>
+                    <div id="reservation-box-inner">
+                         <p class="text--small u-hideTinyScreen">Enter dates and times for accurate prices and availability.</p>
+                         <form id="interval-form" name="form" novalidate>
+                              <div class="u-clearFix">
+                                   <div class="u-clearFix">
+                                        <div class="input-group listingDateTimePicker">
+                                             <span class="listingDateTimePicker-label">From</span>
+
+                                             <!-- <input ng-init = "payment.startDate = startDate" ng-model = -->
+                                             <input  ng-model = "payment.startDate" type="text" size="8" value="" readonly="readonly" class="text dateTimePicker-date dateTimePicker-date--noBorder listingDateTimePicker-date" placeholder="Any date" name="startDate" id="startDate" ng-change ="checkAvailability()">
+                                             <span class="styled-select-container styled-select-container--noBorder search-time-container listingDateTimePicker-time">
+                                                  <select ng-model = "payment.startTime" name="startTime" id="starttime" ng-change ="checkAvailability()">
+                                                       <option value="">midnight</option>
+                                                       <option value="12:30 AM">12:30 AM</option>
+                                                       <option value="1:00 AM">1:00 AM</option>
+                                                       <option value="1:30 AM">1:30 AM</option>
+                                                       <option value="2:00 AM">2:00 AM</option>
+                                                       <option value="2:30 AM">2:30 AM</option>
+                                                       <option value="3:00 AM">3:00 AM</option>
+                                                       <option value="3:30 AM">3:30 AM</option>
+                                                       <option value="4:00 AM">4:00 AM</option>
+                                                       <option value="4:30 AM">4:30 AM</option>
+                                                       <option value="5:00 AM">5:00 AM</option>
+                                                       <option value="5:30 AM">5:30 AM</option>
+                                                       <option value="6:00 AM">6:00 AM</option>
+                                                       <option value="6:30 AM">6:30 AM</option>
+                                                       <option value="6:30 AM">7:00 AM</option>
+                                                       <option value="7:30 AM">7:30 AM</option>
+                                                       <option value="8:00 AM">8:00 AM</option>
+                                                       <option value="8:30 AM0">8:30 AM</option>
+                                                       <option value="9:00 AM">9:00 AM</option>
+                                                       <option value="9:30 AM">9:30 AM</option>
+                                                       <option value="10:00 AM">10:00 AM</option>
+                                                       <option value="10:30 AM">10:30 AM</option>
+                                                       <option value="11:00 AM">11:00 AM</option>
+                                                       <option value="11:30 AM">11:30 AM</option>
+                                                       <option value="12:00 PM">noon</option>
+                                                       <option value="12:30 PM">12:30 PM</option>
+                                                       <option value="1:00 PM">1:00 PM</option>
+                                                       <option value="1:30 PM">1:30 PM</option>
+                                                       <option value="2:00 PM">2:00 PM</option>
+                                                       <option value="2:30 PM">2:30 PM</option>
+                                                       <option value="3:00 PM">3:00 PM</option>
+                                                       <option value="3:30 PM">3:30 PM</option>
+                                                       <option value="4:00 PM">4:00 PM</option>
+                                                       <option value="4:30 PM">4:30 PM</option>
+                                                       <option value="5:00 PM">5:00 PM</option>
+                                                       <option value="5:30 PM">5:30 PM</option>
+                                                       <option value="6:00 PM">6:00 PM</option>
+                                                       <option value="6:30 PM">6:30 PM</option>
+                                                       <option value="7:00 PM">7:00 PM</option>
+                                                       <option value="7:30 PM">7:30 PM</option>
+                                                       <option value="8:00 PM">8:00 PM</option>
+                                                       <option value="8:30 PM">8:30 PM</option>
+                                                       <option value="9:00 PM">9:00 PM</option>
+                                                       <option value="9:30 PM">9:30 PM</option>
+                                                       <option value="10:00 PM">10:00 PM</option>
+                                                       <option value="10:30 PM">10:30 PM</option>
+                                                       <option value="11:00 PM">11:00 PM</option>
+                                                       <option value="11:30 PM">11:30 PM</option>
+                                                  </select>
+                                                       <span class="text start">10:00 AM</span>
+                                                  </span>
+                                             </div>
+                                        </div>
+                                        <div class="u-clearFix">
+                                             <div class="input-group listingDateTimePicker">
+                                                  <span class="listingDateTimePicker-label">Until</span>
+
+                                                  <!-- <input ng-init = "payment.endDate = endDate" ng-model = -->
+                                              <input ng-model = "payment.endDate" ng-change ="checkAvailability()" type="text" size="8" readonly="readonly" class="text dateTimePicker-date dateTimePicker-date--noBorder listingDateTimePicker-date" placeholder="Any date" name="endDate" id="endDate">
+                                                  <span class="styled-select-container styled-select-container--noBorder search-time-container listingDateTimePicker-time">
+                                                       <select ng-model = "payment.endTime" name="endTime" id="endtime" ng-change ="checkAvailability()" ng-class = "isRequired?'requiredInput':''">
+                                                            <option value="">midnight</option>
+                                                            <option value="12:30 AM">12:30 AM</option>
+                                                            <option value="1:00 AM">1:00 AM</option>
+                                                            <option value="1:30 AM">1:30 AM</option>
+                                                            <option value="2:00 AM">2:00 AM</option>
+                                                            <option value="2:30 AM">2:30 AM</option>
+                                                            <option value="3:00 AM">3:00 AM</option>
+                                                            <option value="3:30 AM">3:30 AM</option>
+                                                            <option value="4:00 AM">4:00 AM</option>
+                                                            <option value="4:30 AM">4:30 AM</option>
+                                                            <option value="5:00 AM">5:00 AM</option>
+                                                            <option value="5:30 AM">5:30 AM</option>
+                                                            <option value="6:00 AM">6:00 AM</option>
+                                                            <option value="6:30 AM">6:30 AM</option>
+                                                            <option value="6:30 AM">7:00 AM</option>
+                                                            <option value="7:30 AM">7:30 AM</option>
+                                                            <option value="8:00 AM">8:00 AM</option>
+                                                            <option value="8:30 AM0">8:30 AM</option>
+                                                            <option value="9:00 AM">9:00 AM</option>
+                                                            <option value="9:30 AM">9:30 AM</option>
+                                                            <option value="10:00 AM">10:00 AM</option>
+                                                            <option value="10:30 AM">10:30 AM</option>
+                                                            <option value="11:00 AM">11:00 AM</option>
+                                                            <option value="11:30 AM">11:30 AM</option>
+                                                            <option value="12:00 PM">noon</option>
+                                                            <option value="12:30 PM">12:30 PM</option>
+                                                            <option value="1:00 PM">1:00 PM</option>
+                                                            <option value="1:30 PM">1:30 PM</option>
+                                                            <option value="2:00 PM">2:00 PM</option>
+                                                            <option value="2:30 PM">2:30 PM</option>
+                                                            <option value="3:00 PM">3:00 PM</option>
+                                                            <option value="3:30 PM">3:30 PM</option>
+                                                            <option value="4:00 PM">4:00 PM</option>
+                                                            <option value="4:30 PM">4:30 PM</option>
+                                                            <option value="5:00 PM">5:00 PM</option>
+                                                            <option value="5:30 PM">5:30 PM</option>
+                                                            <option value="6:00 PM">6:00 PM</option>
+                                                            <option value="6:30 PM">6:30 PM</option>
+                                                            <option value="7:00 PM">7:00 PM</option>
+                                                            <option value="7:30 PM">7:30 PM</option>
+                                                            <option value="8:00 PM">8:00 PM</option>
+                                                            <option value="8:30 PM">8:30 PM</option>
+                                                            <option value="9:00 PM">9:00 PM</option>
+                                                            <option value="9:30 PM">9:30 PM</option>
+                                                            <option value="10:00 PM">10:00 PM</option>
+                                                            <option value="10:30 PM">10:30 PM</option>
+                                                            <option value="11:00 PM">11:00 PM</option>
+                                                            <option value="11:30 PM">11:30 PM</option>
+                                                       </select>
+                                                            <span class="text end">10:00 AM</span>
+                                                       </span>
+                                                       <div class="breaker"></div>
+                                                  </div>
+                                             </div>
+                                        </div>
+
+                                   <div class="js-vehicleListingDiscounts">
+                                        <!-- <div class="vehicleListingSummary-discount daily js-discountDaily ">
+                                             <div class="vehicleListingSummary-discountLabel">Daily price</div>
+                                             <div class="vehicleListingSummary-discountPrice u-pullRight">
+                                                  was
+                                                  <div class="vehicleListingSummary-discountPrice-original">
+                                                       <span class="currency-symbol">$</span><span class="js-originalDailyPrice">72</span>
+                                                  </div>
+                                                  <div class="vehicleListingSummary-discountPrice-discounted">
+                                                       <span class="currency-symbol">$</span><span class="js-averageDailyPrice">61</span>
+                                                  </div>
+                                             </div>
+                                        </div> -->
+
+                                        <!-- <div class="vehicleListingSummary-discount js-discountWeekly ">
+                                             <div class="vehicleListingSummary-discountLabel">Weekly discount</div>
+                                             <div class="vehicleListingSummary-discountValue js-noAmount u-hidden" style="display: none;">
+                                                  up to <span class="js-percent">15</span>%
+                                             </div>
+                                             <div class="vehicleListingSummary-discountValue js-withAmount ">
+                                                  $<span class="js-amount">76</span> <b>(<span class="js-percent">15</span>%)</b>
+                                             </div>
+                                        </div> -->
+                                        <div class="vehicleListingSummary-discount js-discountMonthly u-hidden" style="display: none;">
+                                             <div class="vehicleListingSummary-discountLabel">Monthly discount</div>
+                                             <div class="vehicleListingSummary-discountValue js-noAmount u-hidden" style="display: none;">
+                                                  up to <span class="js-percent">0</span>%
+                                             </div>
+                                             <div class="vehicleListingSummary-discountValue js-withAmount ">
+                                                  $<span class="js-amount">76</span> <b>(<span class="js-percent">0</span>%)</b>
+                                             </div>
+                                        </div>
+                                   </div>
+                                    <span style="color:red; font-size:12px" ng-if="serverMsg.result == true">{{serverMsg.msg}}</span>
+                                   <div class="js-rentalPrice" ng-hide="check">
+                                        <div class="vehicleListingSummary-discountLabel">Trip price</div>
+
+                                        <div ng-if = "trip.price" class="vehicleListingSummary-rentalPrice--amount">
+                                             <span class="currency-symbol">$</span>
+                                             <span class="js-rentalPriceAmount">{{trip.price}}</span>
+                                        </div>
+
+                                        <div ng-if = "!trip.price" class="vehicleListingSummary-rentalPrice--amount">
+                                             <span class="currency-symbol">$</span>
+                                             <span class="js-rentalPriceAmount">{{DataModel.ridingCost}}</span>
+                                        </div>
+                                   </div>
+                              </div>
+                               <div id="reservation-tool">
+                                   <a ng-if = "!isAuthenticated" ui-sref = "anon.login">
+                                        <button class="rent-button button button--green button--fluid button--large dialog-link js-rent-button" >Rent this car</button>
+                                   </a>
+                                   <button  ng-if = "isAuthenticated && sessionUserId != DataModel.userId._id" ng-disabled="check" ng-click="rentForCar()" class="rent-button button button--green button--fluid button--large dialog-link js-rent-button" >Rent this car</button>
+                              </div>
+                              </form>
+                         </div>
+                         <div class="section section--withSmallMargin">
+                              <div class="label">Miles included</div>
+                              <div class="grid" ng-repeat = "(key, distance) in DataModel.distance">
+                                   <div class="grid-item grid-item--6 grid-item--medium6" ng-cloak >{{key}}</div>
+                                   <div class="grid-item grid-item--6 grid-item--medium6 u-alignRight" ng-if="distance" ng-cloak>
+                                        {{distance}} miles
+                                   </div>
+                                   <div class="grid-item grid-item--6 grid-item--medium6 u-alignRight" ng-if="!distance">
+                                        0 miles
+                                   </div>
+                              </div>
+
+                              <p class="vehicleListingSummary-excessCharge"><span class="currency-symbol">$</span>0.75/mi fee for additional miles driven</p>
+
+                              <hr class="vehicleSidebarDivider">
+                         </div>
+          </div>
+
+          <div class="layoutSingleColumn vehicleDescriptionAndFeatures">
+               <div class="section">
+                    <div class=" grid grid--withVerticalSpacing">
+                         <div class="grid-item grid-item--3 label vehicleSectionTitle">
+                              DESCRIPTION
+                         </div>
+                         <div class="grid-item grid-item--9 u-breakWord">
+                              {{DataModel.details.description}}
+                         </div>
+                    </div>
+               </div>
+
+          <div class="section">
+               <div class=" grid grid--withVerticalSpacing">
+                    <div class="grid-item grid-item--9 grid-item--push3">
+                         <div class="buttonWrapper u-hideTinyScreen" ng-clock>
+                              <div ng-if = "isAuthenticated && isFavourite" >
+                              <a  class="button dialog-link" ng-click="favorite(2)">
+                                   <span class="add-label">
+                                        <span class="add-icon" ></span>
+                                        Remove from favorites
+                                   </span>
+                              </a>
+                         </div>
+                         <div  ng-if = "isAuthenticated && !isFavourite" >
+                              <a  class="button dialog-link" ng-click="favorite(1)">
+                                   <span class="add-label">
+                                        <span class="add-icon" ></span>
+                                        Add to favorites
+                                   </span>
+                              </a>
+                             </div>
+                            <div  ng-if = "!isAuthenticated" >
+                              <a ui-sref="anon.register" class="button dialog-link">
+                                   <span class="add-label">
+                                        <span class="add-icon" ></span>
+                                        Add to favorites
+                                   </span>
+                              </a>
+                          </div>
+                          <div ng-if = "!isAuthenticated">
+                              <a  ui-sref="anon.register" class="button dialog-link">
+                              Report this listing
+                          </a>
+                           </div>
+                           <div ng-if = "isAuthenticated">
+                              <button  type="button" class="button dialog-link" data-toggle="modal" data-target="#myModal">Report this listing</button>
+                         </div>
+                         </div>
+                         <div class="modal fade" id="myModal" role="dialog">
+                              <div class="modal-dialog">
+                              <!-- Modal content-->
+                                   <div class="modal-content">
+                                        <div class="modal-header">
+                                             <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                             <h4 class="modal-title">Report this listing</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                             <form name="myForm" >
+                                                  <label>
+                                                       <input type="radio" ng-model="reportObj.name" value="Inappropriate/offensive content">
+                                                       Inappropriate/offensive content
+                                                       </label><br/>
+                                                  <label>
+                                                       <input type="radio" ng-model="reportObj.name" value="Misleading/suspicious information">
+                              Misleading/suspicious information
+                                                  </label><br/>
+                                                  <label>
+                                                       <input type="radio" ng-model="reportObj.name" value="Spam">
+                                                       Spam
+                                                  </label><br/>
+                                                  <label>
+                                                       <input id="Other" type="radio" name="reportObj.name" ng-model="reportObj.name" value="Other">
+                                                  Other
+                                                       <p ng-show="reportObj.name == 'Other'">
+                                                            <input type="text" ng-model="reportObj.comment"></p>
+                                                  </label><br/><br/>
+
+                                                  <input type="button" class="btn btn-info " ng-click="reports()" value="Report">
+                                                  <input type="button" class="btn btn-danger " value="Cancel" data-dismiss="modal">
+                                             </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        </div>
+                                   </div>
+                              </div>
+                         </div><!-- model end -->
+                    </div>
+               </div>
+          </div>
+          <div class="section">
+               <div class="grid grid--withVerticalSpacing">
+                    <div class="grid-item grid-item--3 label vehicleSectionTitle">FEATURES</div>
+                    <div class="grid-item grid-item--9" >
+                         <ul ng-repeat="feature in DataModel.details.features">
+                              <li class="automatic-transmission-false">
+                                   <span class="icon"></span>
+                                   {{feature }}
+                              </li>
+                         </ul>
+                    </div>
+               </div>
+          </div>
+          <div class="section">
+               <div class="grid grid--withVerticalSpacing">
+                    <div class="grid-item grid-item--3 label vehicleSectionTitle">REVIEWS</div>
+                    <div class="grid-item grid-item--9">
+                         <div class="ratings ratings--vehicle ">
+                              <div class="rating u-inlineBlock u-verticalAlignBottom">
+                                   <div ng-disabled="true" ng-init=" rating = rating + 1"></div>
+                                   <div star-rating rating-value="rating" max="5" readonly="true"></div>
+                              </div>
+                              <div class="u-inlineBlock u-verticalAlignBottom">
+                                   <span>•</span>
+                                   <span class="rating--trips">{{trips}} trip</span>
+                              </div>
+                         </div>
+
+                         <div  data-reviews-per-page="15" data-review-count="3" class="js-feedbackAndRatingsPaging">
+                              <ul>
+                                   <li id="review-2" class="review-list-item page1-review-list-item" ng-repeat="review in reviews">
+                                        <div class="messageItem">
+                                             <a ui-sref="anon.publicProfile({userId : review.userId._id})" class="messageItem-authorPhoto">
+                                                  <img ng-if = "review.userId.profile.photo" alt="{{review.userId.profile.fullname}}" ng-src="{{review.userId.profile.path + review.userId.profile.photo}}" class="profilePhoto profilePhoto--large profilePhoto--round profilePhoto--noBorder profilePhoto--renter">
+                                                  <img ng-if = "!review.userId.profile.photo" alt="{{review.userId.profile.fullname}}" ng-src="/media/u_default.png" class="profilePhoto profilePhoto--large profilePhoto--round profilePhoto--noBorder profilePhoto--renter">
+                                             </a>
+                                        </a>
+                                        <div class="messageItem-details">
+                                             <div class="messageItem-body">
+                                                  {{review.comment}}<br>
+                                             </div>
+                                             <div>
+                                                  <a ui-sref="anon.publicProfile({userId : review.userId._id})" class="messageItem-authorName">{{review.userId.fullname}}</a>
+                                                  <span class="messageItem-createdTime">
+                                                       &ndash;
+                                                       {{review.createdDate | date}}
+                                                  </span>
+                                             </div>
+                                        </div>
+                                   </div>
+                              </li>
+                         </ul>
+
+
+                    </div>
+                    <div  ng-if="!reviews" >Rent this car and be the first to review it.</div>
+
+
+               </div>
+          </div>
+     </div>
+</div>
+
+     <div class="sidebar u-clearRight">
+      <div id="full-owner-details">
+                    <div class="driverDetails driverDetails--noBorder">
+                         <div class="grid">
+                              <div class="grid-item grid-item--7 grid-item--medium7 grid-item--small7">
+                                   <div class="driverDetails-centering label">Owned by</div>
+                                   <div class="driverDetails-name u-truncate">
+                                        <a alt= "{{DataModel.userId.fullname}}" ui-sref="anon.publicProfile({userId : DataModel.userId._id})" class="text--purple">
+                                             {{DataModel.userId.fullname}}
+                                        </a>
+                                   </div>
+                              </div>
+                              <div class="grid-item grid-item--5 grid-item--medium5 grid-item--small5">
+                                   <div class="driverDetails-photo" style="background-image: url('/media/u_default.png')">
+                                        <a  alt= "{{DataModel.userId.fullname}}" ui-sref="anon.publicProfile({userId : DataModel.userId._id})">
+                                             <img ng-src="{{DataModel.userId.profile.path + DataModel.userId.profile.photo}}">
+                                        </a>
+                                   </div>
+                              </div>
+                         </div>
+                    </div>
+                    <hr class="vehicleSidebarDivider">
+               </div>
+          </div>
+     </div>
+
+     <div class="container container--fluid">
+          <section class="section section--withMediumMargin">
+               <div id="vehicle-detail-map">
+                    <div id="map"></div>
+                    <div id="repeat" ng-repeat="marker in markers">
+                         <a id="country_container" href="#" ng-click="openInfoWindow($event, marker)"></a>
+                    </div>
+               </div>
+          </section>
+     </div>
+
+     <div class="container u-tinyScreenOnly">
+          <div ng-if = "isAuthenticated" class="buttonWrapper buttonWrapper--mobileVehicle u-fullWidth">
+               <div ng-if = "!isFavourite">
+                    <a class="js-favoriteButton favoriteButton button button--fluid dialog-link add"  ng-click="favorite(1)">
+                         <span class="add-label"><span class="add-icon"></span>Add to favorites</span>
+                    </a>
+               </div>
+               <div ng-if = "isFavourite">
+                    <a class="js-favoriteButton favoriteButton button button--fluid dialog-link add" ng-click="favorite(2)">
+                         <span class=""><span class="remove-icon"></span>Remove from favorites</span>
+                    </a>
+               </div>
+               <a data-toggle="modal" data-target="#myModal" class="button button--fluid dialog-link">
+                    Report this listing
+               </a>
+          </div>
+
+          <div ng-if = "!isAuthenticated" class="buttonWrapper buttonWrapper--mobileVehicle u-fullWidth">
+               <a disabled="disabled" class="js-favoriteButton favoriteButton button button--fluid dialog-link add" ui-sref="anon.register">
+                    <span class="add-label"><span class="add-icon"></span>Add to favorites</span>
+                    <span class="remove-label"><span class="remove-icon"></span>Remove from favorites</span>
+               </a>
+               <a  ui-sref="anon.register" class="button button--fluid dialog-link">
+                    Report this listing
+               </a>
+          </div>
+     </div>
+
+</div>
+<script type="text/ng-template" id="checkAvailability.html">
+     <form name="myform" novalidate>
+     <div class="ui-dialog ui-widget ui-widget-content ui-corner-all ui-front dialog-container" style="display: block; height: auto; width: auto; top:100px;" tabindex="-1" role="dialog" aria-describedby="location-dialog" aria-labelledby="ui-id-1">
+          <div class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix">
+               <span id="ui-id-1" class="ui-dialog-title">&nbsp;</span>
+               <button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only ui-dialog-titlebar-close" role="button" aria-disabled="false" title="close"><span class="ui-button-icon-primary ui-icon ui-icon-closethick"></span><span class="ui-button-text">close</span>
+               </button>
+          </div>
+          <div data-delivery-location="" class="dialog dialog--large ui-dialog-content ui-widget-content" id="location-dialog" style="display: block; width: auto; min-height: 0px; max-height: none; height: auto;">
+         <h5>Pickup and return</h5>
+         <section>
+             <div class="label">Car location</div>
+             <p>Meet Steve at the car location. We’ll send you the exact address once your trip is booked.</p>
+             <ul class="locationList">
+                 <li class="locationList-item">
+                     <label class="locationList-label" for="HOME">
+                         <input type="radio" checked="checked" name="location" id="HOME" value="{{ paymentObj.address.location }}" ng-model="paymentObj.location" ng-click="setFee('0')" >
+
+                         <span class="locationList-location">{{ paymentObj.address.location }}</span>
+                         <span class="locationList-price">Free</span>
+                     </label>
+                 </li>
+             </ul>
+        </section>
+             <section class="section">
+                 <div class="label">Airport</div>
+
+                 <p>Pick up and return the car at the airport. You’ll arrange the details with Steve later.</p>
+                 <ul class="locationList">
+
+                    <li class="locationList-item" ng-repeat = "airport in paymentObj.delivery.airports">
+
+                          <label class="locationList-label" for="EWR">
+                            <input type="radio" name="location" id="EWR" value="{{airport.id.name}}" ng-model="paymentObj.airport" ng-click="setFee(airport.fee)">
+                                <span class="locationList-instantBookIcon"></span>
+                            <span class="locationList-location">
+                                <span class="locationList-airportCode">{{airport.id.name}}</span>
+                                <span class="locationList-airportName">{{airport.id.location}}</span>
+                            </span>
+                            <span class="locationList-price">
+                                   <!-- <span class="original-cost">$80</span> -->
+                                   <span class="free" ng-model="paymentObj.fee"> ${{airport.fee}}</span>
+                            </span>
+                        </label>
+                    </li>
+            </ul>
+             </section>
+             <section class="section" ng-if="paymentObj.delivery.guestLocation.isAvailable == true">
+                 <div class="label">Delivery</div>
+                 <p>Steve will meet you at a location you choose.</p>
+                 <ul class="locationList">
+                     <li class="locationList-item">
+                         <label class="locationList-delivery locationList-label locationList-label--withInput">
+                             <input id="Other" type="radio" name="location" value="true" ng-model="paymentObj.guestLocation" ng-click = "setFee(paymentObj.delivery.guestLocation.fee)" required>
+                             <input  type="text"  ng-disabled="!paymentObj.guestLocation" placeholder="Enter a location" class="locationList-input" id="custom-location-input"  gm-places-autocomplete ng-model="paymentObj.autocomplete">
+                            <span class="locationList-price">
+                           <span>${{ paymentObj.delivery.guestLocation.fee}}</span>
+                             </span>
+                         </label>
+                         <p class="locationList-error js-customLocationError">
+                             Please enter a valid address in United States
+                         </p>
+                     </li>
+                 </ul>
+             </section>
+
+         <div class="buttonWrapper">
+                <button class="submit button button--green" ng-disabled = "!paymentObj.airport && !paymentObj.location && !paymentObj.guestLocation" ng-click="paypal()">Continue</button>
+                 <button class="js-closeLocationDialogButton button" type="button" ng-click="cancel()">Cancel</button>
+             </form>
+         </div>
+         <div id="places"></div>
+
+     </div></div>
+  </script>
+
+<style>
+     .pac-logo {z-index: 2200 !important; display: block;}
+     .modal-backdrop {
+   z-index : 0
+}
+</style>

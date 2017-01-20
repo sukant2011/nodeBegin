@@ -1,0 +1,58 @@
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Edit User</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->
+<div ng-include = "'/templates/admin/ui-elements/flashMessage.html'"></div>
+<div class="row">
+    <div class="col-lg-8">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+          Edit User
+     </div>
+            <div class="panel-body">
+                <div class="row">
+
+                    <div class="col-lg-10">
+                        <form role="form">
+                             <div class="form-group">
+                               <label>First Name</label>
+                               <input class="form-control" placeholder="First Name" name="first" ng-model="DataModel.name.first">
+                            </div>
+                            <div class="form-group">
+                                <label>Last Name</label>
+                                <input class="form-control" placeholder="Last Name " name="last" ng-model="DataModel.name.last">
+                            </div>
+                            <div class="form-group">
+                              <label>Description</label>
+                              <textarea class="form-control" rows="3" ng-model="DataModel.profile.description" name="description"></textarea>
+                          </div>
+                          <div class="form-group">
+                            <label>Role</label>
+                            <select class="form-control" ng-init="DataModel.role" rows="3" ng-model="DataModel.role" name="role">
+                             <option value="ADMIN">Admin</option>
+                             <option value="USER">User</option>
+                            </select>
+                        </div>
+                            <div class="form-group">
+                                <label>Upload Image</label>
+                                <input type="file"  file-model="myFile">
+                            </div>
+
+                            <button type="submit" class="btn btn-default" ng-click="viewApi.account()">Submit Button</button>
+                            <button type="reset" class="btn btn-default">Reset Button</button>
+                        </form>
+                    </div>
+                    <!-- /.col-lg-6 (nested) -->
+                    <!-- /.col-lg-6 (nested) -->
+                </div>
+                <!-- /.row (nested) -->
+            </div>
+            <!-- /.panel-body -->
+        </div>
+        <!-- /.panel -->
+    </div>
+    <!-- /.col-lg-12 -->
+</div>

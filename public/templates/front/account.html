@@ -1,0 +1,103 @@
+<div class="u-contentTopPadding u-contentBottomPadding" id="pageContainer-content">
+     <div class="container" id="account-container">
+          <div class="section section--first u-clearFix">
+               <h5>Account</h5>
+               <p>
+               <div ng-include = "'/elements/flashMessage.html'"></div>
+               </p>
+               <form name="myForm" >
+                    <div class="layoutSingleColumn account-cls-div">
+                         <h6 class="subheader">Contact Information</h6>
+                         <!-- <a href="javascript:void(0)"
+                         socialshare
+                         socialshare-provider="twitter"
+                         socialshare-text="720kb AngularJS Socialshare"
+                         socialshare-hashtags="angularjs, angular-socialshare"
+                         socialshare-url="http://720kb.net">
+                         Share me
+                    </a> -->
+                    <div class="section section--first grid">
+                         <label class="label--form grid-item grid-item--11">
+                              <div class="text--small">First Name</div>
+                              <!-- <input type="email" size="25" value="mangalhcl449@gmail.com" name="email" id="email"> -->
+                              <input type="text" name="title" ng-model="User.name.first" size="25" >
+                         </label>
+
+                    </div>
+                    <div class="section section--first grid">
+                         <label class="label--form grid-item grid-item--11">
+                              <div class="text--small">Last Name</div>
+                              <!-- <input type="email" size="25" value="mangalhcl449@gmail.com" name="email" id="email"> -->
+                              <input type="text" name="title" ng-model="User.name.last" size="25">
+                         </label>
+
+                    </div>
+                    <div class="section section--first grid">
+                         <label class="label--form grid-item grid-item--11">
+                              <div class="text--small">Description</div>
+                              <textarea  style=" height:150px!important" name="description" ng-model="User.profile.description"  ></textarea>
+                              <!-- <input type="email" size="25" value="mangalhcl449@gmail.com" name="email" id="email"> -->
+                              <!-- <input type="text" name="title" ng-model="User.name.last" size="25"> -->
+                         </label>
+                         <!-- <span class="grid-item grid-item--2 email-verifiedBadge">
+                         Verified
+                    </span> -->
+               </div>
+               <div class="section section--first grid">
+                    <label class="label--form grid-item grid-item--11">
+                         <div class="text--small">Upload Photo</div>
+                         <input type="file" file-model="myFile">
+                         <!-- <div ng-if = "User.profile.photo"><img ng-src="{{User.profile.path + User.profile.photo}}" height="150" width="150"></div> -->
+
+                    </label>
+               </div>
+               <button class="button button--green" type="submit" ng-click="account()" >Save changes</button>
+          </div>
+     </form>
+	 
+     <div class="sidebar">
+          <div>
+               <div class="section section--first connected" id="google-container">
+                    <div ng-if = "DataModel.googleId" class="u-block linkedAccount is-connected  box--thickBorder">
+                         <img alt="" ng-src="{{User.profile.path + User.profile.photo}}" class="linkedAccount-image u-inlineBlock u-verticalAlignBottom">
+                         <div class="u-inlineBlock linkedAccount-text">
+                              <div class="text--large u-truncate">{{DataModel.fullname}}</div>
+                              <button ng-click="unLink('google')" class="button linkedAccount-disconnectButton" id="js-disconnectGoogleButton">Disconnect (Google)</button>
+                         </div>
+                    </div>
+                    <div ng-if = "!DataModel.googleId" class="u-contentBottomMargin" ng-if = "!DataModel.googleId">
+                         <span ng-click="link('google')" data-accesstype="offline" data-scope="profile email" data-cookiepolicy="single_host_origin"  data-callback="googleConnectCallback" class="g-signin button button--round button--fluid" id="js-connectGoogleButton" data-gapiscan="true" data-onload="true" data-gapiattached="true">
+                              Link your Google account
+                         </span>
+                    </div>
+               </div>
+               <div class="section section--first connected" id="google-container">
+                    <div ng-if = "DataModel.facebookId" class="u-block linkedAccount is-connected box box--smallPadding box--thickBorder">
+                         <img alt="" ng-src="{{User.profile.path + User.profile.photo}}" class="linkedAccount-image u-inlineBlock u-verticalAlignBottom">
+                         <div class="u-inlineBlock linkedAccount-text">
+                              <div class="text--large u-truncate">{{DataModel.fullname}}</div>
+                              <button ng-click="unLink('facebook')" class="button linkedAccount-disconnectButton" id="js-disconnectGoogleButton">Disconnect (Facebook)</button>
+                         </div>
+                    </div>
+                    <div ng-if = "!DataModel.facebookId" class="u-contentBottomMargin">
+                         <span ng-click="link('facebook')" data-accesstype="offline" data-scope="profile email" data-cookiepolicy="single_host_origin"  data-callback="googleConnectCallback" class="g-signin button button--round button--fluid" id="js-connectGoogleButton" data-gapiscan="true" data-onload="true" data-gapiattached="true">
+                              Link your facebook account
+                         </span>
+                    </div>
+               </div>
+          </div>
+
+          <!-- <ul class="list list--mediumSpacing">
+               <li>
+                    <a class="button button--round button--fluid" href="javascript:void(0)">
+                    Link your Facebook account
+                    </a>
+               </li>
+
+               <li>
+               <a ui-sref="user.driverlicense" class="button button--round button--fluid">
+               Link your Google account
+               </a>
+               </li>
+          </ul> -->
+     </div>

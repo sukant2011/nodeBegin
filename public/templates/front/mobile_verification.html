@@ -1,0 +1,197 @@
+<div id="pageContainer-content" class="u-contentTopPadding u-contentBottomPadding">
+     <div ng-include = "'/elements/listCarNav.html'"></div>
+     <div class="container" id="list_vehicle_flow">
+          <div id="list_vehicle_base">
+               <div class="layoutSingleColumn js-listingEligibilityPage">
+                    <h5>Mobile Verification</h5>
+                    <p>
+                         <div ng-include = "'/elements/flashMessage.html'"></div>
+                    </p>
+                    <form class="form-horizontal" name = "form"  role="form" novalidate>
+                         <div class="form-line">
+                              <label for="js-listingAddressInput">Enter Your Mobile Number?</label>
+                              <!-- <small>example(123-123-1234) -->
+
+                              <input type="text" name="mobile" class="text required ui-autocomplete-input" ng-pattern="/^[0-9]{3}[0-9]{3}[0-9]{4}$/"  id="location" placeholder="Enter Your Number" minlength = "10"   maxlength = "10" required  id="js-streetAddressInput" ng-model = "User.mobile">
+
+                              <div ng-messages="form.mobile.$error" ng-if="form.mobile.$touched || form.mobile.$error.pattern || form.$submitted">
+                                   <div ng-messages-include="/elements/notifyMessages.html"></div>
+                              </div>
+
+                         </div>
+                         <div class="buttonWrapper buttonWrapper--largeTopMargin">
+                              <input  type="submit" type = "submit" value="Send verification Code" class="button button--purple js-submitButton" ng-disabled="form.$invalid" ng-click = "sendVerificationCode(User)"/>
+                         </div>
+                    </form>
+               </div>
+
+          </div>
+     </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="container">
+
+<div ng-include = "'/elements/listCarNav.html'"></div> -->
+<!-- <h3>Tell us something about your Car</h3> -->
+<!-- {{"jjjjjjjjjjjjjjjjjjjjjjj"+DataModelRefId}} -->
+<!-- <form class="form-horizontal" name = "form"  role="form" novalidate> -->
+
+<!-- <div class="form-group">
+<label class="control-label col-sm-2" for="location">Where is your car located?</label>
+<div class="col-sm-10">
+<input type="text" name="name" gm-places-autocomplete ng-model="autocomplete"  class="form-control" id="location" placeholder="Car Location" value="" required>
+<div ng-messages="form.name.$error" ng-if="form.name.$touched || form.$submitted">
+<div ng-messages-include="/elements/notifyMessages.html"></div>
+</div>
+</div>
+</div> -->
+
+
+
+<!-- <div class="form-group">
+<label class="control-label col-sm-2" for="year">Year:</label>
+<div class="col-sm-2"  ng-init = "yearArr= [2012, 2013, 2014, 2015, 2016, 2017]">
+<select name = "year" name="year" ng-model = "DataModel.specifications.year" required>
+<option value="">Select</option>
+<option ng-repeat = "year in yearArr">{{year}}</option>
+</select>
+</div>
+<div ng-messages="form.year.$error" ng-if="form.year.$touched || form.$submitted">
+<div ng-messages-include="/elements/notifyMessages.html"></div>
+</div>
+
+
+
+<label class="control-label col-sm-2" for="year">Make:</label>
+<div class="col-sm-2"   ng-init = "makeArr= ['BMW', 'Merceedees', 'Jaguar', 'RangeRover', 'bentley']">
+<select name = "make" name="make" ng-model = "DataModel.specifications.make" required>
+<option value="">Select</option>
+<option ng-repeat = "make in makeArr">{{make}}</option>
+</select>
+</div>
+<div ng-messages="form.name.$error" ng-if="form.name.$touched || form.$submitted">
+<div ng-messages-include="/elements/notifyMessages.html"></div>
+</div>
+
+
+<label class="control-label col-sm-2" for="year">Model:</label>
+<div class="col-sm-2" ng-init = "modelArr= ['1 Series', '1 Series M', '3 Series Gran Turismo', '6 Series Gran Coupe', 'ActiveHybrid', 'ALPINA B7']">
+<select name = "model" name="model"  ng-model = "DataModel.specifications.model" required>
+<option value="">Select</option>
+<option ng-repeat = "model in modelArr">{{model}}</option>
+</select>
+</div>
+<div ng-messages="form.name.$error" ng-if="form.name.$touched || form.$submitted">
+<div ng-messages-include="/elements/notifyMessages.html"></div>
+</div>
+</div>
+
+<div class="form-group">
+<label class="control-label col-sm-2" for="year">Odometer:</label required>
+<div class="col-sm-2" ng-init = "odometerOptArr= ['0-50k miles', '50k-100k miles', '50k-200k miles']">
+<select name = "odometer" name="odometer" ng-model = "DataModel.specifications.odometer">
+<option value="">Select</option>
+<option ng-repeat = "option in odometerOptArr">{{option}}</option>
+</select>
+</div>
+<div ng-messages="form.odometer.$error" ng-if="form.odometer.$touched || form.$submitted">
+<div ng-messages-include="/elements/notifyMessages.html"></div>
+</div>
+</div>
+
+
+<div class="form-group">
+<label class="control-label col-sm-2" for="transmission">Transmission?</label>
+<label class="radio-inline">
+<input type="radio" ng-model = "DataModel.specifications.transmission" class="form-control" id="transmission" value="Manual">Manual
+</label>
+<label class="radio-inline">
+<input type="radio" ng-model = "DataModel.specifications.transmission" class="form-control" id="transmission" value="Automatic">Automatic
+</label>
+</div>
+
+<div class="form-group">
+<label class="control-label col-sm-2" for="transmission">My car has never had a salvage title. ?</label>
+<div class="col-sm-10">
+<input type="checkbox" ng-model = "DataModel.salvageTitle" class="form-control">
+</div>
+</div> -->
+
+<!-- <div class="form-group">
+<label class="control-label col-sm-2" for="location">Market Value</label>
+<div class="col-sm-10">
+<input type="text" name="marketValue"  ng-model = "DataModel.marketValue" class="form-control" id="location" placeholder="Market Value" required>
+</div>
+<div ng-messages="form.marketValue.$error" ng-if="form.marketValue.$touched || form.$submitted">
+<div ng-messages-include="/elements/notifyMessages.html"></div>
+</div>
+</div>
+
+<div class="form-group">
+<label class="control-label col-sm-2" for="year">Mechanical condition of the car:</label>
+<div class="col-sm-10" ng-init = "optionArr= ['EXCELLENT', 'GOOD', 'FAIR', 'NOT_WORKING']">
+<select name = "mechanicalCond" ng-model = "DataModel.mechanicalCond" required>
+<option value="">Select</option>
+<option ng-repeat = "option in optionArr">{{option}}</option>
+</select>
+</div>
+<div ng-messages="form.mechanicalCond.$error" ng-if="form.mechanicalCond.$touched || form.$submitted">
+<div ng-messages-include="/elements/notifyMessages.html"></div>
+</div>
+</div>
+
+<div class="form-group">
+<label class="control-label col-sm-2" for="year">Do all seats have seatbelts?:</label>
+<div class="col-sm-10">
+<select name = "seatBeltsAvailability" ng-model = "DataModel.specifications.seatBelts.isAvailable" required>
+<option value="">Select</option>
+<option value = "true">Yes</option>
+<option value = "false">No</option>
+</select>
+</div>
+<div ng-messages="form.seatBeltsAvailability.$error" ng-if="form.seatBeltsAvailability.$touched || form.$submitted">
+<div ng-messages-include="/elements/notifyMessages.html"></div>
+</div>
+</div>
+
+<div class="form-group" ng-if = "DataModel.specifications.seatBelts.isAvailable == 'true'">
+<label class="control-label col-sm-2" for="year">Seatbelt type:</label>
+<div class="col-sm-10">
+<select name = "seatBeltsType" ng-model = "DataModel.specifications.seatBelts.type" required>
+<option value="">Select</option>
+<option value = "SHOULDER">Only shoulder belts</option>
+<option value = "LAP">Only lap belts</option>
+<option value="MIXED">Both lap and shoulder belts</option>
+</select>
+</div>
+<div ng-messages="form.seatBeltsType.$error" ng-if="form.seatBeltsType.$touched || form.$submitted">
+<div ng-messages-include="/elements/notifyMessages.html"></div>
+</div>
+</div>
+
+<div class="form-group">
+<label class="control-label col-sm-2" for="location">Description?</label>
+<div class="col-sm-10">
+<input type="textarea" ng-model = "DataModel.description" class="form-control" id="location" placeholder="Car description">
+</div>
+</div> -->
+
+
+<!-- <div class="form-group">
+<label class="control-label col-sm-2"></label>
+<input ng-if = "vehicleRefId == ''" type = "submit" value="Next" class="btn btn-success" ng-click = "saveInfo(DataModel)"/>
+<input ng-if = "vehicleRefId != ''" type = "submit" value="Next" class="btn btn-success" ng-click = "updateInfo(DataModel)"/>
+</div>
+</form>
+</div> -->

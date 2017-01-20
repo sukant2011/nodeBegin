@@ -1,0 +1,346 @@
+<div id="vehicle-listing" data-is-favorite="false" data-time-zone-offset="-25200000" data-logged-in-driver="true" data-viewer-is-owner="false" data-vehicle-id="130686">
+     <div class="container container--fluid">
+          <div id="js-vehicleImageCarousel">
+               <div data-item-selector="" data-items-per-page="1" data-item-count="2" class="js-carousel carousel u-noSelect">
+                    <div class="vehicleImageCarousel">
+                         <div>
+                              <div uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
+                                   <div uib-slide ng-repeat="photo in DataModel.gallery.photos" index="$index">
+                                        <img style="margin:auto;" ng-src="/media/vehicles/2qoeX8Xz1472829401317EGUQoe.jpg" class="ng-scope" src="/media/vehicles/2qoeX8Xz1472829401317EGUQoe.jpg">
+                                        <div class="carousel-caption">
+                                             
+                                        </div>
+                                   </div>
+                              </div>
+                         </div>
+                    </div>
+               </div>
+          </div>
+     </div>
+
+     <div class="container">
+          <div class="layoutSingleColumn">
+               <div class="vehicleListingSummary vehicleListingSummary--largeFontSmallScreen u-inlineBlock u-tinyScreenOnly vehicleListingSummary--longVehicleName">
+                    <div class="vehicleListingSummary-vehicleInformation">
+                         <div>mangal’s</div>
+                         <div class="vehicleListingSummary-vehicleName u-truncate">{{DataModel.specifications.model}}<span class="vehicleListingSummary-vehicleYear">2012</span></div>
+                    </div>
+                    <div class="vehicleListingSummary-vehiclePriceWrapper">
+                         <div>
+                              <span class="vehicleListingSummary-currencySymbol">$</span>
+                              <span class="vehicleListingSummary-dollars js-vehicleListingDailyAverage">i(DataModel.ridingCost){{DataModel.ridingCost}}</span>
+                         </div>
+                         <div>
+                              <div class="vehicleListingSummary-pricingUnits">per day</div>
+                         </div>
+                    </div>
+               </div>
+               <div class="section grid u-hideTinyScreen">
+                    <div class="grid-item grid-item--3 label vehicleSectionTitle u-hideSmallScreen">THE CAR</div>
+                    <div class="grid-item grid-item--9 vehicleModelAndOwner">
+                         <div class="vehicleModelAndOwner-owner" ng-if="DataModel.userId.fullname != ' '">{{DataModel.userId.fullname}}</div>
+                         <div class="vehicleModelAndOwner-owner" ng-if="DataModel.userId.fullname  == '' ">Not Present</div>
+
+                         <div class="vehicleModelAndOwner-make-model-year  u-verticalAlignBottom">
+                              <div class="vehicleModelAndOwner-make-model u-inlineBlock" >{{DataModel.specifications.model}}</div>
+                              <div class="vehicleModelAndOwner-year u-inlineBlock">{{DataModel.specifications.year}}</div>
+
+                         </div>
+                    </div>
+               </div>
+          </div>
+          <div class="sidebar">
+               <div id="reservation-box">
+                    <div class="vehicleListingSummary-vehiclePriceWrapper vehicleListingSummary-vehiclePriceWrapper--sidebar">
+                         <div class="u-hideTinyScreen">
+                              <span class="vehicleListingSummary-currencySymbol vehicleListingSummary-currencySymbol--sidebar">$</span>
+                              <span class="vehicleListingSummary-dollars vehicleListingSummary-dollars--sidebar js-vehicleListingDailyAverage" ng-if="DataModel.ridingCost">{{DataModel.ridingCost}}</span>
+                              <span class="vehicleListingSummary-dollars vehicleListingSummary-dollars--sidebar js-vehicleListingDailyAverage"ng-if="!DataModel.ridingCost">0</span>
+                              <div class="vehicleListingSummary-pricingUnits vehicleListingSummary-pricingUnits--sidebar">per day</div>
+                         </div>
+                         <hr class="vehicleSidebarDivider--noMargin u-hideTinyScreen">
+                    </div>
+                    <div id="reservation-box-inner">
+                         <p class="text--small u-hideTinyScreen">Enter dates and times for accurate prices and availability.</p>
+                         <form id="interval-form">
+                              <div class="u-clearFix">
+                                   <div class="u-clearFix">
+                                        <div class="input-group listingDateTimePicker">
+                                             <span class="listingDateTimePicker-label">From</span>
+
+                                             <input ng-model = "payment.startDate" type="text" size="8" value="08/24/2016" readonly="readonly" class="text dateTimePicker-date dateTimePicker-date--noBorder listingDateTimePicker-date" placeholder="Any date" name="startDate" id="startDate">
+                                             <span class="styled-select-container styled-select-container--noBorder search-time-container listingDateTimePicker-time">
+                                                  <select ng-model = "payment.startTime" name="startTime" id="starttime">
+                                                       <option value="00:00">midnight</option><option value="00:30">12:30 AM</option><option value="01:00">1:00 AM</option><option value="01:30">1:30 AM</option><option value="02:00">2:00 AM</option><option value="02:30">2:30 AM</option><option value="03:00">3:00 AM</option><option value="03:30">3:30 AM</option><option value="04:00">4:00 AM</option><option value="04:30">4:30 AM</option><option value="05:00">5:00 AM</option><option value="05:30">5:30 AM</option><option value="06:00">6:00 AM</option><option value="06:30">6:30 AM</option><option value="07:00">7:00 AM</option><option value="07:30">7:30 AM</option><option value="08:00">8:00 AM</option><option value="08:30">8:30 AM</option><option value="09:00">9:00 AM</option><option value="09:30">9:30 AM</option><option value="10:00">10:00 AM</option><option value="10:30">10:30 AM</option><option value="11:00">11:00 AM</option><option value="11:30">11:30 AM</option><option value="12:00">noon</option><option value="12:30">12:30 PM</option><option value="13:00">1:00 PM</option><option value="13:30">1:30 PM</option><option value="14:00">2:00 PM</option><option value="14:30">2:30 PM</option><option value="15:00">3:00 PM</option><option value="15:30">3:30 PM</option><option value="16:00">4:00 PM</option><option value="16:30">4:30 PM</option><option value="17:00">5:00 PM</option><option value="17:30">5:30 PM</option><option value="18:00">6:00 PM</option><option value="18:30">6:30 PM</option><option value="19:00">7:00 PM</option><option value="19:30">7:30 PM</option><option value="20:00">8:00 PM</option><option value="20:30">8:30 PM</option><option value="21:00">9:00 PM</option><option value="21:30">9:30 PM</option><option value="22:00">10:00 PM</option><option value="22:30">10:30 PM</option><option value="23:00">11:00 PM</option><option value="23:30">11:30 PM</option></select>
+                                                       <span class="text start">10:00 AM</span>
+                                                  </span>
+                                             </div>
+                                        </div>
+                                        <div class="u-clearFix">
+                                             <div class="input-group listingDateTimePicker">
+                                                  <span class="listingDateTimePicker-label">Until</span>
+
+                                                  <input ng-model = "payment.endDate" ng-change = "dateDiffernce()" type="text" size="8" readonly="readonly" class="text dateTimePicker-date dateTimePicker-date--noBorder listingDateTimePicker-date" placeholder="Any date" name="endDate" id="endDate">
+                                                  <span class="styled-select-container styled-select-container--noBorder search-time-container listingDateTimePicker-time">
+                                                       <select ng-model = "payment.startTime" name="endTime" id="endtime">
+                                                            <option value="00:00">midnight</option><option value="00:30">12:30 AM</option><option value="01:00">1:00 AM</option><option value="01:30">1:30 AM</option><option value="02:00">2:00 AM</option><option value="02:30">2:30 AM</option><option value="03:00">3:00 AM</option><option value="03:30">3:30 AM</option><option value="04:00">4:00 AM</option><option value="04:30">4:30 AM</option><option value="05:00">5:00 AM</option><option value="05:30">5:30 AM</option><option value="06:00">6:00 AM</option><option value="06:30">6:30 AM</option><option value="07:00">7:00 AM</option><option value="07:30">7:30 AM</option><option value="08:00">8:00 AM</option><option value="08:30">8:30 AM</option><option value="09:00">9:00 AM</option><option value="09:30">9:30 AM</option><option value="10:00">10:00 AM</option><option value="10:30">10:30 AM</option><option value="11:00">11:00 AM</option><option value="11:30">11:30 AM</option><option value="12:00">noon</option><option value="12:30">12:30 PM</option><option value="13:00">1:00 PM</option><option value="13:30">1:30 PM</option><option value="14:00">2:00 PM</option><option value="14:30">2:30 PM</option><option value="15:00">3:00 PM</option><option value="15:30">3:30 PM</option><option value="16:00">4:00 PM</option><option value="16:30">4:30 PM</option><option value="17:00">5:00 PM</option><option value="17:30">5:30 PM</option><option value="18:00">6:00 PM</option><option value="18:30">6:30 PM</option><option value="19:00">7:00 PM</option><option value="19:30">7:30 PM</option><option value="20:00">8:00 PM</option><option value="20:30">8:30 PM</option><option value="21:00">9:00 PM</option><option value="21:30">9:30 PM</option><option value="22:00">10:00 PM</option><option value="22:30">10:30 PM</option><option value="23:00">11:00 PM</option><option value="23:30">11:30 PM</option></select>
+                                                            <span class="text end">10:00 AM</span>
+                                                       </span>
+                                                       <div class="breaker"></div>
+                                                  </div>
+                                             </div>
+                                        </div>
+                                   </form>
+
+                                   <div class="js-vehicleListingDiscounts">
+                                        <div class="vehicleListingSummary-discount daily js-discountDaily ">
+                                             <div class="vehicleListingSummary-discountLabel">Daily price</div>
+                                             <div class="vehicleListingSummary-discountPrice u-pullRight">
+                                                  was
+                                                  <div class="vehicleListingSummary-discountPrice--original">
+                                                       <span class="currency-symbol">$</span><span class="js-originalDailyPrice">72</span>
+                                                  </div>
+                                                  <div class="vehicleListingSummary-discountPrice--discounted">
+                                                       <span class="currency-symbol">$</span><span class="js-averageDailyPrice">61</span>
+                                                  </div>
+                                             </div>
+                                        </div>
+
+                                        <div class="vehicleListingSummary-discount js-discountWeekly ">
+                                             <div class="vehicleListingSummary-discountLabel">Weekly discount</div>
+                                             <div class="vehicleListingSummary-discountValue js-noAmount u-hidden" style="display: none;">
+                                                  up to <span class="js-percent">15</span>%
+                                             </div>
+                                             <div class="vehicleListingSummary-discountValue js-withAmount ">
+                                                  $<span class="js-amount">76</span> <b>(<span class="js-percent">15</span>%)</b>
+                                             </div>
+                                        </div>
+                                        <div class="vehicleListingSummary-discount js-discountMonthly u-hidden" style="display: none;">
+                                             <div class="vehicleListingSummary-discountLabel">Monthly discount</div>
+                                             <div class="vehicleListingSummary-discountValue js-noAmount u-hidden" style="display: none;">
+                                                  up to <span class="js-percent">0</span>%
+                                             </div>
+                                             <div class="vehicleListingSummary-discountValue js-withAmount ">
+                                                  $<span class="js-amount">76</span> <b>(<span class="js-percent">0</span>%)</b>
+                                             </div>
+                                        </div>
+                                   </div>
+
+                                   <div class="js-rentalPrice">
+                                        <div class="vehicleListingSummary-discountLabel">Trip price</div>
+
+                                        <div ng-if = "trip.price" class="vehicleListingSummary-rentalPrice--amount">
+                                             <span class="currency-symbol">$</span>
+                                             <span class="js-rentalPriceAmount">{{trip.price}}</span>
+                                        </div>
+
+                                        <div ng-if = "!trip.price" class="vehicleListingSummary-rentalPrice--amount">
+                                             <span class="currency-symbol">$</span>
+                                             <span class="js-rentalPriceAmount">{{DataModel.ridingCost}}</span>
+                                        </div>
+                                   </div>
+                              </div>
+                              <div id="reservation-tool">
+                                   <a ng-click = "paypal()" class="rent-button button button--green button--fluid button--large dialog-link js-rent-button">Rent this car</a>
+                              </div>
+                         </div>
+
+                         <div class="section section--withSmallMargin">
+                              <div class="label">Miles included</div>
+                              <div class="grid" ng-repeat = "(key, distance) in DataModel.distance">
+                                   <div class="grid-item grid-item--6 grid-item--medium6" ng-cloak >{{key}}</div>
+                                   <div class="grid-item grid-item--6 grid-item--medium6 u-alignRight" ng-if="distance" ng-cloak>
+                                        {{distance}} miles
+                                   </div>
+                                   <div class="grid-item grid-item--6 grid-item--medium6 u-alignRight" ng-if="!distance">
+                                        0 miles
+                                   </div>
+                              </div>
+
+                              <p class="vehicleListingSummary-excessCharge"><span class="currency-symbol">$</span>0.75/mi fee for additional miles driven</p>
+
+                              <hr class="vehicleSidebarDivider">
+                         </div>
+          </div>
+
+          <div class="layoutSingleColumn vehicleDescriptionAndFeatures">
+               <div class="section">
+                    <div class=" grid grid--withVerticalSpacing">
+                         <div class="grid-item grid-item--3 label vehicleSectionTitle">
+                              DESCRIPTION
+                         </div>
+                         <div class="grid-item grid-item--9 u-breakWord">
+                              {{DataModel.details.description}}
+                         </div>
+                    </div>
+               </div>
+
+          <div class="section">
+               <div class=" grid grid--withVerticalSpacing">
+                    <div class="grid-item grid-item--9 grid-item--push3">
+                         <div class="buttonWrapper u-hideTinyScreen">
+                              <a  ng-hide="showadd" class="js-favoriteButton favoriteButton button dialog-link add" ng-click="addFevorite()">
+                                   <span class="add-label"><span class="add-icon" ></span>Add to favorites</span>
+
+                              </a>
+                              <a ng-show="showadd" class="js-favoriteButton favoriteButton button dialog-link add" ng-click="addFevorite()">
+                                   <span  class=""><span class="remove-icon"></span>Remove from favorites</span>
+                              </a>
+                              <!-- <a href="javascript:void(0)" class="button dialog-link">
+                              Report this listing
+                         </a> -->
+                              <button type="button" class="button dialog-link" data-toggle="modal" data-target="#myModal">Report this listing</button>
+                         </div>
+                         <div ng-controller="VehicleController" class="modal fade" id="myModal" role="dialog">
+                              <div class="modal-dialog">
+                              <!-- Modal content-->
+                                   <div class="modal-content">
+                                        <div class="modal-header">
+                                             <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                             <h4 class="modal-title">Report this listing</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                             <form name="myForm" >
+                                                  <label>
+                                                       <input type="radio" ng-model="reportObj.name" value="Inappropriate/offensive content">
+                                                       Inappropriate/offensive content
+                                                       </label><br/>
+                                                  <label>
+                                                       <input type="radio" ng-model="reportObj.name" value="Misleading/suspicious information">
+                              Misleading/suspicious information
+                                                  </label><br/>
+                                                  <label>
+                                                       <input type="radio" ng-model="reportObj.name" value="Spam">
+                                                       Spam
+                                                  </label><br/>
+                                                  <label>
+                                                       <input id="Other" type="radio" name="reportObj.name" ng-model="reportObj.name" value="Other">
+                                                  Other
+                                                       <p ng-show="reportObj.name == 'Other'"><input type="text" ng-model="reportObj.txt" value="reportObj.txt"></p>
+                                                  </label><br/><br/>
+
+                                                  <input type="button" class="btn btn-info " ng-click="reports()" value="Report">
+                                                  <input type="button" class="btn btn-danger " value="Cancel" data-dismiss="modal">
+                                             </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        </div>
+                                   </div>
+                              </div>
+                         </div><!-- model end -->
+                    </div>
+               </div>
+          </div>
+          <div class="section">
+               <div class="grid grid--withVerticalSpacing">
+                    <div class="grid-item grid-item--3 label vehicleSectionTitle">FEATURES</div>
+                    <div class="grid-item grid-item--9" >
+                         <ul ng-repeat="feature in DataModel.details.features">
+                              <li class="automatic-transmission-false">
+                                   <span class="icon"></span>
+                                   {{feature }}
+                              </li>
+                         </ul>
+                    </div>
+               </div>
+          </div>
+          <div class="section">
+               <div class="grid grid--withVerticalSpacing">
+                    <div class="grid-item grid-item--3 label vehicleSectionTitle">REVIEWS</div>
+                    <div class="grid-item grid-item--9">
+
+                         <div class="feedback-and-ratings" itemtype="http://schema.org/AggregateRating" itemscope="" itemprop="aggregateRating">
+
+
+                         </div>
+
+
+                         <div id="no-feedback">Rent this car and be the first to review it.</div>
+
+                    </div>
+               </div>
+          </div>
+     </div>
+
+     <div class="sidebar u-clearRight">
+          <div class="u-smallScreenOnly">
+               <div id="vehicle-detail-compact-map-container">
+                    <p class="label">PICKUP AND RETURN</p>
+                         <a href="https://maps.google.com/maps?q=37.4064596687941924055259779180460100178606808185577392578125,-121.975488652080819648593745796461007557809352874755859375" target="_blank">
+                              <span class="map map--withBorder static-fuzzy-location-map"><span class="cell" style="background-image: url(&quot;https://maps.google.com/maps/api/staticmap?key=AIzaSyD19lAZorWJRIwGLPKLPs8H04Wz_mUbmFA&amp;zoom=15&amp;maxZoom=18&amp;minZoom=3&amp;size=640x180&amp;scale=1&amp;maptype=roadmap&amp;center=37.4064596687941924055259779180460100178606808185577392578125%2C-121.975488652080819648593745796461007557809352874755859375&quot;);"><span class="location-image-overlay zoom-15"></span></span></span>
+                         </a>
+                    </div>
+                    <div class="locationDetail locationDetail--compact text--small">
+                         <div class="delivery-section">
+                              <div class="label">Car location</div>
+                              <div class="grid">
+                                   <div class="grid-item grid-item--9 grid-item--medium9 grid-item--small9">
+
+                                        <div class="u-inlineBlock ">Santa Clara, CA 95054</div>
+                                   </div>
+                                   <div class="grid-item grid-item--3 grid-item--medium3 grid-item--small3 fee">Free</div>
+                              </div>
+                         </div>
+                    </div>
+               </div>
+
+               <div id="full-owner-details">
+                    <div class="driverDetails driverDetails--noBorder">
+                         <div class="grid">
+                              <div class="grid-item grid-item--7 grid-item--medium7 grid-item--small7">
+                                   <div class="driverDetails-centering label">Owned by</div>
+                                   <div class="driverDetails-name u-truncate">
+                                        <a alt= "{{DataModel.userId.fullname}}" ui-sref="anon.publicProfile({userId : DataModel.userId._id})" class="text--purple">
+                                             {{DataModel.userId.fullname}}
+                                        </a>
+                                   </div>
+                              </div>
+                              <div class="grid-item grid-item--5 grid-item--medium5 grid-item--small5">
+                                   <div class="driverDetails-photo" style="background-image: url('/media/u_default.png')">
+                                        <a  alt= "{{DataModel.userId.fullname}}" ui-sref="anon.publicProfile({userId : DataModel.userId._id})">
+                                             <img ng-src="{{DataModel.userId.profile.path + DataModel.userId.profile.photo}}">
+                                        </a>
+                                   </div>
+                              </div>
+                         </div>
+                    </div>
+                    <hr class="vehicleSidebarDivider">
+               </div>
+          </div>
+     </div>
+
+     <div class="container container--fluid u-hideSmallScreen">
+          <section class="section section--withMediumMargin">
+               <div id="vehicle-detail-map">
+                    <div id="map"></div>
+                    <div id="repeat" ng-repeat="marker in markers">
+                         <a id="country_container" href="#" ng-click="openInfoWindow($event, marker)">
+                    </div>
+               </div>
+          </section>
+     </div>
+
+     <div class="container u-tinyScreenOnly">
+          <div class="buttonWrapper buttonWrapper--mobileVehicle u-fullWidth">
+               <a disabled="disabled" class="js-favoriteButton favoriteButton button button--fluid dialog-link add">
+                    <span class="add-label"><span class="add-icon"></span>Add to favorites</span>
+                    <span class="remove-label"><span class="remove-icon"></span>Remove from favorites</span>
+               </a>
+               <a href="/_dialog/report_vehicle_listing/?vehicleId=192205" class="button button--fluid dialog-link">
+                    Report this listing
+               </a>
+          </div>
+     </div>
+
+</div>
+
+<style>
+     #map{height:600px;width:100%;box-shadow: 3px 3px 10px gray;}
+     #repeat{display: inline;}
+     #country_container {width: 1000px;margin: 13px 3px 3px 0px;text-align: center;width: 85px;padding: 4px;display: inline-table;color: white;background-color: black;font-size: 12px;cursor: pointer;border: 1px solid black;border-radius:13px;
+     }
+     #country_container:hover {box-shadow: 0px 0px 10px black;background-color: gray;border: 1px solid gray;cursor: pointer;}
+     #names {cursor: pointer;}
+     .modal-backdrop {background-color: #000 !important;bottom: 0;left: 0;position: fixed;right: 0;top: 0;z-index:0;}
+</style>

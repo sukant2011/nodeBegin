@@ -1,0 +1,90 @@
+
+<div class="" id="mycar-tab-content">
+     <div data-vehicle-id="192205" id="your-car-edit-settings">
+          <div class="linkedHeadingWithArrow u-smallScreenOnly">
+               <a href="/your-car?vehicleId=192205">
+
+                    <span class="linkedHeadingWithArrow-arrow"></span><span class="linkedHeadingWithArrow-text">Your car</span>
+               </a>
+          </div>
+          <h5>Trip preferences</h5>
+          <form name="form" ng-submit = "form.$valid && form.$submitted && updateInfo(DataModel)" novalidate  id="trip-duration-form">
+
+               <div class="fields">
+                    <div class="section section--first">
+
+                         <p class="subheader">Advance notice</p>
+                         <p class="rental-lead-time-explanation">
+                              Block trips that don’t give you enough advance notice.
+                         </p>
+                         <ul>
+                              <li>
+                                   <label for="minimumLeadTime">Required advance notice</label>
+                                   <span class="styled-select-container">
+                                        <select name="minimumLeadTime" id="minimumLeadTime" ng-model = "DataModel.availability.notice">
+                                             <option value="">ANY</option>
+                                             <option value="1 HOUR">1 hour</option>
+                                             <option value="6 HOURS">6 hours</option>
+                                             <option value="12 HOURS">12 hours</option>
+                                             <option value="1 DAY">1 day</option>
+                                             <option value="2 DAYS">2 days</option>
+                                             <option value="3 DAYS">3 days</option>
+                                             <option value="1 WEEK">1 week</option>
+                                        </select>
+
+                                   </span>
+                              </li>
+                         </ul>
+                    </div>
+                    <div class="section">
+                         <p class="subheader">How long would you like trips to last?</p>
+                         <p class="rental-duration-explanation">
+                              You’ll only receive requests for trips that are within your desired trip duration.
+                         </p>
+                         <ul class="rental-duration-selections">
+                              <li>
+                                   <label for="minimum">Shortest possible trip</label>
+                                   <span class="styled-select-container" ng-init = "shortestTripArr = ['ANY', '1 DAY', '2 DAYS', '3 DAYS', '4 DAYS',  '5 DAYS', 'a WEEK']">
+                                        <select name = "shortestTrip" name="shortestTrip" ng-model = "DataModel.availability.shortestTrip" id="minimum">
+                                             <option value="">Any</option>
+                                             <option value="">Select</option>
+                                             <option ng-repeat = "trip in shortestTripArr">{{trip}}</option>
+                                        </select>
+                                        <div ng-messages="form.sort.$error" ng-if="form.sort.$touched || form.$submitted">
+                                             <div ng-messages-include="/elements/notifyMessages.html"></div>
+                                        </div>
+                                   </span>
+                              </li>
+                              <li>
+                              <label for="maximum">Longest possible trip</label>
+                                   <span class="styled-select-container" ng-init = "longestTripArr = ['ANY', '1 WEEK', '2 WEEK', '1 MONTH', '2 MONTH',  '3 MONTH']">
+                                        <select  name = "longestTrip" name="longestTrip" ng-model = "DataModel.availability.longestTrip" required id="maximum">
+                                             <option value="">Select</option>
+                                             <option ng-repeat = "trip in longestTripArr">{{trip}}</option>
+                                        </select>
+                                        <div ng-messages="form.long.$error" ng-if="form.long.$touched || form.$submitted">
+                                             <div ng-messages-include="/elements/notifyMessages.html"></div>
+                                        </div>
+                                   </span>
+                              </li>
+                         </ul>
+                    </div>
+                    <div class="section">
+                         <p class="subheader">Long-term trips</p>
+                         <p class="rental-duration-explanation">
+                              Travelers who search for long-term trips will see your car in search results.
+                         </p>
+                         <div class="badges">
+                              <input type="checkbox" checked="checked" value="16" name="longTermBadgeId" id="longTermBadgeId1" ng-model = "DataModel.availability.isLongTripAvail">
+                              <label for="longTermBadgeId1">Will consider long-term trips</label>
+                              <!-- <input type="hidden" value="on" name="_longTermBadgeId"> -->
+                              <div class="spacer"></div>
+                         </div>
+                    </div>
+               </div>
+               <div class="buttonWrapper">
+                    <button class="button button--purple vehicleBtn" type="submit" >Save</button>
+               </div>
+          </form>
+     </div>
+</div>

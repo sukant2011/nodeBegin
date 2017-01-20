@@ -1,0 +1,339 @@
+<form id="search_form" class="searchBar-form panel-and-filters filter-cls-div" >
+     <div class="searchBar--darkBackground">
+          <div class="container searchInputs" id="search-inputs">
+               <div class="location-and-buttons">
+                    <div class="searchInputs-location">
+                         <label class="searchInputs-label" for="search-near-input">At</label>
+                         <div class="searchInputs-locationTextWrapper">
+                              <input size="30" id="search-near-input" class="text searchBar-input u-truncate" gm-places-autocomplete ng-model="autocomplete"  placeholder="Address, city, airport, or ZIP"  value = "{{SearchParams.location}}"/>
+                              <!-- <input type="text" name="name" gm-places-autocomplete ng-model="autocomplete" class="text required ui-autocomplete-input" id="location" placeholder="Car Location" value="{{location}}" required  id="js-streetAddressInput"> -->
+
+                              <span id="search-near-input-warning-icon" data-content="Enter a delivery address for more accurate results"></span>
+                              <div id="places"></div>
+                         </div>
+                    </div>
+
+                    <div class="searchInputs-dateTimeSelector">
+                         <label class="searchInputs-label" for="starttime">From</label>
+                         <!-- <input id="startdate" size="8" class="searchBar-input searchInput-datePicker" placeholder="Any date" readonly="true" /> -->
+                         <!-- <input type="text" class="searchBar-input searchInput-datePicker" datetime-picker="yyyy MMM dd" ng-model="SearchParams.fromDate.date" is-open="SearchParams.fromDate.open" enable-time="false" datepicker-options="SearchParams.datepickerOptions" size="8"/> -->
+                         <input ng-model = "SearchParams.fromDate" type='text' class="zsearchBar-input searchInput-datePicker" id='datetimepicker5' />
+                         <button type="button" class="btn btn-default" ng-click = "openFromDatepicker()">
+                              <i class="fa fa-calendar"></i>
+                         </button>
+                         <span class="styled-select-container search-time-container styled-select-container--search">
+                              <select id="starttime" class="searchBar-input" ng-model="SearchParams.fromTime">
+                                   <option value="">Return time</option>
+                                   <option value="00:00">12:00 AM</option>
+                                   <option value="00:30">12:30 AM</option>
+                                   <option value="01:00">1:00 AM</option>
+                                   <option value="01:30">1:30 AM</option>
+                                   <option value="02:00">2:00 AM</option>
+                                   <option value="02:30">2:30 AM</option>
+                                   <option value="03:00">3:00 AM</option>
+                                   <option value="03:30">3:30 AM</option>
+                                   <option value="04:00">4:00 AM</option>
+                                   <option value="04:30">4:30 AM</option>
+                                   <option value="05:00">5:00 AM</option>
+                                   <option value="05:30">5:30 AM</option>
+                                   <option value="06:00">6:00 AM</option>
+                                   <option value="06:30">6:30 AM</option>
+                                   <option value="07:00">7:00 AM</option>
+                                   <option value="07:30">7:30 AM</option>
+                                   <option value="08:00">8:00 AM</option>
+                                   <option value="08:30">8:30 AM</option>
+                                   <option value="09:00">9:00 AM</option>
+                                   <option value="09:30">9:30 AM</option>
+                                   <option value="10:00">10:00 AM</option>
+                                   <option value="10:30">10:30 AM</option>
+                                   <option value="11:00">11:00 AM</option>
+                                   <option value="11:30">11:30 AM</option>
+                                   <option value="12:00">12:00 PM</option>
+                                   <option value="12:30">12:30 PM</option>
+                                   <option value="13:00">1:00 PM</option>
+                                   <option value="13:30">1:30 PM</option>
+                                   <option value="14:00">2:00 PM</option>
+                                   <option value="14:30">2:30 PM</option>
+                                   <option value="15:00">3:00 PM</option>
+                                   <option value="15:30">3:30 PM</option>
+                                   <option value="16:00">4:00 PM</option>
+                                   <option value="16:30">4:30 PM</option>
+                                   <option value="17:00">5:00 PM</option>
+                                   <option value="17:30">5:30 PM</option>
+                                   <option value="18:00">6:00 PM</option>
+                                   <option value="18:30">6:30 PM</option>
+                                   <option value="19:00">7:00 PM</option>
+                                   <option value="19:30">7:30 PM</option>
+                                   <option value="20:00">8:00 PM</option>
+                                   <option value="20:30">8:30 PM</option>
+                                   <option value="21:00">9:00 PM</option>
+                                   <option value="21:30">9:30 PM</option>
+                                   <option value="22:00">10:00 PM</option>
+                                   <option value="22:30">10:30 PM</option>
+                                   <option value="23:00">11:00 PM</option>
+                                   <option value="23:30">11:30 PM</option>
+                              </select>
+                              <span class="text start searchInputs-timeLabel"></span>
+                         </span>
+                    </div>
+
+                    <div class="searchInputs-dateTimeSelector">
+
+                         <label class="searchInputs-label" for="endtime">Until</label>
+                         <!-- <input id="enddate" size="8" class="searchBar-input searchInput-datePicker" placeholder="Any date" readonly="true" /> -->
+                         <!-- <input type="text" class="searchBar-input searchInput-datePicker" datetime-picker="yyyy MMM dd" ng-model="SearchParams.toDate.date" is-open="SearchParams.toDate.open" enable-time="false" datepicker-options="SearchParams.datepickerOptions" size="8"/> -->
+                         <input  ng-model = "SearchParams.toDate" type='text' class="searchBar-input searchInput-datePicker" id='datetimepicker4' />
+
+                         <!-- <button type="button" class="btn btn-default" ng-click="SearchParams.openCalendar($event, 'toDate')"><i class="fa fa-calendar"></i></button> -->
+                         <button type="button" class="btn btn-default" ng-click="openToDatepicker()"><i class="fa fa-calendar"></i></button>
+
+
+
+                         <span class="styled-select-container search-time-container styled-select-container--search">
+                              <select id="endtime" class="searchBar-input searchInput-time"></select>
+                              <select id="endtime" class="searchBar-input searchInput-time" ng-model="SearchParams.toTime">
+                                   <option value="">Return time</option>
+                                   <option value="00:00">12:00 AM</option>
+                                   <option value="00:30">12:30 AM</option>
+                                   <option value="01:00">1:00 AM</option>
+                                   <option value="01:30">1:30 AM</option>
+                                   <option value="02:00">2:00 AM</option>
+                                   <option value="02:30">2:30 AM</option>
+                                   <option value="03:00">3:00 AM</option>
+                                   <option value="03:30">3:30 AM</option>
+                                   <option value="04:00">4:00 AM</option>
+                                   <option value="04:30">4:30 AM</option>
+                                   <option value="05:00">5:00 AM</option>
+                                   <option value="05:30">5:30 AM</option>
+                                   <option value="06:00">6:00 AM</option>
+                                   <option value="06:30">6:30 AM</option>
+                                   <option value="07:00">7:00 AM</option>
+                                   <option value="07:30">7:30 AM</option>
+                                   <option value="08:00">8:00 AM</option>
+                                   <option value="08:30">8:30 AM</option>
+                                   <option value="09:00">9:00 AM</option>
+                                   <option value="09:30">9:30 AM</option>
+                                   <option value="10:00">10:00 AM</option>
+                                   <option value="10:30">10:30 AM</option>
+                                   <option value="11:00">11:00 AM</option>
+                                   <option value="11:30">11:30 AM</option>
+                                   <option value="12:00">12:00 PM</option>
+                                   <option value="12:30">12:30 PM</option>
+                                   <option value="13:00">1:00 PM</option>
+                                   <option value="13:30">1:30 PM</option>
+                                   <option value="14:00">2:00 PM</option>
+                                   <option value="14:30">2:30 PM</option>
+                                   <option value="15:00">3:00 PM</option>
+                                   <option value="15:30">3:30 PM</option>
+                                   <option value="16:00">4:00 PM</option>
+                                   <option value="16:30">4:30 PM</option>
+                                   <option value="17:00">5:00 PM</option>
+                                   <option value="17:30">5:30 PM</option>
+                                   <option value="18:00">6:00 PM</option>
+                                   <option value="18:30">6:30 PM</option>
+                                   <option value="19:00">7:00 PM</option>
+                                   <option value="19:30">7:30 PM</option>
+                                   <option value="20:00">8:00 PM</option>
+                                   <option value="20:30">8:30 PM</option>
+                                   <option value="21:00">9:00 PM</option>
+                                   <option value="21:30">9:30 PM</option>
+                                   <option value="22:00">10:00 PM</option>
+                                   <option value="22:30">10:30 PM</option>
+                                   <option value="23:00">11:00 PM</option>
+                                   <option value="23:30">11:30 PM</option>
+                              </select>
+                              <span class="text end searchInputs-timeLabel"></span>
+                         </span>
+                    </div>
+
+                    <span class="submit-and-filter-buttons" style="">
+                         <a id="search-submit-button"  ng-click="searchVehicle()"><span class="searchInput-submit" id="js-searchButton"><span class="searchInput-submitButton button--green"></span></span></a>
+                    </span>
+
+                    <div class="searchInputs-overlay layer js-searchInputs-overlay"></div>
+               </div>
+
+          </div>
+
+          <div class="container searchSummary">
+               <div class="searchSummary-view js-toggleListMap">
+                    <div class="showListMini hidden"></div>
+                    <div class="showMapMini"></div>
+               </div>
+               <div id="applied-filters" class="searchSummary-applied"></div>
+               <div class="searchSummary-filters">
+                    <div class="show-filters"></div>
+                    <div class="hide-filters hidden"></div>
+               </div>
+          </div>
+     </div>
+     <div class="categories js-categories">
+          <div class="container">
+               <span class="categories-title">Category</span><span class="categories-expandButton is-expandable js-expandButton" ng-click = "clearFilters()">All cars</span>
+          </div>
+     </div>
+     <div class="categoriesTray js-categoriesTray">
+          <div class="container categoriesTray-cards is-collapsed js-categoriesTrayCards">
+          </div>
+     </div>
+     <div class="categoriesShade is-hidden js-categoriesShade"></div>
+     <!-- <div class="filterMobile disabled js-filterMobile">
+     <div class="container">
+     <div class="filterMobile-label--parent">
+     <span class="filterMobile-label js-filterMobileLabel"></span>
+</div>
+<span class="filterMobile-button js-filterMobileButton">Clear filters</span>
+</div>
+
+<hr />
+</div> -->
+<div class="container searchResults">
+     <div class="sidebar--left js-filterSidebar">
+          <div class="tab js-tab">
+               <div class="showListView tab-button is-active"><a  style = "color:#fff" ui-sref = "anon.search.list">List</a></div><div class="showMapView tab-button"><a ui-sref = "anon.search.map">Map</a></div>
+          </div>
+
+          <div id="filters" class="panel-and-filters">
+               <div class="filter-section js-searchSortSection">
+                    <div class="title">Sort by</div>
+                    <span class="styled-select-container">
+                         <select id="js-sortOptionList"  name="sortType"  ng-model="SearchParams.sort" ng-change="searchList()">
+                              <option value="">Relevance</option>
+                              <option value="low">Low to High</option>
+                              <option value="hogh">High to Low</option>
+                         </select>
+                         <span class="text"></span>
+                    </span>
+               </div>
+
+               <div class="price-filter filter-section">
+                    <div class="title">Price</div>
+
+                    <rzslider rz-slider-model="priceRangeSlider.minValue" rz-slider-high="priceRangeSlider.maxValue" rz-slider-options="slider_callbacks.options"></rzslider>
+               </div>
+
+               <!-- <div class="type-facets filter-section">
+               <div class="title">Vehicle types</div>
+               <span class="styled-select-container" ng-init="
+               types=['Cars','SUVs','Minivans', 'Trucks','Vans']">
+               <select name="type" id="vehicle-make-select" ng-model="SearchParams.vehicleType" ng-change="searchList()">
+               <option value="">All Types</option>
+               <option ng-repeat="type in types" value="{{type}}">{{type}}</option>
+          </select>
+
+          <span class="text"></span>
+     </span>
+</div> -->
+
+     <div class="vehicle-makes filter-section">
+          <div class="title">Vehicle makes</div>
+          <span class="styled-select-container">
+          <select name="make" id="vehicle-make-select" ng-model="SearchParams.make" ng-change="searchList()">
+               <option value="">All makes</option>
+               <option ng-repeat="make in makes" value="{{make._id}}">{{make._id}}</option>
+          </select>
+          <span class="text"></span>
+     </span>
+     </div>
+
+     <div class="vehicle-makes filter-section" ng-if = "SearchParams.make">
+          <div class="title">Vehicle Model</div>
+          <span class="styled-select-container">
+          <select name="make" id="vehicle-make-select" ng-model="SearchParams.model" ng-change="searchList()">
+               <option value="">All Models</option>
+               <option ng-repeat="model in modelArr" value="{{model}}">{{model}}</option>
+          </select>
+          <span class="text"></span>
+     </span>
+     </div>
+
+     <div class="vehicle-makes filter-section"  ng-if = "SearchParams.model">
+          <div class="title">Vehicle Year</div>
+          <span class="styled-select-container">
+          <select name="make" id="vehicle-make-select" ng-model="SearchParams.year" ng-change="searchList()">
+               <option value="">Select Year</option>
+               <option ng-repeat="year in yearArr" value="{{year._id}}">{{year._id}}</option>
+          </select>
+          <span class="text"></span>
+     </span>
+     </div>
+
+<!-- <div class="instant_book-filter filter-section">
+<input id="instant_book" type="checkbox" name="instantBook" value="Instant Book" ng-model="SearchParams.instantBook"  ng-change="searchList()"/>
+<label for="instant_book">Book instantly</label>
+</div> -->
+
+<!-- <div class="delivery-filter filter-section" ng-init="Search={customDelivery: false};">
+<input id="custom-delivery" type="checkbox" name="customDelivery" ng-model="SearchParams.customDelivery" value="custom Delivery" ng-change="searchList()"/>
+<label for="custom-delivery">Curbside delivery</label>
+
+<div class="slider-container" ng-disable="!SearchParams.customDelivery">
+<div  ng-init="customDelivery = {min: 20,max: 80};">
+<div range-slider min="0" max="100" model-min="customDelivery.min" model-max="customDelivery.max"></div>
+</div>
+<div class="delivery-slider-label"></div>
+
+</div>
+</div> -->
+
+<div class="mileage-filter filter-section">
+     <div class="title">Distance included</div>
+     <div  ng-init="distance = {min: 20,max: 80};">
+          <rzslider rz-slider-model="distanceRangeSlider.minValue" rz-slider-high="distanceRangeSlider.maxValue" rz-slider-options="slider_callbacks.options"></rzslider>
+          <div class="mileage-slider-label"></div>
+     </div>
+</div>
+
+<div class="badge-facets filter-section">
+     <div class="title">Features</div>
+     <span class="styled-select-container"  ng-init = "featuresArr= ['Hybrid', 'GPS', 'Audio Input', 'Bike Rack','Ski Rack', 'Convertible', 'All-wheel driver']">
+          <select name="make" id="vehicle-make-select" ng-model="SearchParams.feature" ng-change="searchList()">
+               <option value="">All features</option>
+               <option ng-repeat="feature in featuresArr" value="{{feature}}">{{feature}}</option>
+          </select>
+
+          <span class="text"></span>
+     </span>
+
+</div>
+<div class="vehicleColor filter-section" id="js-colorFilter">
+     <!-- <div class="title">Vehicle colors</div>
+     <div class="searchFilterBox u-hideSmallScreen">
+     <span class="text"></span>
+</div> -->
+<span class="styled-select-container"  ng-init = "colors= ['Red', 'Yellow', 'Green', 'Blue', 'Gold', 'White', 'Black', 'Grey', 'Silver', 'Other']">
+     <select name="make" id="vehicle-make-select" ng-model="SearchParams.color" ng-change="searchList()">
+          <option value="">All Colors</option>
+          <option ng-repeat="color in colors" value="{{color}}">{{color}}</option>
+     </select>
+
+     <span class="text"></span>
+</span>
+</div>
+<div id="js-vehicleTransmissionWrapper" class="vehicle-transmission filter-section">
+     <div class="title">Transmission</div>
+     <span class="styled-select-container" ng-init = "transmissions= ['Manual', 'Automatic']">
+          <select name="transmission" id="vehicle-transmission-select" ng-model="SearchParams.transmission" ng-change="searchList()">
+               <option value="">All transmissions</option>
+               <option ng-repeat="trans in transmissions" value="{{trans}}">{{trans}}</option>
+          </select>
+          <span class="text"></span>
+     </span>
+</div>
+<div class="clear-wide">
+     <div id="clear-filters">
+          <div class="title"  ng-click = "clearFilters()">Clear filters</div>
+     </div>
+</div>
+
+<!-- <div class="apply-and-hide-filter-buttons bottom">
+<a class="button apply-filters">Apply</a>
+<a class="button hide-filters">Cancel</a>
+<button class="button clear-filters-narrow">Clear filters</button>
+</div> -->
+</div>
+</div>
+<div id="search-page" class="layoutSingleColumn--right" ui-view>
+
+</div>
+</form>

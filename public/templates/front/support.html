@@ -1,0 +1,102 @@
+<section class="container container--fluid container--darkBackground interstitial  u-table" style="background-image: url(/images/support_hero_v3.jpg)">
+     <div class="container u-alignCenter u-tableCell u-verticalAlignMiddle">
+          <h5>We’re here to help</h5>
+
+          <h1>Corsa Support</h1>
+
+          <!-- <div class="buttonWrapper">
+          <a href="#/rent" ui-sref="anon.rent" class="button button--green button--large">Rent a car</a>
+          <a  href="#/list-your-car" ui-sref="anon.list-your-car"  class="button button--purple button--large">List your car</a>
+     </div> -->
+     <!-- <div class="interstitial-bottom interstitial-bottom--largerMargin">
+     <ul class="horizontalMenu">
+     <li class="horizontalMenu-item"><a class="horizontalMenu-link"  href="#/rent" ui-sref="anon.rent">Rent a car</a></li>
+     <li class="horizontalMenu-item"><a class="horizontalMenu-link" href="#/list-your-car" ui-sref="anon.list-your-car" >List your car</a></li>
+     <li class="horizontalMenu-item is-selected"><a href="#/how-corsa-works" ui-sref="anon.how-corsa-works" >How Corsa works</a></li>
+</ul>
+</div> -->
+</div>
+</section>
+<section class="container container--fluid interstitial interstitial--road">
+     <div class="container">
+          <div class="timeline timeline--renter timeline--left">
+
+               <h5 class="timeline-header text--green u-alignCenter">Call Corsa Support</h5>
+
+               <ol class="timeline-events">
+                    <li class="timeline-event timeline-event--middle timeline-event--position0">
+                         <span class="timeline-eventArrow"></span>
+                         <span class="timeline-eventMarker"></span>
+                         <h6 class="subheader timeline-eventTitle"><b> 24/7 Support & Roadside Assistance</b></h6>
+
+                         <p class="timeline-eventText"><b> US:</b>  (888) 834-1463</p>
+                         <!-- <p class="timeline-eventText"><b> Canada:</b>  1-888-391-0460</p> -->
+                    </li>
+
+
+               </ol>
+          </div>
+          <div class="timeline timeline--owner timeline--right">
+               <h5 class="timeline-header text--purple u-alignCenter">Live Chat Corsa</h5>
+               <a href="javascript:void(0)" ng-click = "showChat()" class="click-btn">Chat Now</a>
+               <ol class="timeline-events">
+
+
+               </ol>
+          </div>
+
+
+
+     </div>
+</section>
+<div class="mainchatbox" id="qnimate">
+     <div class="popup-box chat-popup" id="qnimate">
+          <div class="popup-head">
+               <div class="popup-head-left pull-left">
+                    <img  ng-if = "sessionUser && sessionUser.profile && sessionUser.profile.photo" ng-src="{{'/media/drivers/' + sessionUser.profile.photo}}">
+                    <img ng-if = "!sessionUser" ng-src="/media/u_default.png">
+                    <span ng-if = "sessionUser">
+                         CORSA CARE
+                    </span>
+               </div>
+               <div class="popup-head-right pull-right">
+                    <div class="btn-group">
+                         <!-- <button class="chat-header-button" data-toggle="dropdown" type="button" aria-expanded="false">
+                         <i class="fa fa-compress" aria-hidden="true"></i>
+                    </button> -->
+
+               </div>
+
+               <button data-widget="remove" id="removeClass" ng-click = "hideChat()" class="chat-header-button pull-right" type="button"><i class="fa fa-times" aria-hidden="true"></i>
+               </button>
+          </div>
+     </div>
+     <div class="popup-messages">
+
+
+          <form name = "chatForm" ng-show = "!sessionUser" class="support-form" ng-submit = "chatForm.$submitted && chatForm.$valid && registerChatUser(Chat)" novalidate>
+               <h2>Introduce Yourself</h2>
+               <input type="text" placeholder="Name" ng-model = "Chat.name" required="">
+               <input type="email" placeholder="Email" ng-model = "Chat.email" required="">
+               <textarea placeholder="Message"  ng-model = "Chat.msg" required=""></textarea>
+               <button type="submit">Submit</button>
+          </form>
+
+
+
+
+          <div ng-show = "sessionUser" class="popusagesd">
+
+               <div class="onchatis" ng-if = "messages.length" ng-repeat = "data in messages" ng-class = "id == data.from._id ? 'right' : 'left'">
+                    <div class="user-icon"> <h4> {{data.from.fullname}} </h4> </div>
+                    <div class="message-new"><h5> {{data.message}}</h5> </div>
+               </div>
+          </div>
+     </div>
+     <div ng-show = "sessionUser" class="popup-messages-footer">
+          <form  name = "authenticateChatForm" ng-submit = "authenticateChatForm.$submitted && authenticateChatForm.$valid && chat(Chat)" novalidate>
+               <input id="status_message" placeholder="Type a message..." name="message" ng-model = "msg" class="form-control" required="" autocomplete="off"/>
+          </form>
+     </div>
+</div>
+</div>

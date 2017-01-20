@@ -1,0 +1,67 @@
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Brands </h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+
+<!-- /.row -->
+<div ng-include = "'/templates/admin/ui-elements/flashMessage.html'"></div>
+<div class="col-sm-2">
+   <h3> <div class="btn btn-primary"  ui-sref="dashboard.addbrand">Add Brand</div></h3>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+               List
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                <div class="table-responsive">
+                       <p>Search :<input type="text" Placeholder="Search here .. " ng-model="search"></p>
+                    <table ng-table="brandTable" class="table table-striped table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Brand-Name</th>
+                                <th>Status</th>
+                                <th>Action</th>
+
+
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="x in $data | filter:search">
+                                <td>{{$index+1}}</td>
+
+                                <td>{{x.name}}</td>
+                               <td ng-if="x.status == false"><a class="button dialog-link" data-toggle="modal" data-target="#myModal" ng-click="updatedBrandStatus(x._id,true)" style="cursor:pointer"><img  style="height:20px; width:20px;" src="images/erase.png" ></a>
+                                 </td>
+                               <td ng-if="x.status == true"><a class="button dialog-link" data-toggle="modal" data-target="#myModal" ng-click="updatedBrandStatus(x._id,false)" style="cursor:pointer"><img style="height:15px; width:15px;" src="images/true.png" ></a>
+
+                                  </td>
+
+
+
+
+
+                                <td><a class="btn btn-link" type="button" ui-sref="dashboard.editbrand({reqId: x._id})" >Edit</a> ||
+                                     <a class="btn btn-link" ng-click="removebrand(x._id)">Delete</a>
+
+                                </td>
+                         </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.table-responsive -->
+            </div>
+            <!-- /.panel-body -->
+        </div>
+        <!-- /.panel -->
+    </div>
+    <!-- /.col-lg-6 -->
+</div>
+<!-- /.row -->

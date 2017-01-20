@@ -1,0 +1,58 @@
+<!-- <div class="carousel slide">
+<ul class="nav nav-tabs">
+<li class="active"><a ui-sref = "user.listcarIntro({refId : vehicleRefId})">Eligibility</a></li>
+<li><a a-disabled="!vehicleRefId" ui-sref = "user.listcarAvailability({refId : vehicleRefId})">Availability</a></li>
+<li><a a-disabled="!vehicleRefId" ui-sref = "user.listcarDetails({refId : vehicleRefId})">Details</a></li>
+<li><a a-disabled="!vehicleRefId" ui-sref = "user.listcarPhotos({refId : vehicleRefId})">Photos</a></li>
+<li><a a-disabled="!vehicleRefId" ui-sref = "user.listcarPublish({refId : vehicleRefId})">Publish</a></li>
+</ul>
+<p>
+<div ng-include = "'/elements/flashMessage.html'"></div>
+</p>
+</div> -->
+<div id="listingSteps" class="container container--fluid">
+     <div class="listingHeader">
+          <div class="listingHeader-stepCounter grid grid--noGutter">
+               <div class="grid-item grid-item--oneFifth grid-item--mediumOneFifth  active">
+                    <div class="listingHeader-clickTarget">
+                         <a ui-sref = "user.listcarIntro({refId : vehicleRefId})" class="stepContent is-complete ">
+                              <div class="listingHeader-stepCounterItem stepContent-item">Eligibility</div>
+                         </a>
+                    </div>
+               </div>
+
+               <div class="grid-item grid-item--oneFifth grid-item--mediumOneFifth">
+                    <div class="listingHeader-clickTarget">
+                         <a a-disabled="linkArr.indexOf('Available') == -1 || !vehicleRefId" ui-sref = "user.listcarAvailability({refId : vehicleRefId, link : 'Available'})" class="stepContent  ">
+                              <div class="listingHeader-stepCounterItem stepContent-item">Availability</div>
+                         </a>
+                    </div>
+               </div>
+
+               <div class="grid-item grid-item--oneFifth grid-item--mediumOneFifth">
+                    <div class="listingHeader-clickTarget">
+                         <a a-disabled="linkArr.indexOf('Detail') == -1 || !vehicleRefId" ui-sref = "user.listcarDetails({refId : vehicleRefId})" class="stepContent  ">
+                              <div class="listingHeader-stepCounterItem stepContent-item">Details</div>
+                         </a>
+                    </div>
+               </div>
+
+               <div class="grid-item grid-item--oneFifth grid-item--mediumOneFifth">
+                    <div class="listingHeader-clickTarget">
+                         <a  a-disabled="linkArr.indexOf('Photo') == -1 || !vehicleRefId" ui-sref = "user.listcarPhotos({refId : vehicleRefId})" class="stepContent  ">
+                              <div class="listingHeader-stepCounterItem stepContent-item">Photos</div>
+                         </a>
+                    </div>
+               </div>
+
+               <div class="grid-item grid-item--oneFifth grid-item--mediumOneFifth">
+                    <div class="listingHeader-clickTarget">
+                         <a a-disabled="linkArr.indexOf('Publish') == -1 || !vehicleRefId" ui-sref = "user.listcarPublish({refId : vehicleRefId})" class="stepContent  ">
+                              <div class="listingHeader-stepCounterItem stepContent-item">Publish</div>
+                         </a>
+                    </div>
+               </div>
+
+          </div>
+     </div>
+</div>

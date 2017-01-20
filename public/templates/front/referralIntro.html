@@ -1,0 +1,123 @@
+<div id="referral">
+
+     <!-- SECTION -->
+     <div class="invitation interstitial interstitial--canyon container container--fluid container--darkBackground u-alignCenter">
+          <div class="invitation-referrerImage" id="js-referrerProfile" style="display: block; background-image: url({{DataModel.profilePhoto}});"></div>
+
+          <h5 class="invitation-referralSuperTitle" id="js-referralText" style="display: block;"><span id="js-referralFriendName">Invitation from {{DataModel.name.first}}</span></h5>
+          <h1 class="invitation-referralTitle"><span id="js-referralAmount">Get $25 off your first trip</span></h1>
+
+          <div class="buttonWrapper">
+               <a class="button button--large button--green invitation-signupButton js-invitationSignupButton" ui-sref="anon.register({code : DataModel.code})">Sign up to get your reward</a>
+          </div>
+          <div class="invitation-terms">
+               <a href="#" class="text--disclaimer text--white u-underline js-toggleSectionButton">View terms and conditions</a>
+          </div>
+     </div>
+
+     <div class="container container--fluid container--greyDustyBackground interstitial js-toggleSectionDetails u-hidden">
+          <div class="container u-alignCenter u-verticalAlignMiddle">
+
+               <div class="grid grid--noGutter">
+                    <div class="grid-item grid-item--8 grid-item--push2">
+                         <h5>Terms and conditions</h5>
+                         <div>
+                              <p class="text--disclaimer">New customers who sign up for Turo using the referral link will get $25 in travel credit applied to their Turo account. Customers who already have a Turo account are not eligible for this promotion.</p>
+                              <p class="text--disclaimer">Travel credit can be viewed on your account page and is subject to expiration after 180 days.</p>
+                         </div>
+                    </div>
+               </div>
+          </div>
+     </div>    <!-- SECTION -->
+
+     <div id="landing">
+          <div class="rent-anywhere container container--fluid">
+               <div class="container u-alignCenter">
+                    <h5 class="supertitle">Rent a car</h5>
+
+                    <h1>Anywhere</h1>
+
+                    <div class="section">
+                         <div class="grid grid--withVerticalSpacing">
+                              <div class="grid-item grid-item--4 grid-item--medium4 grid-item--small12">
+                                   <h5>Local pickup</h5>
+
+                                   <div class="horizontalDivider horizontalDivider--small"></div>
+                                   <p class="text--small">Hitting the road for the weekend? Rent locally and drive off in something special.</p>
+
+                                   <p class="text--small">Save money by meeting the owner wherever the car’s parked &mdash; there’s probably a car for rent just around the corner waiting to spirit you away.</p>
+                              </div>
+                              <div class="grid-item grid-item--4 grid-item--medium4 grid-item--small12">
+                                   <h5>City delivery</h5>
+
+                                   <div class="horizontalDivider horizontalDivider--small"></div>
+                                   <p class="text--small">What’s better than renting a unique car at an unbelievable value? Having that car delivered right to your doorstep.</p>
+
+                                   <p class="text--small">Search cars that offer city delivery and order your rental on-demand.</p>
+                              </div>
+                              <div class="grid-item grid-item--4 grid-item--medium4 grid-item--small12">
+                                   <h5>Airport delivery</h5>
+
+                                   <div class="horizontalDivider horizontalDivider--small"></div>
+                                   <p class="text--small">Skip the lines at the rental counter &mdash; many Turo owners offer delivery to airports around the country.</p>
+
+                                   <p class="text--small">Just specify that you’d like airport delivery when you book, and the owner will coordinate a fast and easy airport pick-up.</p>
+                              </div>
+                         </div>
+                    </div>
+               </div>
+          </div>
+          <div class="container container--fluid container--greyDustyBackground u-table">
+               <div class="container u-alignCenter u-tableCell u-verticalAlignMiddle">
+                    <div class="mediaQuoteCarousel js-mediaQuoteCarousel">
+                         <div class="mediaQuoteCarousel mediaQuoteCarousel-arrow mediaQuoteCarousel-arrow--left js-mediaQuoteLeftArrow u-noSelect"></div>
+                         <div class="mediaQuoteCarousel-content">
+                              <div class="u-hidden js-mediaQuoteItem" style="display: none;">
+                                   <span class="supertitle">“CAR OWNERS IN THE [TURO] PROGRAM CAN RECOUP HUNDREDS OF DOLLARS A MONTH TO OFFSET CAR PAYMENTS, INSURANCE AND OTHER COSTS OF OWNERSHIP.”</span>
+                                   <div class="iconMediaQuote iconMediaQuote--newYorkTimes"></div>
+                              </div>
+                              <div class="u-hidden js-mediaQuoteItem" style="display: none;">
+                                   <span class="supertitle">“[TURO] IS LIKE AIRBNB, BUT FOR REAL PEOPLE’S CARS.”</span>
+                                   <div class="iconMediaQuote iconMediaQuote--usaToday"></div>
+                              </div>
+                              <div class="u-hidden js-mediaQuoteItem" style="display: block;">
+                                   <span class="supertitle">“I’VE MADE OVER $12,000 RENTING OUT MY CAR AND IT’S ALLOWED ME TO LIVE IN SAN FRANCISCO.”</span>
+                                   <div class="iconMediaQuote iconMediaQuote--yahoo"></div>
+                              </div>
+                              <div class="u-hidden js-mediaQuoteItem" style="display: none;">
+                                   <span class="supertitle">“YOU CAN EARN… UP TO $600 [PER MONTH]”</span>
+                                   <div class="iconMediaQuote iconMediaQuote--cnn"></div>
+                              </div>
+                         </div>
+                         <div class="mediaQuoteCarousel mediaQuoteCarousel-arrow mediaQuoteCarousel-arrow--right js-mediaQuoteRightArrow"></div>
+                    </div>
+               </div>
+          </div>
+
+          <div class="fuel container container--fluid interstitial interstitial--wiggle">
+               <div class="container u-alignCenter">
+                    <h2 class="interstitial-heading text--purple">Put Your Toys to Work</h2>
+                    <div class="grid grid--noGutter u-marginLarger">
+                         <div class="grid-item grid-item--6 grid-item--push3">
+                              <h5>Have An Exotic Car?</h5>
+                              <p>Whether you are gone for the summer, not wanting to winterize, or have an extra toy that you want to put to work, we can help.</p>
+                              <p>Not only will you create a new income stream, you will earn free rentals. Need a ride when you fly out to LA next week? Now you're covered.</p>
+                         </div>
+                    </div>
+                    <div class="buttonWrapper buttonWrapper--largestTopMargin"> <a class="button button--purple button--large" ui-sref="anon.list-your-car">List your car</a> </div>
+               </div>
+          </div>
+
+     </div>
+
+     <!-- SECTION -->
+     <div class="referral-bottom-section container container--fluid interstitial interstitial--mountainRoadPattern u-table">
+          <h2>Ready to join Corsa?</h2>
+
+          <div class="buttonWrapper buttonWrapper--largestTopMargin">
+               <a class="button button--large button--green invitation-signupButton js-invitationSignupButton" ui-sref="anon.register({code : DataModel.code})">Sign up to get your reward</a>
+          </div>
+     </div>
+     <!-- SECTION -->
+
+</div>

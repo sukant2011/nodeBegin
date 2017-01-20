@@ -1,0 +1,41 @@
+<div class="u-contentTopPadding u-contentBottomPadding">
+     <div id="dialog-frame-container" class="container" data-next="" data-referer="javascript:void(0)">
+          <div id="dialog-frame" class="dialog-container">
+               <div>
+                    <div id="login-dialog" class="auth-dialog-content">
+                         <h5>Enter OTP</h5>
+                         <div class="login-content dialog-content u-clearFix">
+
+
+                              <div class="inputs">
+                                   <p>
+                                        <div ng-include = "'/elements/flashMessage.html'"></div>
+                                   </p>
+                                   <form name = "form" ng-submit = "form.$submitted && form.$valid && confirmOtpForgot()" novalidate>
+                                        <div class="input-container">
+                                             <input placeholder="Enter the OTP"autocomplete="off" type="text" class="form-control" name="otp" ng-model = "DataModel.otp" id="data_otp" minlength = "4" maxlength = "8" ng-pattern = "/^[0-9]*$/" required/>
+                                           <div ng-messages="form.otp.$error" ng-if="form.otp.$touched || form.$submitted">
+                                                <div ng-messages-include="/elements/notifyMessages.html"></div>
+                                           </div>
+                                        </div>
+
+                                        <div class="input-container">
+                                             <a href="javascript:void(0)" ng-click = "reSendOtp()" class="dialog-link text--disclaimer u-pullRight" id="reset-password" tabindex="5" href="#/auth/password-forgot">Resend OTP?</a>
+                                        </div>
+
+
+                                        <div class="input-container">
+                                             <button tabindex="4" id="submit" type="submit" class="submit button button--green">Submit</button>
+                                        </div>
+
+                                   </form>
+                              </div>
+                         </div>
+
+                    </div>
+               </div>
+
+          </div>
+     </div>
+
+</div>

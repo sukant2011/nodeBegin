@@ -1,0 +1,43 @@
+<div class="ladingPage container u-contentTopPadding u-contentBottomPadding">
+     <div id="vehicle-stats">
+          <div class="left vehiclePhotoWithLink" ng-if = "DataModel.gallery.photos.length">
+               <img title="" alt="" ng-src="{{DataModel.gallery.path + DataModel.gallery.photos[0]}}" class="media " itemprop="image">
+               <div class="vehiclePhotoWithLink-link"></div>
+               <a ui-sref = "anon.vehicleDetail({refId : DataModel._id})">
+                    View listing
+               </a>
+          </div>
+
+          <div class="right">
+               <div class="js-listingPicker listingPicker ">
+                    <div class="listingPicker-selectedItem">
+                         <div class="mycar-listing-indicator u-hidden"><span class="circle-listed"></span></div>
+                         <div class="listingPicker-name u-truncate">
+                              {{DataModel.specifications.model}}
+                         </div>
+                         <div class="listingPicker-makeModel u-truncate">
+                              {{DataModel.specifications.make}}
+                         </div>
+                    </div>
+                    <span class="js-listingPickerIcon listingPicker-icon"></span>
+               </div>
+               <ul class="vehicleStatsList">
+                    <li class="trips-taken">
+                         <span class="value">{{trips}}</span>
+                         <span class="label">
+                              Trips taken
+                         </span>
+                    </li>
+               </ul>
+          </div>
+     </div>
+     <div id="mycar-sidebar">
+          <div ng-include = "'/elements/listcarSidebar.html'"></div>
+
+     </div>
+     <div class="col-sm-2"></div>
+     <div class="col-sm-8 pop-up" ng-include = "'/elements/flashMessage.html'"></div>
+     <div class="right-bar">
+	 <div ui-view></div>
+	 </div>
+</div>

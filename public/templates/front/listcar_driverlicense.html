@@ -1,0 +1,135 @@
+<div id="pageContainer-content" class="u-contentTopPadding u-contentBottomPadding">
+     <div ng-include = "'/elements/listCarNav.html'"></div>
+     <div class="col-sm-2"></div>
+     <div class="col-sm-8">
+          <div ng-include = "'/elements/flashMessage.html'"></div>
+          <h5>Driver's License Detail</h5>
+          <form name = "form" ng-submit = "form.$valid && form.$submitted && uploadLicense(User)" novalidate>
+               <div class="layoutSingleColumn">
+                    <h6 class="subheader">Please provide your driver’s license information. It won’t be shared</h6>
+                    <div class="section section--first grid">
+                         <label class="label--form grid-item grid-item--5">
+                              <div class="text--small">First Name</div>
+                              <!-- <input type="email" size="25" value="mangalhcl449@gmail.com" name="email" id="email"> -->
+                              <input type="text" name="firstname"  ng-model="User.license.name.first" size="25" placeholder="Enter your Firstname" required>
+                              <div ng-messages="form.firstname.$error" ng-if="form.firstname.$touched || form.$submitted">
+                                   <div ng-messages-include="/elements/notifyMessages.html"></div>
+                              </div>
+                         </label>
+
+                    </div>
+                    <div class="section section--first grid">
+                         <label class="label--form grid-item grid-item--5">
+                              <div class="text--small">Middle Name</div>
+                              <!-- <input type="email" size="25" value="mangalhcl449@gmail.com" name="email" id="email"> -->
+                              <input type="text" name="middle" ng-model = "User.license.name.middle"  size="25" placeholder="Enter your Middle Name">
+
+                         </label>
+
+                    </div>
+                    <div class="section section--first grid">
+                         <label class="label--form grid-item grid-item--5">
+                              <div class="text--small">Last Name</div>
+                              <!-- <input type="email" size="25" value="mangalhcl449@gmail.com" name="email" id="email"> -->
+                              <input type="text" name="lastname" ng-model = "User.license.name.last"  size="25" placeholder="Enter your Last Name" required>
+                              <div ng-messages="form.lastname.$error" ng-if="form.lastname.$touched || form.$submitted">
+                                   <div ng-messages-include="/elements/notifyMessages.html"></div>
+                              </div>
+                         </label>
+
+                    </div>
+                    <div class="section section--first grid">
+                         <label class="label--form grid-item grid-item--5">
+                              <div class="text--small">Date Of Birth</div>
+                              <!-- <input type="text" class="" name="dob" ng-model = "User.license.dob" id="datepicker"  placeholder="Select your Birthdate" required/> -->
+                              <input ng-model = "User.license.dob" name="dob" type='text' class="" id='datetimepicker6' placeholder="Select your Birthdate" required />
+                              <!-- <input type="text" class="form-control" uib-datepicker-popup ng-model="dt" is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close"/>
+                              <span class="input-group-btn">
+                              <button type="button" class="btn btn-default" ng-click="open2()"><i class="glyphicon glyphicon-calendar"></i></button>
+                         </span> -->
+                         <div ng-messages="form.dob.$error" ng-if="form.dob.$touched || form.$submitted">
+                              <div ng-messages-include="/elements/notifyMessages.html"></div>
+                         </div>
+
+                    </label>
+
+               </div>
+               <div class="section section--first grid">
+                    <label class="label--form grid-item grid-item--5">
+                         <div class="text--small">Driver’s license number</div>
+                         <input type="text" class=" " name="LicenseNumber" ng-model = "User.license.number" id=""  placeholder="Enter your License Number" required/>
+                         <div ng-messages="form.LicenseNumber.$error" ng-if="form.LicenseNumber.$touched || form.$submitted">
+                              <div ng-messages-include="/elements/notifyMessages.html"></div>
+                         </div>
+                    </label>
+                    <!-- <span class="grid-item grid-item--2 email-verifiedBadge">
+                    Verified
+               </span> -->
+          </div>
+          <div class="section section--first grid">
+               <label class="label--form grid-item grid-item--5">
+                    <div class="text--small">Issuing Country:</div>
+                    <div class="" ng-init = "optionArr= ['India', 'America', 'England', 'Australia']">
+                         <!-- <select name = "make"  ng-model = "DataModel.specifications.make"  id="js-makesInput"  ng-change = "getCarModels(DataModel.specifications.make)" required>
+                              <option value="">Select</option>
+                              <option ng-repeat = "make in makeArr" value = "{{make._id}}">{{make._id}}</option>
+                         </select> -->
+                         <select name = "Country" ng-model = "User.license.issuer.country"  ng-change = "getStates(User.license.issuer.country)" required>
+                              <option value="">Select</option>
+                              <option ng-repeat = "make in makeArr" value = "{{make.country}}">{{make.country}}</option>
+                         </select>
+                    </div>
+                    <div ng-messages="form.Country.$error" ng-if="form.Country.$touched || form.$submitted">
+                         <div ng-messages-include="/elements/notifyMessages.html"></div></div>
+
+                    </label>
+                    <!-- <span class="grid-item grid-item--2 email-verifiedBadge">
+                    Verified
+               </span> -->
+          </div>
+
+          <div class="section section--first grid">
+               <label class="label--form grid-item grid-item--5">
+                    <div class="text--small">State:</div>
+                    <div  ng-init = "optionArr1= ['California', 'Delhi', 'NewYork', 'Silicon']">
+
+                         <!-- <select  name="model"  ng-model = "DataModel.specifications.model" required>
+                              <option value="">Select</option>
+                              <option ng-repeat = "model in modelArr">{{model}}</option>
+                         </select> -->
+                         <select name = "State" ng-model = "User.license.issuer.state" required>
+                              <option value="">Select</option>
+                              <option ng-repeat = "option in modelArr">{{option}}</option>
+                         </select>
+                    </div>
+                    <div ng-messages="form.State.$error" ng-if="form.State.$touched || form.$submitted">
+                         <div ng-messages-include="/elements/notifyMessages.html"></div></div>
+
+                    </label>
+                    <!-- <span class="grid-item grid-item--2 email-verifiedBadge">
+                    Verified
+               </span> -->
+          </div>
+
+
+
+
+
+          <div class="section section--first grid">
+               <label class="label--form grid-item grid-item--5">
+                    <div class="text--small">Scan License</div>
+                    <input type="file" name='file' file-model="myFile" valid-file required>
+                    <div ng-messages="form.file.$error" ng-if="form.file.$touched || form.$submitted">
+                    <div ng-messages-include="/elements/notifyMessages.html"></div></div>
+                    <!-- <div ng-if = "User.profile.photo"><img ng-src="{{User.profile.path + User.profile.photo}}" height="150" width="150"></div> -->
+
+               </label>
+          </div>
+          <p>Enter your name exactly as it appears on your driver’s license</p>
+          <button class="button button--green vehicleBtn" type="submit">Save </button>
+     </div>
+</form>
+</div>
+</div>
+
+</script>

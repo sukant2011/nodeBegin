@@ -1,0 +1,67 @@
+<div class="" id="mycar-tab-content">
+    <div class="your-car-reservations">
+<div class="linkedHeadingWithArrow u-smallScreenOnly">
+    <a href="/your-car?vehicleId=192205">
+        <span class="linkedHeadingWithArrow-arrow"></span><span class="linkedHeadingWithArrow-text">Your car</span>
+    </a>
+</div>
+
+        <h5>Trip history</h5>
+        <!-- <div id="your-car-reservation-filter">
+            <form >
+                <span class="styled-select-container">
+                    <select class="select no-placeholder" name="status" id="status">
+                        <option value="">All trips</option>
+                        <option value="PENDING_OWNER_APPROVAL">Pending trips</option>
+                        <option value="UPCOMING">Booked trips</option>
+                        <option value="COMPLETE">Past trips</option>
+                        <option value="EXPIRED_OR_DECLINED">Expired or declined trips</option>
+                        <option value="CANCELLED">Cancelled trips</option>
+                    </select>
+                    <span class="text"></span>
+                </span>
+                <input type="submit" value="Go"/> -->
+            <!-- </form> -->
+
+        <!-- </div> -->
+<!-- /.panel-heading -->
+                         <div ng-if="trip != ''">
+						  <div class="table-responsive">
+                           <table  ng-table="tripsTable" class="table table-hover ">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Invoice</th>
+                                        <th>Vehicle</th>
+                                        <th>Price($)</th>
+                                        <th>Trip Start </th>
+                                        <th>Trip End </th>
+                                        <th>Detail </th>
+                                        <!-- <th>View </th> -->
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="trips in $data">
+                                        <td>{{$index+1}}</td>
+                                        <td>{{trips.transactionId.invoice}}</td>
+                                        <td>{{trips.vehicleId.specifications.make+"-"+trips.vehicleId.specifications.model}}</td>
+                                        <td>${{trips.transactionId.amount}}</td>
+                                        <td>{{trips.startDate  | date : 'M/d/yy h:mm'}}</td>
+                                        <td>{{trips.endDate  | date : 'M/d/yy h:mm'}}</td>
+                                        <!-- <td>{{trips._id}}</td> -->
+                                          <td><a ui-sref="user.viewBookingUser({bookingId :trips._id})">View</a></td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+						 </div>
+                        <div ng-if = "trip == ''" class="alert alert-info">
+                             <div class="panel-heading" style="text-align: center; font-size: 15px;"> No Trip Found Yet </div>
+                          </div>
+                        <!-- /.table-responsive -->
+
+          </div>
+
+        </div>

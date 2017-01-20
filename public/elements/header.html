@@ -1,0 +1,109 @@
+<div class="container" ng-controller = "NavController" ng-class = "isNewClass ? 'blog' : ''">
+     <a ui-sref="anon.home" class="header-logo"></a>
+     <div class="header-searchBar searchBar u-pullLeft u-hideSmallScreen">
+          <form class="js-searchBarForm" action="javascript:void(0)"
+          method="get">
+          <span class="searchBar-icon">
+                    <button class="searchBar-button" type="submit"></button>
+               </span>
+               <input id="search-input-header" class="searchBar-input js-searchBarInput u-truncate" title="Search"
+               type="text" name="location" value=""
+               placeholder="Where are you traveling?"/>
+               <input type="hidden" class="js-searchLocationCountry" name="country"/>
+               <input type="hidden" class="js-searchLocationRegion" name="region"/>
+               <input type="hidden" class="js-searchLocationType" name="locationType"/>
+               <div id="places"></div>
+          </form>
+     </div>
+     <ul class="nav ">
+          <li class="nav-item nav-item--search u-smallScreenOnly u-hideTinyScreen"> <a class="nav-itemText nav-itemText--link js-compactNavSearchLink" href="search.html"> Find a car </a> </li>
+          <li ng-show="!isAuthenticated" class="nav-item"> <span class="nav-itemButton"> <a class="button button--smaller button--transparent" ui-sref="anon.list-your-car"> Get Started </a> </span>
+          </li>
+
+          <li   ng-show = "isAuthenticated" class="nav-item nav-item--subMenu js-navSubMenu nav-item--left car-cls-res">
+               <span class="nav-itemText js-navSubMenuToggle"> <span>Your Cars</span>
+               <span class="nav-itemIcon nav-itemIcon--arrow"></span> </span>
+
+               <ul class="subNavList subNavList--left">
+                    <li class="subNavList-item"><a class="subNavList-link"  ui-sref="user.listcarIntro">List your car</a> </li>
+                    <li class="subNavList-item"><a class="subNavList-link" ui-sref="user.myCars" >Your Cars</a> </li>
+               </ul>
+          </li>
+
+          <li  class="nav-item" ng-show = "isAuthenticated" >
+               <a ui-sref="user.dashboard" class="dialog-link nav-itemText nav-itemText--link">
+                    Dashboard
+               </a>
+          </li>
+          <li class="nav-item nav-item--subMenu js-navSubMenu nav-item--left ">
+               <span class="nav-itemText js-navSubMenuToggle u-hideSmallScreen learn-cls-div"> <span>Learn more</span>
+               <span class="nav-itemIcon nav-itemIcon--arrow"></span> </span>
+               <span class="nav-itemText js-navSubMenuToggle u-smallScreenOnly learn-cls-div">
+                    <span>Learn more</span> <span class="nav-itemIcon nav-itemIcon--arrow"></span>
+               </span>
+               <ul class="subNavList subNavList--left">
+                    <li class="subNavList-item"><a class="subNavList-link" ui-sref="anon.how-corsa-works">How it Works</a> </li>
+                    <li class="subNavList-item"><a class="subNavList-link" ui-sref="anon.rent" >Rent an Exotic</a> </li>
+                    <li class="subNavList-item"><a class="subNavList-link" ui-sref="anon.list-your-car">Make money from your car</a> </li>
+                    <!-- <li class="subNavList-item"><a class="subNavList-link"  ui-sref="anon.airport-parking">Valet</a> </li> -->
+                    <li class="subNavList-item subNavList-item--divider"> </li>
+                    <li class="subNavList-item"><a class="subNavList-link" ui-sref="anon.trust-and-safety">Trust safety</a> </li>
+                    <li class="subNavList-item"><a class="subNavList-link" ui-sref="anon.support">Contact support</a> </li>
+               </ul>
+          </li>
+
+          <li ng-show = "!isAuthenticated" class="nav-item"> <a class="dialog-link nav-itemText nav-itemText--link" ui-sref="anon.login"> Log in </a> </li>
+          <!-- <li ng-show = "!isAuthenticated" class="nav-item"> <a class="dialog-link nav-itemText nav-itemText--link" ui-sref="anon.register"> Sign up </a> </li> -->
+          <li  ng-show = "isAuthenticated" class="nav-item nav-item--messages">
+               <a ui-sref="user.message" class="nav-itemIcon nav-itemIcon--messages">
+               </a>
+          </li>
+          <!-- <li ng-show = "isAuthenticated" class="nav-item"><a class="dialog-link nav-itemText nav-itemText--link" ng-click="logout()"><span class="glyphicon glyphicon-user"></span> Logout</a></li> -->
+          <li ng-show = "isAuthenticated" class="nav-item nav-item--subMenu js-navSubMenu nav-item--left ">
+               <span class="nav-itemText js-navSubMenuToggle u-hideSmallScreen"> <span>
+                    <!-- <img class="profilePhoto profilePhoto--small profilePhoto--round" src="https://d1zgdcrdir5wgt.cloudfront.net/media/driver/NV4vkAcaS7WeXJLwNNqCyg.32x32.jpg" alt=""> -->
+                    <img ng-show = "authUser.profile.photo" class = "profilePhoto profilePhoto--small profilePhoto--round" src="{{authUser.profile.path + authUser.profile.photo}}" alt = "{{authUser.fullname}}" />
+                    <img ng-show = "!authUser.profile.photo" class = "profilePhoto profilePhoto--small profilePhoto--round" src="/media/u_default.png" alt = "{{authUser.fullname}}" />
+               </span>
+               <span class="nav-itemIcon nav-itemIcon--arrow"></span> </span>
+               <span class="nav-itemText js-navSubMenuToggle u-smallScreenOnly">
+                    <span>
+                         <img ng-show = "authUser.profile.photo" class = "profilePhoto profilePhoto--small profilePhoto--round" ng-src="{{ authUser.profile.path + authUser.profile.photo }}" alt = "{{authUser.fullname}}" />
+                         <img ng-show = "!authUser.profile.photo" class = "profilePhoto profilePhoto--small profilePhoto--round" ng-src="/media/u_default.png" alt = "{{AuthUser.fullname}}" />
+
+                    </span>
+                    <span class="nav-itemIcon nav-itemIcon--arrow"></span> </span>
+                    <ul ng-show = "isAuthenticated" class="subNavList subNavList--left">
+                         <li class="subNavList-item"><a class="subNavList-link" ui-sref="anon.search.list">Find a Car</a> </li>
+                         <li class="subNavList-item subNavList-item--divider"> </li>
+                         <li class="subNavList-item"><a class="subNavList-link" ui-sref="user.account" >Account</a> </li>
+                         <li class="subNavList-item"><a class="subNavList-link" ui-sref="anon.publicProfile({userId : authUser._id})">Profile</a> </li>
+                         <li class="subNavList-item"><a class="subNavList-link" ui-sref="user.changePassword">Change Password</a> </li>
+                         <li class="subNavList-item"><a class="subNavList-link"  ui-sref="user.order">Trips</a> </li>
+                         <li class="subNavList-item subNavList-item--divider"> </li>
+                         <li class="subNavList-item"><a class="subNavList-link" ui-sref="user.referrals">Earn Free Trips</a> </li>
+                         <li class="subNavList-item subNavList-item--divider"> </li>
+                         <li class="subNavList-item"><a class="subNavList-link"  ui-sref="anon.support">Contact support</a> </li>
+                         <li class="subNavList-item"><a class="subNavList-link" href="javascript:void(0)" ng-click="logout()">Log Out</a> </li>
+                    </ul>
+               </li>
+          </ul>
+</div>
+
+<script>
+$(document).ready(function(){
+    $(".nav-item--subMenu").click(function(){
+        $(this).children('ul').toggle();
+    });
+	
+});
+
+ 
+</script>
+
+
+
+
+
+
+

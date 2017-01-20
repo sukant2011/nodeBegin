@@ -1,0 +1,13 @@
+<div ng-show="statusMsg" class="sixteen columns flashMsg" ng-if = "serverMsg.msg && serverMsg.resStatus  == 'success'" id="sucess">
+      <div role="alert" class="alert alert-success alert-dismissible fade in">
+                  <button aria-label="Close" data-dismiss="alert" class="close" type="button"><span aria-hidden="true">×</span></button>
+                  <strong>Success!</strong> {{serverMsg.msg}}
+      </div>
+</div>
+
+<div ng-show="statusMsg" class="sixteen columns flashMsg"  ng-if = "serverMsg.msg &&  serverMsg.resStatus == 'error'" id="error">
+      <div role="alert" class="alert alert-danger alert-dismissible fade in">
+                  <button aria-label="Close" data-dismiss="alert" class="close" type="button"><span aria-hidden="true">×</span></button>
+                  <strong>Error!</strong> {{serverMsg.msg}}
+      </div>
+</div>

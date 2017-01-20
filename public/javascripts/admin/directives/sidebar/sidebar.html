@@ -1,0 +1,99 @@
+
+<div class="navbar-default sidebar" role="navigation">
+     <div class="sidebar-nav navbar-collapse">
+          <ul class="nav in" id="side-menu">
+               <!-- <sidebar-search></sidebar-search> -->
+               <li ui-sref-active="active">
+                    <a ui-sref="dashboard.home"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+               </li>
+               <li ng-class="{active: collapseVar==1}">{{dropDown}}
+                    <a href="" ng-click="check(1)"><i class="fa fa-wrench fa-fw"></i> Management<span
+                         class="fa arrow"></span></a>
+                         <ul class="nav nav-second-level" collapse="collapseVar!=1">
+                              <li ui-sref-active="active">
+                                   <a ui-sref="dashboard.user">User Management</a>
+                              </li>
+
+                         </ul>
+                         <ul class="nav nav-second-level" collapse="collapseVar!=1">
+                              <li ui-sref-active="active">
+                                   <a ui-sref="dashboard.newsletter">Subscriber Management</a>
+                              </li>
+
+                         </ul>
+                         <ul class="nav nav-second-level" collapse="collapseVar!=1">
+                              <li ui-sref-active="active">
+                                   <a ui-sref="dashboard.CountryName">Country Management</a>
+                              </li>
+
+                         </ul>
+                         <ul class="nav nav-second-level" collapse="collapseVar!=1">
+                              <li ui-sref-active="active">
+                                   <a ui-sref="dashboard.country">State Management</a>
+                              </li>
+
+                         </ul>
+                         <ul class="nav nav-second-level" collapse="collapseVar!=1">
+                              <li ui-sref-active="active">
+                                   <a ui-sref="dashboard.airport">Airport Management</a>
+                              </li>
+
+                         </ul>
+
+                         <ul class="nav nav-second-level" collapse="collapseVar!=1">
+                              <li ui-sref-active="active">
+                                   <a ui-sref="dashboard.transaction">Transaction Management</a>
+                              </li>
+
+                         </ul>
+
+                         <ul class="nav nav-second-level" collapse="collapseVar!=1">
+                              <li ui-sref-active="active">
+                                   <a ui-sref="dashboard.email">Template List</a>
+                              </li>
+
+                         </ul>
+                         <ul class="nav nav-second-level" collapse="collapseVar!=1">
+                              <li ui-sref-active="active">
+                                   <a ui-sref="dashboard.carlist">  Model List</a>
+                              </li>
+
+                         </ul>
+                         <ul class="nav nav-second-level" collapse="collapseVar!=1">
+                              <li ui-sref-active="active">
+                                   <a ui-sref="dashboard.brandlist">  Brand List</a>
+                              </li>
+
+                         </ul>
+                         <ul class="nav nav-second-level" collapse="collapseVar!=1">
+                              <li ui-sref-active="active">
+                                   <a ui-sref="dashboard.infraction">   Infractions</a>
+                              </li>
+
+                         </ul>
+
+                         <!-- /.nav-second-level -->
+                    </li>
+                    <li ui-sref-active="active">
+                         <a ui-sref="dashboard.blog"><i class="fa fa-wrench fa-fw"></i> Blog Managment</a>
+                    </li>
+                    <li ui-sref-active="active">
+                         <a ui-sref="dashboard.setting"><i class="fa fa-wrench fa-fw"></i> Setting</a>
+                    </li>
+                    <li ui-sref-active="active">
+                         <a ui-sref="dashboard.chat"><i class="fa fa-wrench fa-fw"></i> Chat</a>
+                    </li>
+
+                    <!-- <li ui-sref-active="active">
+
+                    <a ui-sref="dashboard.chart"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span></span></a>
+
+
+
+               </li> -->
+               <!-- <li ui-sref-active="active">
+               <a ui-sref="dashboard.table"><i class="fa fa-table fa-fw"></i> Tables</a>
+          </li> -->
+          <!-- <li ui-sref-active="active">
+          <a ui-sref="dashboard.form"><i class="fa fa-edit fa-fw"></i> Forms</a>
+     </li> -->

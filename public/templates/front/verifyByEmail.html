@@ -1,0 +1,59 @@
+
+<!-- Titlebar
+================================================== -->
+<!-- <div id="titlebar" class="single">
+	<div class="container">
+
+		<div class="sixteen columns">
+			<h2>My Account</h2>
+			<nav id="breadcrumbs">
+				<ul>
+					<li>You are here:</li>
+					<li><a href="#">Home</a></li>
+					<li>My Account</li>
+				</ul>
+			</nav>
+		</div>
+
+	</div>
+</div> -->
+
+
+<!-- Content
+================================================== -->
+
+<!-- Container -->
+<div class="container">
+
+	<!-- <div class="my-account"> -->
+            <!-- <div class="tabs-container"> -->
+            <div class="sixteen columns" ng-if = "serverMsg.msg && serverMsg.resStatus == 'success'">
+      		<div class="notification success closeable">
+      			<p><span>Success!</span> {{serverMsg.msg}} </p>
+      			<a href="#" class="close"></a>
+      		</div>
+      	 </div>
+
+      	 <div class="sixteen columns"  ng-if = "serverMsg.msg && serverMsg.resStatus == 'error'">
+       		<div class="notification error closeable">
+       			<p><span>Error!</span> {{serverMsg.msg}} </p>
+       			<a href="#" class="close"></a>
+       		</div>
+       	 </div>
+
+		<!-- </div> -->
+	<!-- </div> -->
+      <div class="my-account" ng-if = "serverMsg.msg && serverMsg.resStatus == 'success'">
+
+           <div class="tabs-container">
+
+
+
+                 <!-- Login -->
+                 <div class="tab-content" id="tab1">
+
+                       <h3 class="margin-bottom-10 margin-top-10"><a ui-sref="anon.login">click here</a> to login !</h3>
+                 </div>
+           </div>
+     </div>
+</div>

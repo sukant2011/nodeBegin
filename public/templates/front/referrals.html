@@ -1,0 +1,157 @@
+<div class=" " id="pageContainer-content">
+     <div id="referrals">
+          <div class="container container--fluid u-alignCenter">
+               <div class="section banner-refer">
+                    <h1>Share the adventure</h1>
+                    <div class="subheader">
+                         Give your friends $25 off their next adventure, earn up to $100 with every invitation
+                    </div>
+               </div>
+          </div>
+          <div class="container">
+               <div class="section">
+                    <h5>SPREAD THE WORD</h5>
+                    <p class="text--large">Share your unique referral link and start earning</p>
+                    <div class="grid">
+                         <div class="grid-item grid-item--4">
+                              <ul class="share-icons">
+                                   <li class="email-cls-sty">
+                                        <a ng-click="emailFormPopup()" href="" id="email-friends">
+                                             <div class="icon"></div>
+                                             <div class="text  u-alignCenter">Email it</div>
+                                        </a>
+                                   </li>
+                                   <li>
+                                        <a href="javascript:void(0)"
+                                        socialshare
+                                        socialshare-provider="facebook"
+                                        socialshare-text="Book Your Car"
+                                        socialshare-hashtags="angularjs, angular-socialshare"
+                                        socialshare-url="http://rentcorsa.com" id="facebook-link">
+
+                                        <div class="icon"></div>
+                                        <div class="text u-alignCenter">Share it</div>
+                                   </a>
+                              </li>
+                              <li>
+                                   <a href="javascript:void(0)"
+                                   socialshare
+                                   socialshare-provider="twitter"
+                                   socialshare-text="Book Your Car"
+                                   socialshare-hashtags="angularjs, angular-socialshare"
+                                   socialshare-url="http://rentcorsa.com" id="twitter-link">
+
+                                   <div class="icon"></div>
+                                   <div class="text u-alignCenter">Tweet it</div>
+                              </a>
+                         </li>
+                    </ul>
+               </div>
+               <div class="grid-item grid-item--1 u-alignCenter referral-or">
+                    <p><b>or</b></p>
+               </div>
+               <div class="grid-item grid-item--4">
+                    <li>
+                         <label>Referral link</label>
+
+                         <input type="text" value="{{referCodeUrl}}" id="js-referralLink">
+                    </li>
+               </div>
+          </div>
+     </div>
+     <div class="section">
+          <h6>How it works</h6>
+          <ol class="numberedList numberedList--grey">
+               <li class="numberedList-item">
+                    <span class="numberedList-itemContent">Your friends get $25 off their first trip when they sign up with your referral link</span>
+               </li>
+               <li class="numberedList-item">
+                    <span class="numberedList-itemContent">You’ll get $25 travel credit when your friend rents a car, or a $75 credit if they list their car and it gets rented</span>
+               </li>
+               <li class="numberedList-item">
+                    <span class="numberedList-itemContent">There’s no limit on how much you could earn</span>
+               </li>
+          </ol>
+     </div>
+     <div class="section">
+          <div class="buttonWrapper u-alignCenter">
+               <a href="#/terms"><h6 class="button js-referralTermsButton"> Read the terms and conditions</h6></a>
+          </div>
+          <p class="legalCopy js-referralTermsDescription u-hidden">Each new user who signs up using your referral link will get $25 credited to their Corsa account to use toward renting a car in the Corsa marketplace. Each time a friend signs up for Corsa using your referral link and rents a car for the first time, you will get $25 in travel credit added to your Corsa account. If a new user lists their car after signing up with your referral link and rents it out, you, the referrer, will get $75 in travel credit added to your Corsa account. Travel credit given or received via this referral program expires 180 days after being granted. {{item}}</p>
+     </div>
+</div>
+
+</div>
+</div>
+</div>
+
+<script type="text/ng-template" id="emailpopup.html">
+     <div class="ui-dialog ui-widget ui-widget-content ui-corner-all ui-front dialog-container" style="display: block; height: auto; width: 726px; top: 55px; " tabindex="-1" role="dialog" aria-describedby="email-dialog" aria-labelledby="ui-id-2" ng-controller="ReferralController">
+          <div class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix"><span id="ui-id-2" class="ui-dialog-title">&nbsp;</span>
+               <button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only ui-dialog-titlebar-close" role="button" aria-disabled="false" title="close"><span class="ui-button-icon-primary ui-icon ui-icon-closethick"></span><span class="ui-button-text">close</span>
+               </button>
+          </div>
+          <div  id="email-dialog" style="display: block; width: auto; min-height: 0px; max-height: none; height: auto;" class="ui-dialog-content ui-widget-content">
+               <h5>Share with friends by email</h5>
+                <div ng-include = "'/elements/flashMessage.html'"></div>
+
+               <form  ng -if = "!serverMsg" id="referralEmailForm" name="friend">
+                    <input type="hidden" value="" name="vehicleId" id="vehicleId">
+                    <div class="address-column">
+                         <label for="email">To</label>
+                         <ul id="email-recipient-list">
+                              <li>
+                                   <input type="email" placeholder="friend@example.com" autocomplete="off" class="entry" name="email1" id="email" ng-model="referObj.email[0]">
+                                   <span style="color:red" ng-show="friend.email1.$dirty && friend.email1.$invalid">
+                                     <span ng-show="friend.email1.$error.required">Email is required.</span>
+                                     <span ng-show="friend.email1.$error.email">Invalid email address.</span>
+                                        <span>
+                              </li>
+                              <li>
+                                   <input type="email" placeholder="friend@example.com" autocomplete="off" class="entry" name="email2" ng-model="referObj.email[1]">
+                                   <span style="color:red" ng-show="friend.email2.$dirty && friend.email2.$invalid">
+
+                                        <span ng-show="friend.email2.$error.email">Invalid email address.</span>
+                                           <span>
+                              </li>
+                              <li>
+                                   <input type="email" placeholder="friend@example.com" autocomplete="off" class="entry" name="email3" ng-model="referObj.email[2]">
+                                        <span style="color:red" ng-show="friend.email3.$dirty && friend.email3.$invalid">
+
+                                             <span ng-show="friend.email3.$error.email">Invalid email address.</span>
+                                                <span>
+                              </li>
+                              <li>
+                                   <input type="email" placeholder="friend@example.com" autocomplete="off" class="entry" name="email" ng-model="referObj.email[3]">
+                                   <span style="color:red" ng-show="friend.email4.$dirty && friend.email4.$invalid">
+
+                                        <span ng-show="friend.email4.$error.email">Invalid email address.</span>
+                                             <span>
+                              </li>
+
+                              <li>
+                                   <input type="email" placeholder="friend@example.com" autocomplete="off" class="entry" name="email5" ng-model="referObj.email[4]">
+                                   <span style="color:red" ng-show="friend.email5.$dirty && friend.email5.$invalid">
+
+                                        <span ng-show="friend.email5.$error.email">Invalid email address.</span>
+                                        <span>
+                              </li>
+                         </ul>
+
+                    </div>
+                    <div class="message-column">
+                         <label for="body">Message</label>
+                         <textarea class="text" name="body" id="body">Find the perfect vehicle for your next adventure, courtesy of Turo’s nationwide community of car owners. Click to get $25 off your first trip. {{referObj.referCodeUrl}}</textarea>
+                         <div class="status">
+                              <p class="success">Your invitations have been sent.</p>
+                              <p class="error">Sorry! We’re having trouble sending your invitations. Please try again in a few minutes.</p>
+                         </div>
+                         <input type="submit" class="submit button button--green" value ="Send email" ng-click = "sendEmailReferral(friend)">
+                         <a class="close-dialog button" ng-click="cancel()">Cancel</a>
+                    </div>
+                    <div class="spacer"></div>
+               </form>
+          </div>
+     </div>
+</script>
+

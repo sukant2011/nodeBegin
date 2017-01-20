@@ -1,0 +1,39 @@
+<div class="modal fade" id="myModal" role="dialog">
+     <div class="modal-dialog">
+     <!-- Modal content-->
+          <div class="modal-content">
+               <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Report this listing</h4>
+               </div>
+               <div class="modal-body">
+                    <form name="myForm" >
+                         <label>
+                              <input type="radio" ng-model="reportObj.name" value="Inappropriate/offensive content">
+                              Inappropriate/offensive content
+                              </label><br/>
+                         <label>
+                              <input type="radio" ng-model="reportObj.name" value="Misleading/suspicious information">
+     Misleading/suspicious information
+                         </label><br/>
+                         <label>
+                              <input type="radio" ng-model="reportObj.name" value="Spam">
+                              Spam
+                         </label><br/>
+                         <label>
+                              <input id="Other" type="radio" name="reportObj.name" ng-model="reportObj.name" value="Other">
+                         Other
+                              <p ng-show="reportObj.name == 'Other'">
+                                   <input type="text" ng-model="reportObj.comment"></p>
+                         </label><br/><br/>
+
+                         <input type="button" class="btn btn-info " ng-click="reports()" value="Report">
+                         <input type="button" class="btn btn-danger " value="Cancel" data-dismiss="modal">
+                    </form>
+               </div>
+               <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+               </div>
+          </div>
+     </div>
+</div><!-- model end -->

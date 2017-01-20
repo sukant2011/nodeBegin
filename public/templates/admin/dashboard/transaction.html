@@ -1,0 +1,186 @@
+<div class="row">
+     <div class="col-lg-12">
+          <h1 class="page-header"> Transactions List</h1>
+     </div>
+     <!-- /.col-lg-12 -->
+</div>
+
+<!-- /.row -->
+<div ng-include = "'/templates/admin/ui-elements/flashMessage.html'"></div>
+<div class="row">
+     <div class="col-lg-12">
+          <div class="panel panel-default">
+               <div class="panel-heading">
+                    Transactions
+               </div>
+               <!-- /.panel-heading -->
+               <div  class="panel-body">
+                    <div class="table-responsive">
+                         <p>Search :<input type="text" Placeholder="Search here .. " ng-model="search"></p>
+                         <table ng-table="paymentTable"  class="table table-striped table-bordered table-hover">
+                              <thead>
+                                   <tr>
+                                        <th>#</th>
+
+                                        <th><b>InvoiceNo</b></th>
+                                        <th>Amount</th>
+                                        <th><b>PaymentStatus</b></th>
+
+
+                                        <th><b>Vehicle Name</b></th>
+                                        <th><b>PaymentDate</b></th>
+                                        <th><b>User</b></th>
+                                        <th><b>Protection</b></th>
+                                        <th><b>Actions<b></th>
+                                        </tr>
+                                   </thead>
+                                   <tbody >
+                                        <tr ng-repeat="payment in $data | filter:search">
+                                             <td>{{$index+1}}</td>
+                                             <td>{{payment.invoice}}</td>
+                                             <td>${{payment.amount}}</td>
+
+                                             <td>{{payment.paymentStatus}}</a>
+
+                                             </td>
+                                             <td>{{payment.vehicleId.specifications.make+payment.vehicleId.specifications.model}}</td>
+                                             <td>{{payment.createdDate | date : 'M/d/yy h:mm'}}</td>
+                                             <td>{{payment.userId.fullname}}</td>
+                                             <td>{{payment.vehicleId.vehicleProtection.type}}</td>
+                                             <td>
+                                                  <a class="btn btn-link" ui-sref="dashboard.viewTransaction({transactionId: payment._id})"  type="button">View</a> || <a class="btn btn-link" ng-click = "refundAmount(payment._id)"data-toggle="modal" data-target="#myModal">Refund To</a>
+                                                  <div class="modal fade" id="myModal" role="dialog">
+                                                       <div class="modal-dialog">
+                                                            <!-- Modal content-->
+                                                            <div class="modal-content">
+                                                                 <div class="modal-header">
+                                                                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                      <h4 class="modal-title">Pay To Seller</h4>
+                                                                 </div>
+                                                                 <div class="modal-body">
+
+                                                                      <div class="row">
+                                                                           <div class="col-xs-12">
+                                                                                <div class="text-center">
+                                                                                     <i class="fa fa-search-plus pull-left icon"></i>
+                                                                                     <h2>Order Detail #{{refundData.invoice}}</h2>
+                                                                                </div>
+                                                                                <hr>
+                                                                                <div class="row">
+                                                                                     <div class="col-xs-12 col-md-6 col-lg-6 pull-left">
+                                                                                          <div class="panel panel-default height">
+                                                                                               <div class="panel-heading">Car Owner Information</div>
+                                                                                               <div class="panel-body" >
+                                                                                                    <strong>Id:</strong>
+                                                                                                    {{refundData.vehicleId.userId}}
+                                                                                                    <br>
+                                                                                                    <br>
+
+                                                                                               </div>
+                                                                                          </div>
+                                                                                     </div>
+                                                                                     <div class="col-xs-12 col-md-6 col-lg-6">
+                                                                                          <div class="panel panel-default height">
+                                                                                               <div class="panel-heading">Rental Car Information </div>
+                                                                                               <div class="panel-body">
+                                                                                                    <strong>Buyer Name:</strong> {{refundData.userId.fullname}}<br>
+                                                                                                    <strong>Buyer Email:</strong>{{refundData.userId.email}}<br>
+                                                                                                    <!-- <strong>Exp Date:</strong> 09/2020<br> -->
+                                                                                               </div>
+                                                                                          </div>
+                                                                                     </div>
+                                                  </div>
+                                             </div>
+                                        </div>
+                                        <div class="row">
+                                             <div class="col-md-12">
+                                                  <div class="panel panel-default">
+                                                       <div class="panel-heading">
+                                                            <h3 class="text-center"><strong>Transactions Summary </strong></h3>
+                                                       </div>
+                                                       <div class="panel-body">
+                                                            <div class="table-responsive">
+                                                                 <table class="table table-condensed">
+                                                                      <thead>
+                                                                           <tr>
+                                                                                <td><strong>Item Name</strong></td>
+                                                                                <td class="text-center"><strong> Riding Cost($)</strong></td>
+
+                                                                                <td class="text-right"><strong>Total($)</strong></td>
+                                                                           </tr>
+                                                                      </thead>
+                                                                      <tbody>
+                                                                           <tr>
+                                                                                <td>{{refundData.vehicleId.specifications.make  + refundData.vehicleId.specifications.model + refundData.vehicleId.specifications.make .year  }}</td>
+                                                                                <td class="text-center">{{refundData.amount}}</td>
+
+                                                                                <td class="text-right">{{refundData.amount}}</td>
+                                                                           </tr>
+
+
+                                                                           <tr>
+                                                                                <td class="highrow"></td>
+                                                                                <td class="highrow"></td>
+                                                                                <td class="highrow text-center"><strong>Subtotal</strong></td>
+                                                                                <td class="highrow text-center">{{refundData.amount}}</td>
+                                                                           </tr>
+                                                                           <tr>
+                                                                                <td class="emptyrow"></td>
+                                                                                <td class="emptyrow"></td>
+                                                                                <td class="emptyrow text-center"><strong>Vehicle Protection</strong></td>
+                                                                                <td class="emptyrow text-center">{{refundData.vehicleId.vehicleProtection.price}}%</td>
+                                                                           </tr>
+                                                                           <tr>
+                                                                                <td class="emptyrow"><i class="fa fa-barcode iconbig"></i></td>
+                                                                                <td class="emptyrow"></td>
+                                                                                <td class="emptyrow text-center"><strong>Pay Total </strong></td>
+                                                                                <td class="emptyrow text-center">{{refundData.amount * refundData.vehicleId.vehicleProtection.price / 100 }}</td>
+                                                                           </tr>
+                                                                           <tr></tr>
+
+                                                                      </tbody>
+                                                                 </table>
+                                                  <button type="button" class="btn btn-success" style="float: right;" ng-click="amountPaySeller(refundData.amount * refundData.vehicleId.vehicleProtection.price / 100)">Pay To Seller</button>
+                                                            </div>
+                                                       </div>
+                                                  </div>
+                                             </div>
+                                        </div>
+
+
+
+                                   </div>
+                                   <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                   </div>
+                              </div>
+                         </div>
+                    </div><!-- model end -->
+               </td>
+          </tr>
+     </tbody>
+</table>
+<div ng-if="carList == '' " class="alert alert-info">
+     <div class="panel-heading" style="text-align: center; font-size: 25px;"> No Record Found </div>
+</div>
+</div>
+<!-- /.table-responsive -->
+</div>
+<!-- /.panel-body -->
+</div>
+<!-- /.panel -->
+</div>
+<!-- /.col-lg-6 -->
+</div>
+<!-- /.row -->
+<!-- <script type="text/ng-template" id="myModalContent.html">
+<div class="modal-header">
+<span class="modal-title" id="modal-title">Are you sure to remove this photo?</span>
+</div>
+<div class="modal-footer">
+<button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+<button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+</div>
+</script> -->
+
+``

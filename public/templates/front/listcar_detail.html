@@ -1,0 +1,80 @@
+<div id="pageContainer-content" class="u-contentTopPadding u-contentBottomPadding">
+          <div ng-include = "'/elements/listCarNav.html'"></div>
+
+          <div class="container">
+      <div ng-include = "'/elements/flashMessage.html'"></div>
+        <h5>Details</h5>
+        <form name="form" ng-submit = "form.$valid && form.$submitted && updateInfo(DataModel, 'Photo')" novalidate>
+             <div class="form-group">
+                  <label>Plate Number</label>
+                  <input type="text" class="form-control" name="plate" ng-model="DataModel.details.plateNo" id="" minlength = "7" maxlength = "20" placeholder="Enter Plate Number" required/>
+                   <div ng-messages="form.plate.$error" ng-if="form.plate.$touched || form.$submitted">
+                       <div ng-messages-include="/elements/notifyMessages.html"></div>
+                  </div>
+             </div>
+
+             <div class="form-group">
+                  <label  for="year">State/Province</label>
+                  <div  ng-init = "stateArr= ['California', 'Delhi', 'NewYork', 'Silicon']">
+                       <select name = "State" ng-model = "DataModel.details.state" required>
+                            <option value="">Select</option>
+                            <option ng-repeat = "state in stateArr">{{state}}</option>
+                       </select>
+                  </div>
+                   <div ng-messages="form.State.$error" ng-if="form.State.$touched || form.$submitted">
+                       <div ng-messages-include="/elements/notifyMessages.html"></div>
+                  </div>
+             </div>
+
+             <div class="form-group">
+                  <label>Car Description</label>
+                  <!-- <text-angular ta-toolbar="[['h1','h2','h3','p'],['bold','italics']]" class="form-control" name="description" ng-model = "DataModel.details.description" id="description"  placeholder="Tell travelers what amkes your car unique,and why they should rent" required style="border:none"> </text-angular> -->
+                  <textarea  class="form-control" name="description" ng-model = "DataModel.details.description" id="description"  placeholder="Tell travelers what amkes your car unique,and why they should rent" required/>
+                  </textarea>
+                    <div ng-messages="form.description.$error" ng-if="form.description.$touched || form.$submitted">
+                       <div ng-messages-include="/elements/notifyMessages.html"></div>
+                  </div>
+             </div>
+
+             <div class="form-group" ng-init = "featuresArr= ['Hybrid', 'GPS', 'Audio Input', 'Bike Rack','Ski Rack', 'Convertible', 'All-wheel driver']" >
+                  <label>Car Fetures</label>
+                  <!-- <select id="multiselect" multiple="multiple" name="car_fetaures" value="1" ng-model="DataModel.details.features" placeholder="Select Car features" required>
+                       <option value="">Select</option>
+                       <option ng-repeat = "feature in featuresArr">{{feature}}</option>
+                  </select> -->
+                    <input type="checkbox" ng-model="DataModel.details.features[0]" ng-true-value="'Hybrid'" >Hybrid &nbsp;&nbsp;
+                    <input type="checkbox" ng-model="DataModel.details.features[1]" ng-true-value="'GPS'" >GPS &nbsp;&nbsp;
+                    <input type="checkbox" ng-model="DataModel.details.features[2]" ng-true-value="'Audio Input'" >Audio Input &nbsp;&nbsp;
+                    <input type="checkbox" ng-model="DataModel.details.features[3]" ng-true-value="'Bike Rack'">Bike Rack&nbsp;&nbsp;
+                    <input type="checkbox" ng-model="DataModel.details.features[4]" ng-true-value="'Ski Rack'">Ski Rack&nbsp;&nbsp;
+                    <input type="checkbox" ng-model="DataModel.details.features[5]" ng-true-value="'Convertible'">Convertible&nbsp;&nbsp;
+                    <input type="checkbox" ng-model="DataModel.details.features[6]" ng-true-value="'All-wheel driver'">All-wheel driver
+
+
+ -->
+
+
+
+                    <!-- <div ng-messages="form.car_fetaures.$error" ng-if="form.car_fetaures.$touched || form.$submitted">
+                       <div ng-messages-include="/elements/notifyMessages.html"></div>
+                  </div> -->
+                    </div>
+                  <div class="form-group">
+                    <button class="btn btn-primary vehicleBtn" >Next</button>
+                  </div>
+             </form>
+
+        </div><br><br>
+          <div class="col-sm-2">
+          </div>
+     </div><br><br><br>
+     <style>
+    .ta-editor {
+        min-height: 80px;
+        height: auto;
+        overflow: auto;
+        font-family: inherit;
+        font-size: 100%;
+    }
+
+    </style>

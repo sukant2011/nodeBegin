@@ -1,0 +1,94 @@
+
+<div class="block-section bg-color4">
+  <div class="container">
+    <div class="panel panel-md">
+	<div class="panel-body">
+	  <div class="row">
+
+	    <div class="col-md-12">
+		    <p><a  ui-sref="javascript:void(0)" class="btn btn-primary btn-theme btn-block">
+
+			  Vehicle Protection</a>
+		    </p>
+		    <p>
+			   <div ng-include = "'/elements/flashMessage.html'"></div>
+		    </p>
+	      <!-- form protection -->
+        <div class="col-md-4">
+	      <form name = "form" ng-submit = "form.$valid && form.$submitted && premium()" novalidate>
+            <p><b><h6>Get extra peace of mind with top-tier protection</h6></b></p>
+          <div class="radio">
+          <label class="checkbox-inline" ng-init="premium='Premium'">
+    		  <input type="hidden" class="" name="premium" ng-model = "premium" value='Premium' /><h3><span class="label label-success">Premium</span></h3>
+        </label>
+    		    </div>
+            <p>Earn 65% of the trip price</p>
+            <p>$1 million liability insurance</p>
+            <p>Zero out-of-pocket cost for covered damage to your car </p>
+            <p>Replacement car during repair</p>
+            <p>Covers exterior wear and tear</p>
+            <p>Covers loss of rental income </p>
+
+           <div class="form-group no-margin">
+    		   <button type="submit" class="btn btn-primary btn-lg btn-t-primary btn-block" name="">Submit</button>
+		     </div>
+	      </form><!-- form protection -->
+      </div>
+
+
+      <div class="col-md-4">
+
+      <form name = "form" ng-submit = "form.$valid && form.$submitted && standred()" novalidate>
+        <p><b><h6>Rest easy with our Standred Protection plan</h6></b></p>
+        <div class="radio">
+        <label class="checkbox-inline" ng-init="standred='Standred' ">
+          <input type="hidden" class="" name="Standred" ng-model = "standred"  /><h3><span class="label label-success">Standred</span></h3>
+        </label>
+          </div>
+          <p>Earn 75% of the trip price</p>
+          <p>$1 million liability insurance</p>
+          <p>Zero out-of-pocket cost for  </p>
+          <p>covered damage to your car*</p>
+          <p>Replacement car during repair</p>
+          <p><br></p>
+          <br>
+
+
+     <div class="form-group no-margin">
+     <button type="submit" class="btn btn-primary btn-lg btn-t-primary btn-block" name="">Submit</button>
+
+    </div>
+      </form><!-- form protection -->
+    </div>
+    <div class="col-md-4">
+    <form name = "form" ng-submit = "form.$valid && form.$submitted && basic()" novalidate>
+    <p><b><h6>Rest easy with our default and most Basic plan</h6></b></p>
+      <div class="radio">
+      <label class="checkbox-inline " ng-init="basic='Basic'">
+        <input type="hidden" class="" name="basic" ng-model = "basic" /><h3><span class="label label-success">Basic</span></h3>
+      </label>
+        </div>
+        <p>Earn 85% of the trip price </p>
+        <p>$1 million liability insurance</p>
+        <p>$3,000 max out-of-pocket </p>
+        <p>cost** for covered damage to your car* </p>
+        <p><br></p>
+        <p><br></p>
+        <br>
+
+
+   <div class="form-group no-margin">
+   <button type="submit" class="btn btn-primary btn-lg btn-t-primary btn-block" name="changePassword">Submit</button>
+
+  </div>
+    </form><!-- form protection -->
+  </div>
+
+	    </div>
+	  </div>
+	</div>
+    </div>
+
+
+  </div>
+</div>

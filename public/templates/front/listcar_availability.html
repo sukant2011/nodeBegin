@@ -1,0 +1,52 @@
+
+<div id="pageContainer-content" class="u-contentTopPadding u-contentBottomPadding">
+     <div ng-include = "'/elements/listCarNav.html'"></div>
+     <div class="col-sm-2">
+     </div>
+     <div class="container">
+           <div ng-include = "'/elements/flashMessage.html'"></div>
+          <h5>Car Availability</h5>
+          <!-- <span>HOW MUCH ADVANCE NOTICE DO YOU NEED  TO CONFIRM A TRP REQUST ? </span><br><br> -->
+          <form name="form" ng-submit = "form.$valid && form.$submitted && updateInfo(DataModel,'Detail')" novalidate>
+               <!-- <div class="form-group"  >
+                    <label for="js-listingAddressInput"> Advance Notice :</label>
+                    <select name="advance" id="repeatSelect" ng-model="vehicle.advance">
+                         <option  value="3 hours">3 hours</option>
+                         <option  value="6 hours">6 hours</option>
+                         <option  value="12 hours">12 hours</option>
+                         <option  value="1 day">1 day</option>
+                         <option  value="2 days">2 days</option>
+                         <option  value="3 days">1 days</option>
+                         <option  value="one week">a week</option>
+                    </select>
+                    <div ng-messages="form.advance.$error" ng-if="form.advance.$touched || form.$submitted">
+                         <div ng-messages-include="/elements/notifyMessages.html"></div>
+                    </div>
+               </div> -->
+               <p>HOW LONG WOULD YU LIKE TRIP TO LAST?  </p><br>
+               <div class="form-group" ng-init = "shortestTripArr = ['ANY', '1 DAY', '2 DAYS', '3 DAYS', '4 DAYS',  '5 DAYS', 'a WEEK']">
+                    <label for="js-listingAddressInput"> Shortest Possible Trip</label>
+                    <select name = "shortestTrip" name="shortestTrip" ng-model = "DataModel.availability.shortestTrip" required>
+                         <option value="">Select</option>
+                         <option ng-repeat = "trip in shortestTripArr">{{trip}}</option>
+                    </select>
+                    <div ng-messages="form.shortestTrip.$error" ng-if="form.shortestTrip.$touched || form.$submitted">
+                         <div ng-messages-include="/elements/notifyMessages.html"></div>
+                    </div>
+               </div>
+               <div ng-messages="form.sort.$error" ng-if="form.sort.$touched || form.$submitted">
+                    <div ng-messages-include="/elements/notifyMessages.html"></div>
+               </div>
+               <div class="form-group"  ng-init = "longestTripArr = ['ANY', '1 WEEK', '2 WEEK', '1 MONTH', '2 MONTH',  '3 MONTH']">
+                    <label for="js-listingAddressInput"> Longest possible trip</label>
+                    <select name = "longestTrip" name="longestTrip" ng-model = "DataModel.availability.longestTrip" required>
+                         <option value="">Select</option>
+                         <option ng-repeat = "trip in longestTripArr">{{trip}}</option>
+                    </select>
+                    <div ng-messages="form.longestTrip.$error" ng-if="form.longestTrip.$touched || form.$submitted">
+                         <div ng-messages-include="/elements/notifyMessages.html"></div>
+                    </div>
+               </div>
+               <button class="btn btn-primary vehicleBtn" >Next</button>
+          </form>     <!-- </form> -->
+     </div>

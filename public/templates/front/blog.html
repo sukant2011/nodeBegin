@@ -1,0 +1,61 @@
+<div style="background: url(/images/Header_banner_02-copy.jpg);height:435px;margin-top:-80px" data-src="/images/Header_banner_02-copy.jpg" class="background " id="background">
+
+     <div class="overlay"></div>
+     <div class="title">
+          <h4 style = 'font-size :80px; color:#fff'>THE Corsa BLOG</h4>
+          <h1 style="font-size: 64px;"></h1>
+          <p style="font-size: 24px;"></p></div>
+
+     </div>
+     <div id="blogPage" class="wrapper">
+
+          <div class="fullscreen layout_2_col" id="wrapper">
+               <main class = "container" role="main" id="main">
+
+                    <div class="content">
+                         <p ng-init="a=1"></p>
+                          <div class="grid">
+                              <div  ng-repeat='x in  allBlog | startFrom:(currentPage-1)*entryLimit | limitTo:entryLimit'>
+                                   <a  ui-sref="anon.blogview({blogId:x._id})">
+                                   <article ng-class="{'standard': {{a+$index %3}}==1  , 'standard last': {{a+$index %3}}==2,'fullwidth':{{a+$index %3}}==3}" class=" masonry-item post-2814 post type-post status-publish format-standard has-post-thumbnail hentry category-wayfaring" id="post-2814">
+
+                                        <img style=" height: 400px;" alt=""  ng-src="{{x.image.path + x.image.photo}}">
+
+                                        <div class="overlay" style="opacity: 0.2;"></div>
+
+                                        <div class="title title--center">
+                                             <h5><a rel="category tag" ui-sref="anon.blogview({blogId:x._id})"></a></h5>
+                                             <a ui-serf="anon.blogview({blogId:x._id})" class="titleLink">
+                                                  <a ui-sref="anon.blogview({blogId:x._id})"><h2 class="entry-title" style="font-size: 32px;">{{x.title}}</h2></a>
+                                             </a>
+                                             <div class="underline desktop-only"></div>
+                                             <ul class="post-meta-alt desktop-only">
+                                                  <li><span class="entry-date">{{x.createdDate | date :" MM/dd/y"}}</span></li>
+
+                                                  <li></li>
+
+                                             </ul>
+                                        </div>
+
+
+                                   </article>
+                                   </a>
+
+                              </div>
+                         </div>
+
+
+                          </div>
+                          <div>
+                          <!-- <pagination  page="currentPage" max-size="noOfPages" total-items="totalItems" items-per-page="entryLimit" ></pagination> -->
+                                  <!-- {{currentPage}}   {{noOfPages}}   {{totalItems}} {{entryLimit}} -->
+                                    <!-- <ul uib-pager total-items="totalItems" ng-model="currentPage"></ul> -->
+                     </div>
+                    </main>
+               </div>
+          </div>
+
+
+ <!-- <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"> -->
+<link rel='stylesheet' type='text/css' href='/stylesheets/front/webcss/blog.css' />
+<!-- <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">-->

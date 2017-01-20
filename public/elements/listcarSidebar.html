@@ -1,0 +1,365 @@
+<style>.highlightLink a{color: #43B9E8}</style>
+<div id="mycar-nav">
+     <ul class="navigationList">
+          <!-- <li class="navigationList-item is-selected">
+          <a  ui-sref="user.liscarLanding.calendar({refId : vehicleRefId})">
+          <span class="yourCarNavIcon yourCarNavIcon--availability"></span>
+          <span class="navigationList-itemText">Calendar</span>
+          <span class="navigationList-itemArrow"></span>
+     </a>
+</li> -->
+<li class="navigationList-item" ui-sref-active="highlightLink">
+     <a ui-sref="user.liscarLanding.calendar({refId : vehicleRefId})">
+          <span class="yourCarNavIcon yourCarNavIcon--pricing"></span>
+          <span class="navigationList-itemText">Calendar</span>
+          <span class="navigationList-itemArrow"></span>
+     </a>
+</li>
+<li class="navigationList-item " ui-sref-active="highlightLink">
+     <a ui-sref="user.liscarLanding.pricing({refId : vehicleRefId})">
+          <span class="yourCarNavIcon yourCarNavIcon--pricing"></span>
+          <span class="navigationList-itemText">Pricing</span>
+          <span class="navigationList-itemArrow"></span>
+     </a>
+</li>
+
+<li class="navigationList-item "  ui-sref-active="highlightLink">
+     <a ui-sref="user.liscarLanding.delivery({refId : vehicleRefId})">
+          <span class="yourCarNavIcon yourCarNavIcon--delivery"></span>
+          <span class="navigationList-itemText">Delivery &amp; airports</span>
+          <span class="navigationList-itemArrow"></span>
+     </a>
+</li>
+<li class="navigationList-item "  ui-sref-active="highlightLink">
+     <a ui-sref="user.liscarLanding.location({refId : vehicleRefId})">
+          <span class="yourCarNavIcon yourCarNavIcon--location"></span>
+          <span class="navigationList-itemText">Location</span>
+          <div class="navigationList-itemArrow"></div>
+     </a>
+</li>
+<li class="navigationList-item "  ui-sref-active="highlightLink">
+     <a ui-sref="user.liscarLanding.photos({refId : vehicleRefId})">
+          <span class="yourCarNavIcon yourCarNavIcon--photos"></span>
+          <span class="navigationList-itemText">Photos</span>
+          <div class="navigationList-itemArrow"></div>
+     </a>
+</li>
+<li class="navigationList-item " ui-sref-active="highlightLink">
+     <a ui-sref="user.liscarLanding.detail({refId : vehicleRefId})">
+          <span class="yourCarNavIcon yourCarNavIcon--description"></span>
+          <span class="navigationList-itemText">Details</span>
+          <span class="navigationList-itemArrow"></span>
+     </a>
+</li>
+<li class="navigationList-item " ui-sref-active="highlightLink">
+     <a ui-sref="user.liscarLanding.distance({refId : vehicleRefId})">
+          <span class="yourCarNavIcon yourCarNavIcon--mileage"></span>
+          <span class="navigationList-itemText">Distance included</span>
+          <span class="navigationList-itemArrow"></span>
+     </a>
+</li>
+
+<li class="navigationList-item "  ui-sref-active="highlightLink">
+     <a ui-sref="user.liscarLanding.protection({refId : vehicleRefId})">
+          <span class="yourCarNavIcon yourCarNavIcon--protection"></span>
+          <span class="navigationList-itemText">Vehicle protection</span>
+          <span class="navigationList-itemArrow"></span>
+     </a>
+</li>
+
+<li class="navigationList-item "  ui-sref-active="highlightLink">
+     <a ui-sref="user.liscarLanding.trip_history({refId : vehicleRefId})">
+          <span class="yourCarNavIcon yourCarNavIcon--reservations"></span>
+          <span class="navigationList-itemText">Trip history</span>
+          <span class="navigationList-itemArrow"></span>
+     </a>
+</li>
+<li class="navigationList-item "  ui-sref-active="highlightLink">
+     <a ui-sref="user.liscarLanding.tripPreference({refId : vehicleRefId})">
+          <span class="yourCarNavIcon yourCarNavIcon--settings"></span>
+          <span class="navigationList-itemText">Trip preferences</span>
+          <span class="navigationList-itemArrow"></span>
+     </a>
+</li>
+</ul>
+</div>
+
+<div class="" id="mycar-listing">
+     <div class="mycar-listing-indicator">
+
+          <span ng-if= "DataModel.listingStatus == 'LISTED'" class="circle-listed"></span>
+          <span  ng-if= "DataModel.listingStatus == 'SNOOZED'" class="circle-snoozed"></span>
+         <span ng-if= "DataModel.listingStatus == 'UNLISTED'" class="circle-unlisted"></span>
+     </div>
+
+     <span class="styled-select-container">
+          <select id="js-listingStatus" name="listing" ng-model = "DataModel.listingStatus" ng-change = "setListingStatus(DataModel.listingStatus,DataModel._id)">
+               <option value="LISTED">Listed</option>
+               <option value="SNOOZED">Snoozed</option>
+               <option value="UNLISTED" ng-click="SnoozedStatus()">Unlisted</option></select>
+               <span ng-if= "DataModel.listingStatus == 'LISTED'" class="text">Listed</span>
+               <span ng-if= "DataModel.listingStatus == 'SNOOZED'" class="text">Snoozed</span>
+               <span ng-if= "DataModel.listingStatus == 'UNLISTED'" class="text">Unlisted</span>
+			   <div class="clearfix"></div>
+          </span>
+		  <div class="clearfix"></div>
+          <div class="section section--snooze u-hidden">
+               <a id="js-snooze-EDIT">Edit snooze</a><br>
+               <span id="js-snoozeDate"></span>
+          </div>
+          <div ng-if= "DataModel.listingStatus == 'LISTED'" id="js-listingStatusDescription" class="section cls-des-div">Your car appears in search results and can be requested.</div>
+          <div id="js-causeDescription" class="section section--restricted u-hidden"></div>
+     </div>
+
+     <div class="" id="mycar-deactivate">
+          <span><a id="js-deactivateAction" ng-click = "delete(DataModel._id)">Delete listing</a></span>
+          <span aria-describedby="ui-tooltip-0" uib-popover="Deleting your listing will permanently remove it from Corsa." class="info-link"></span>
+     </div>
+     <script type="text/ng-template" id="snoozed.html">
+          <div id="vehicle-status-dialog" ng-controller = "VehicleController">
+               <div class="tab-content current" id="js-snoozed">
+                    <div data-status="unlisted" data-previous="#js-unlisted" class="icon-back u-hidden"></div>
+                    <div class="icon-close close-dialog" ng-click = "cancel()"></div>
+                    <header>
+                         <h1>Snooze this listing</h1>
+                         <hr align="center">
+                         <h3>Take a break from receiving requests</h3>
+                    </header>
+                    <form>
+                         <input type="hidden" value="192205" name="vehicleId">
+                         <div class="section--description">When snoozed, your car won’t appear in search results and can’t be requested until the end date you choose. You’re still responsible for any trips already booked.</div>
+                         <div class="section--prompt">How long would you like to snooze?</div>
+                         <div class="u-clearFix dateTimePickerContainer">
+                              <div class="dateTimePicker">
+                                   <label for="js-snoozed-SET-date">Snooze until</label>
+
+                                   <!-- <input type="text" value="" readonly="readonly" class="dateTimePicker-date"  placeholder="End date" id="js-snoozed-SET-date" name="snoozeEndDate" ng-model="DataModel.snozzedDate"> -->
+                                   <input type="text" ng-init = "ctrl.snoozedDate = snoozedDate" value="{{Datamodel.snozzedDate}}"  class="dateTimePicker-date"  placeholder="End date" id="datePickerSnoozed" name="snoozeEndDate" ng-model="ctrl.snoozedDate" is-open="$parent.opened">
+                              </div>
+                         </div>
+                         <div class="js-errorMessage errorMessage">
+                              <span class="errorMessage-icon"></span>
+                              <span class="errorMessage-text">Please select a date</span>
+                         </div>
+                         <div class="buttonWrapper">
+                              <button class="button button--purple" name="save" ng-click="updateSnooze(ctrl.snoozedDate)" type="submit">Save</button>
+                              <button ng-if="serverMsg.resStatus == 'success' "type="submit" name="remove" ng-click="updateCancelSnooze('LISTED',enddate)" class="button">Cancel snooze</button>
+                         </div>
+                         <div class="saveConfirmation" ng-if="serverMsg.resStatus == 'success'">
+                              <div class="savedIndicator">
+                                   <div class="icon"></div>
+                                   <p>{{serverMsg.msg}}</p>
+                              </div>
+                         </div>
+                    </form>
+               </div>
+          </div>
+     </script>
+     <script type="text/ng-template" id="unlisted.html" ng-show="false">
+          <div id="vehicle-status-dialog" ng-controller = "VehicleController">
+               <div class="tab-content current" id="js-unlisted">
+                    <div class="icon-close close-dialog" ng-click = "cancel()"></div>
+                    <header>
+                         <h1>Unlisting your car?</h1>
+                         <hr align="center">
+                         <h3>Let us know why</h3>
+                    </header>
+                    <form>
+                         <div class="section">
+                              <ul name="reasons" class="list list--mediumSpacing">
+                                   <li class="list-item">
+                                        <div class="input--radioContainer">
+                                             <input ng-model = "modelChecked" type="radio" name="reasons" value="TEMPORARY" id="reason-TEMPORARY">
+                                        </div>
+                                        <label for="reason-TEMPORARY">Pause my listing temporarily</label>
+                                   </li>
+                                   <li class="list-item">
+                                        <div class="input--radioContainer">
+                                             <input type="radio" name="reasons" value="CAR_UNAVAILABLE" id="reason-CAR_UNAVAILABLE" ng-model = "modelChecked"></div>
+                                             <label for="reason-CAR_UNAVAILABLE">I no longer have this car</label>
+                                        </li>
+                                        <li class="list-item">
+                                             <div class="input--radioContainer">
+                                                  <input type="radio" name="reasons" value="INSURANCE_CONCERNS" id="reason-INSURANCE_CONCERNS" ng-model = "modelChecked">
+                                             </div>
+                                             <label for="reason-INSURANCE_CONCERNS">Insurance, trust or safety concerns</label>
+                                        </li>
+                                        <li class="list-item">
+                                             <div class="input--radioContainer">
+                                                  <input type="radio" name="reasons" value="INSUFFICIENT_EARNINGS" id="reason-INSUFFICIENT_EARNINGS" ng-model = "modelChecked">
+                                             </div>
+                                             <label for="reason-INSUFFICIENT_EARNINGS">I’m not earning enough</label>
+                                        </li>
+                                        <li class="list-item">
+                                             <div class="input--radioContainer">
+                                                  <input type="radio" name="reasons" value="TIME_CONSUMING" id="reason-TIME_CONSUMING" ng-model = "modelChecked">
+                                             </div>
+                                             <label for="reason-TIME_CONSUMING">I feel Turo requires too much work</label>
+                                        </li>
+                                        <li class="list-item">
+                                             <div class="input--radioContainer">
+                                                  <input type="radio" name="reasons" value="NEGATIVE_EXPERIENCE" id="reason-NEGATIVE_EXPERIENCE" ng-model = "modelChecked">
+                                             </div>
+                                             <label for="reason-NEGATIVE_EXPERIENCE">I’ve had a negative experience</label>
+                                        </li>
+                                        <li class="list-item">
+                                             <div class="input--radioContainer">
+                                                  <input type="radio" name="reasons" value="OTHER" id="reason-OTHER" ng-model = "modelChecked">
+                                             </div>
+                                             <label for="reason-OTHER">I have other reasons</label>
+                                        </li>
+                                   </ul>
+                              </div>
+                              <div class="buttonWrapper">
+                              <button name="next" class="button button--purple" type="button" ng-click="nextModel(modelChecked)">Next</button>
+                              </div>
+                       </div>
+                         </form>
+               </div>
+          </script>
+          <script type="text/ng-template" id="TEMPORARY.html" >
+               <div id="vehicle-status-dialog" ng-controller = "VehicleController">
+                    <div class="tab-content current" id="js-unlisted">
+                         <div class="icon-close close-dialog" ng-click = "cancel()"></div>
+                         <header>
+                          <h1>Snooze set</h1>
+                          <hr align="center">
+                          <h3 id="js-snoozePrompt">Your listing is snoozed and will be relisted on October 14th, 2016.</h3>
+                      </header>
+                      <form>
+
+                  <div class="section--description">When snoozed, your car won’t appear in search results and can’t be requested until the end date you choose. You’re still responsible for any trips already booked.</div>
+                  <div class="section--prompt">How long would you like to snooze?</div>
+                  <div class="u-clearFix dateTimePickerContainer">
+                    <div class="dateTimePicker">
+                    <label for="js-snoozed-EDIT-date">Snooze until</label>
+                         <!-- <input name="snoozeEndDate" id="js-snoozed-EDIT-date" placeholder="End date" class="dateTimePicker-date" readonly="readonly" value="" type="text"> -->
+
+                         <input type="text"  ng-init = "snozzedDate = snoozedate" value="{{snoozedate | date}}"  class="dateTimePicker-date"  placeholder="End date" id="datePickerSnoozedCancel" name="snoozeEndDate" data-ng-model="snozzedDate" is-open="$parent.opened">
+                      </div>
+                  </div>
+                  <div class="js-errorMessage errorMessage">
+                      <span class="errorMessage-icon"></span>
+                      <span class="errorMessage-text">Please select a date</span>
+                  </div>
+                  <div class="buttonWrapper">
+                      <button type="submit" name="save" class="button button--purple" ng-click="updateSnooze(snozzedDate)">Save</button>
+                      <button ng-if="snoozedate" type="submit" name="remove" class="button" ng-click="updateCancelSnooze('LISTED');cancel()">Cancel snooze</button>
+                  </div>
+              <div class="saveConfirmation" ng-if="serverMsg.resStatus == 'success' ">
+                <div class="savedIndicator">
+                    <div class="icon"></div>
+                    <span class="saveMessage">{{serverMsg.msg}}</span>
+                </div>
+               </div>`
+               </form>
+          </div>
+          </script>
+          <script type="text/ng-template" id="CAR_UNAVAILABLE.html">
+               <div id="vehicle-status-dialog">
+                    <div class="tab-content current" id="js-unlisted">
+                         <div class="icon-close close-dialog" ng-click = "cancel()"></div>
+                         <header class="single">
+                          <h1>Thanks for letting us know</h1>
+                      </header>
+                    <form>
+
+                  <div class="section">If you get another car, consider listing it with us. We’d love to see you again!</div>
+                  <div class="buttonWrapper">
+                      <button type="submit" name="unlist" class="button button--purple" ng-click="updateUnlistSts('UNLISTED')">Unlist your car</button>
+                  </div>
+              </form>
+          </div>
+          </script>
+          <script type="text/ng-template" id="INSURANCE_CONCERNS.html">
+               <div id="vehicle-status-dialog">
+                    <div class="tab-content current" id="js-unlisted">
+                         <div class="icon-close close-dialog" ng-click = "cancel()"></div>
+                    <header class="single">
+                          <h1>Can we help?</h1>
+                    </header>
+               <form>
+
+                <div class="section"><span>For every trip, you’re protected by our liability insurance policy and your car is covered against damage, in the rare event something happens.</span><br><br><span>Learn more about insurance and how we screen travelers so you can be confident when you hand over your keys.</span></div>
+                <div class="buttonWrapper">
+                      <button type="submit" name="unlist" class="button button--purple" ng-click="updateUnlistSts('UNLISTED')">Unlist your car</button>
+                    <!-- <button type="submit" name="unlist" class="button" ng-click="updateUnlistSts('UNLISTED')">Unlist your car</button> -->
+                </div>
+            </form>
+          </div>
+          </script>
+          <script type="text/ng-template" id="INSUFFICIENT_EARNINGS.html">
+               <div id="vehicle-status-dialog">
+                    <div class="tab-content current" id="js-unlisted">
+                         <div class="icon-close close-dialog" ng-click = "cancel()"></div>
+                    <header class="single">
+                          <h1>Can we help?</h1>
+                    </header>
+                    <form>
+
+                          <div class="section">Check out our tips for pricing and perfecting your listing to help you earn more on Turo.</div>
+                          <div class="buttonWrapper">
+                                <button type="submit" name="unlist" class="button button--purple" ng-click="updateUnlistSts('UNLISTED')">Unlist your car</button>
+                              <!-- <button type="submit" name="unlist" class="button" ng-click="updateUnlistSts('UNLISTED')">Unlist your car</button> -->
+                          </div>
+                      </form>
+          </div>
+          </script>
+          <script type="text/ng-template" id="TIME_CONSUMING.html">
+               <div id="vehicle-status-dialog">
+                    <div class="tab-content current" id="js-unlisted">
+                         <div class="icon-close close-dialog" ng-click = "cancel()"></div>
+                    <header class="single">
+                          <h1>Can we help?</h1>
+                    </header>
+                    <form>
+
+                     <div class="section">We understand renting out your car takes work. Check out our tips for managing your listing more efficiently and getting trip requests that work for you.</div>
+                     <div class="buttonWrapper">
+                           <button type="submit" name="unlist" class="button button--purple" ng-click="updateUnlistSts('UNLISTED')">Unlist your car</button>
+                         <!-- <button type="submit" name="unlist" class="button" ng-click="updateUnlistSts('UNLISTED')">Unlist your car</button> -->
+                     </div>
+                 </form>
+          </div>
+          </script>
+          <script type="text/ng-template" id="NEGATIVE_EXPERIENCE.html">
+               <div id="vehicle-status-dialog">
+                    <div class="tab-content current" id="js-unlisted">
+                         <div class="icon-close close-dialog" ng-click = "cancel()"></div>
+                    <header class="single">
+                       <h1>Sorry to hear that</h1>
+                    </header>
+                    <form>
+
+                     <div class="section">Our support team may be able to help. Share your experience with us, and we’ll do our best to assist you.</div>
+                     <div class="buttonWrapper">
+                           <button type="submit" name="unlist" class="button button--purple" ng-click="updateUnlistSts('UNLISTED')">Unlist your car</button>
+                         <!-- <button type="submit" name="unlist" class="button" ng-click="updateUnlistSts('UNLISTED')">Unlist your car</button> -->
+                     </div>
+            </form>
+          </div>
+          </script>
+          <script type="text/ng-template" id="OTHER.html">
+               <div id="vehicle-status-dialog">
+                    <div class="tab-content current" id="js-unlisted">
+                         <div class="icon-close close-dialog" ng-click = "cancel()"></div>
+                      <header class="single">
+                          <h1>Share your feedback</h1>
+                      </header>
+                      <form>
+                            <textarea name="message" placeholder="Please tell us more about your decision to unlist your car (optional)." ng-model="feedback"></textarea>
+                            <div class="buttonWrapper">
+                                <button type="submit" name="unlist_and_comment" class="button button--purple" ng-click="updateUnlistSts('UNLISTED',feedback)">Unlist &amp; send feedback</button>
+                            </div>
+                        </form>
+          </div>
+          </script>
+          <script type="text/ng-template" id="deleteListing.html">
+                <div class="modal-header">
+                    <span class="modal-title" id="modal-title">Are you sure to delete this listing?</span>
+                </div>
+               <div class="modal-footer">
+                    <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+                    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+                </div>
+            </script>

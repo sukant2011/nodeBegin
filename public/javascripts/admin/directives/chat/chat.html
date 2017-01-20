@@ -1,0 +1,105 @@
+
+<div class="panel">
+     <div class="col-lg-8">
+          <div class="panel panel-default">
+               <div class="panel-body" style="height : 400px; overflow-y:auto">
+                    <ul class="">
+                         <li ng-if = "users.length" class="clearfix" ng-repeat = "user in  users" ng-class = "user._id == toObj._id ? 'activeChat' : ''">
+                              <a href="javascript:void(0);" class="clearfix" ng-click = "selectUser(user)">
+                              <!-- <span class="chat-img pull-left">
+                                   <img src="/images/5.jpg" alt="User Avatar" class="img-circle" style = 'width: 51px; height: 26px; border-radius: 54px;'>
+                              </span> -->
+                              <div class="chat-body clearfix">
+                                   <div class="header">
+                                        <strong class="primary-font">{{user.fullname | uppercase}}</strong>
+                                   </div>
+                              </div>
+                         </a>
+                         </li>
+                    </ul>
+               </div>
+          </div>
+     </div>
+     <!-- /.panel -->
+
+     <div class="col-lg-4">
+          <div class="chat-panel panel panel-default">
+
+               <div class="panel-heading">
+                    <i class="fa fa-comments fa-fw"></i>
+                    <strong class="primary-font">{{toObj.fullname}}</strong>
+                    <div class="btn-group pull-right">
+                         <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                              <i class="fa fa-chevron-down"></i>
+                         </button>
+
+                         <ul class="dropdown-menu slidedown">
+                              <li>
+                                   <a href="#">
+                                        <i class="fa fa-refresh fa-fw"></i> Refresh
+                                   </a>
+                              </li>
+                              <li>
+                                   <a href="#">
+                                        <i class="fa fa-check-circle fa-fw"></i> Available
+                                   </a>
+                              </li>
+                              <li>
+                                   <a href="#">
+                                        <i class="fa fa-times fa-fw"></i> Busy
+                                   </a>
+                              </li>
+                              <li>
+                                   <a href="#">
+                                        <i class="fa fa-clock-o fa-fw"></i> Away
+                                   </a>
+                              </li>
+                              <li class="divider"></li>
+                              <li>
+                                   <a href="#">
+                                        <i class="fa fa-sign-out fa-fw"></i> Sign Out
+                                   </a>
+                              </li>
+                         </ul>
+                    </div>
+               </div>
+               <!-- /.panel-heading -->
+               <div class="panel-body">
+                    <ul class="chat">
+                         <li ng-if = "messages.length" class="clearfix" ng-repeat = "data in  messages">
+                              <!-- <span class="chat-img pull-left">
+                                   <img src="/images/5.jpg" alt="User Avatar" class="img-circle" style = 'width: 51px; height: 26px; border-radius: 54px;'>
+                              </span> -->
+                              <div class="chat-body clearfix">
+                                   <div class="header">
+                                        <strong class="primary-font">{{data.from.fullname | uppercase}}</strong>
+                                        <!-- <small class="pull-right text-muted">
+                                             <i class="fa fa-clock-o fa-fw"></i> 12 mins ago
+                                        </small> -->
+                                   </div>
+                                   <p>
+                                        {{data.message}}
+                                   </p>
+                              </div>
+                         </li>
+                    </ul>
+               </div>
+               <!-- /.panel-body -->
+               <div class="panel-footer">
+                    <form>
+                         <div class="input-group">
+
+                              <input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here..." ng-model = "msg" autocomplete="off">
+                              <span class="input-group-btn">
+                                   <button class="btn btn-warning btn-sm" id="btn-chat">
+                                        Send
+                                   </button>
+                              </span>
+
+                         </div>
+                    </form>
+               </div>
+               <!-- /.panel-footer -->
+          </div>
+     </div>
+</div>

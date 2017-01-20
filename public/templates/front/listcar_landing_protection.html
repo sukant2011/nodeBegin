@@ -1,0 +1,260 @@
+<div class="" id="mycar-tab-content">
+
+     <div data-reservations-exist="false" data-vehicle-id="192205" id="js-yourCarEditProtectionLevel">
+
+          <div class="linkedHeadingWithArrow u-smallScreenOnly">
+               <a href="/your-car?vehicleId=192205">
+
+                    <span class="linkedHeadingWithArrow-arrow"></span><span class="linkedHeadingWithArrow-text">Your car</span>
+               </a>
+          </div>
+
+
+          <form method="post" action="/your-car/192205/protection_level" id="js-chooseProtection">
+               <fieldset id="protection">
+                    <div>
+                         <h5>Vehicle Protection</h5>
+                         <div>
+                              <p>Choose from three protection plans. Spring for top-tier coverage, or pocket more of your earnings with less coverage.</p>
+                         </div>
+                         <div id="more-information">
+
+                              <p>
+                                   <a class="text--purple" target="_blank" href="/how-turo-works/vehicle-protection">
+                                        Learn how vehicle protection works
+                                   </a>
+                              </p>
+                         </div>
+                    </div>
+                    <div class="grid vehicleProtection">
+
+                         <div class="grid-item grid-item--4 vehicleProtection-item">
+                              <div ng-click = "setProtection('PREMIUM', 65)" class="vehicleProtectionOption js-vehicleProtectionOption hr--small"  ng-class = "(DataModel.vehicleProtection.type == 'PREMIUM')?'selected':''">
+                                   <p class="vehicleProtectionOption--header">Premium</p>
+                                   <p class="vehicleProtectionOption--subtitle">Get extra peace of mind with top-tier protection</p>
+                                   <div class="vehicleProtectionOption--selectionIcon"></div>
+
+                                   <p class="vehicleProtectionOption--descriptionItem">
+                                        Earn 65% of the trip price
+                                   </p>
+
+                                   <p class="vehicleProtectionOption--descriptionItem">
+                                        $1 million liability insurance
+                                   </p>
+
+                                   <p class="vehicleProtectionOption--descriptionItem">
+                                        Zero out-of-pocket cost for covered damage to your car*
+                                   </p>
+
+                                   <p class="vehicleProtectionOption--descriptionItem">
+                                        Replacement car during repair
+                                   </p>
+
+                                   <p class="vehicleProtectionOption--descriptionItem">
+                                        Covers exterior wear and tear
+                                   </p>
+
+                                   <p class="vehicleProtectionOption--descriptionItem">
+                                        Covers loss of rental income
+                                   </p>
+
+                              </div>
+                         </div>
+
+                         <div class="grid-item grid-item--4 vehicleProtection-item">
+                              <div  ng-click = "setProtection('STANDARD', 75)"  id="TRADITIONAL" class="vehicleProtectionOption js-vehicleProtectionOption hr--small" ng-class = "(DataModel.vehicleProtection.type == 'STANDARD')?'selected':''">
+                                   <p class="vehicleProtectionOption--header">Standard</p>
+                                   <p class="vehicleProtectionOption--subtitle">Rest easy with our default plan</p>
+                                   <div class="vehicleProtectionOption--selectionIcon"></div>
+
+                                   <p class="vehicleProtectionOption--descriptionItem">
+                                        Earn 75% of the trip price
+                                   </p>
+
+                                   <p class="vehicleProtectionOption--descriptionItem">
+                                        $1 million liability insurance
+                                   </p>
+
+                                   <p class="vehicleProtectionOption--descriptionItem">
+                                        Zero out-of-pocket cost for covered damage to your car*
+                                   </p>
+
+                                   <p class="vehicleProtectionOption--descriptionItem">
+                                        Replacement car during repair
+                                   </p>
+
+                              </div>
+                         </div>
+
+                         <div class="grid-item grid-item--4 vehicleProtection-item">
+                              <div  ng-click = "setProtection('BASIC', 85)"  id="MINIMUM" class="vehicleProtectionOption js-vehicleProtectionOption hr--small " ng-class = "(DataModel.vehicleProtection.type == 'BASIC')?'selected':''" class="vehicleBtn">
+                                   <p class="vehicleProtectionOption--header">Basic</p>
+                                   <p class="vehicleProtectionOption--subtitle">Share the risk for more reward</p>
+                                   <div class="vehicleProtectionOption--selectionIcon"></div>
+
+                                   <p class="vehicleProtectionOption--descriptionItem">
+                                        Earn 85% of the trip price
+                                   </p>
+
+                                   <p class="vehicleProtectionOption--descriptionItem">
+                                        $1 million liability insurance
+                                   </p>
+
+                                   <p class="vehicleProtectionOption--descriptionItem">
+                                        $3,000 max out-of-pocket cost** for covered damage to your car*
+                                   </p>
+
+                              </div>
+                         </div>
+
+                    </div>
+                    <p class="text--disclaimer vehicleProtection--disclaimer">* Your car is covered, up to its actual cash value (up to $75k), for collision and most “comprehensive” events during a trip, including theft.</p>
+                    <p class="text--disclaimer vehicleProtection--disclaimer">** For any covered incident, Corsa pays 20% of damage costs up to $3,750, and 100% above that amount.</p>
+               </fieldset>
+          </form>
+
+          <div style="display:none">
+               <div id="js-lowestProtectionDialog">
+                    <p class="message">Based on the plan you selected, you will be responsible for up to $3,000 of damage costs for any covered incident.</p>
+                    <div class="buttonWrapper">
+                         <button class="button button--purple js-lowestProtectionSubmit">Confirm</button>
+                         <button class="button close-dialog">Cancel</button>
+                    </div>
+               </div>
+          </div>
+
+          <div style="display:none">
+               <div id="js-existingTripsMaximumDialog">
+                    <p class="message">Any changes to your vehicle protection will only apply to new trips requested after you switch plans.</p>
+                    <div class="buttonWrapper">
+                         <button class="button button--purple js-existingTripsMaximumSubmit">Confirm</button>
+                         <button class="button close-dialog">Cancel</button>
+                    </div>
+               </div>
+          </div>
+
+          <div style="display:none">
+               <div id="js-existingTripsTraditionalDialog">
+                    <p class="message">Any changes to your vehicle protection will only apply to new trips requested after you switch plans.</p>
+                    <div class="buttonWrapper">
+                         <button class="button button--purple js-existingTripsTraditionalSubmit">Confirm</button>
+                         <button class="button close-dialog">Cancel</button>
+                    </div>
+               </div>
+          </div>
+
+          <div style="display:none">
+               <div id="js-existingTripsLowestProtectionDialog">
+                    <p class="message">Based on the plan you selected, you will be responsible for up to $3,000 of damage costs for any covered incident.</p>
+                    <p class="message">Any changes to your vehicle protection will only apply to new trips requested after you switch plans.</p>
+                    <div class="buttonWrapper">
+                         <button class="button button--purple js-existingTripsLowestProtectionSubmit" >Confirm</button>
+                         <button class="button close-dialog">Cancel</button>
+                    </div>
+               </div>
+          </div>
+
+     </div>
+</div>
+
+
+
+
+
+
+
+
+<!--
+<div class="block-section bg-color4">
+<div class="container">
+<div class="panel panel-md">
+<div class="panel-body">
+<div class="row">
+
+<div class="col-md-12">
+<p><a  ui-sref="javascript:void(0)" class="btn btn-primary btn-theme btn-block">
+
+Vehicle Protection</a>
+</p>
+<p>
+<div ng-include = "'/elements/flashMessage.html'"></div>
+</p>
+<!-- form protection -->
+<!-- <div class="col-md-4">
+<form name = "form" ng-submit = "form.$valid && form.$submitted && premium()" novalidate>
+<p><b><h6>Get extra peace of mind with top-tier protection</h6></b></p>
+<div class="radio">
+<label class="checkbox-inline" ng-init="premium='Premium'">
+<input type="hidden" class="" name="premium" ng-model = "premium" value='Premium' /><h3><span class="label label-success">Premium</span></h3>
+</label>
+</div>
+<p>Earn 65% of the trip price</p>
+<p>$1 million liability insurance</p>
+<p>Zero out-of-pocket cost for covered damage to your car </p>
+<p>Replacement car during repair</p>
+<p>Covers exterior wear and tear</p>
+<p>Covers loss of rental income </p>
+
+<div class="form-group no-margin">
+<button type="submit" class="btn btn-primary btn-lg btn-t-primary btn-block" name="">Submit</button>
+</div>
+</form><!-- form protection -->
+<!-- </div> -->
+
+<!--
+<div class="col-md-4">
+
+<form name = "form" ng-submit = "form.$valid && form.$submitted && standred()" novalidate>
+<p><b><h6>Rest easy with our Standred Protection plan</h6></b></p>
+<div class="radio">
+<label class="checkbox-inline" ng-init="standred='Standred' ">
+<input type="hidden" class="" name="Standred" ng-model = "standred"  /><h3><span class="label label-success">Standred</span></h3>
+</label>
+</div>
+<p>Earn 75% of the trip price</p>
+<p>$1 million liability insurance</p>
+<p>Zero out-of-pocket cost for  </p>
+<p>covered damage to your car*</p>
+<p>Replacement car during repair</p>
+<p><br></p>
+<br>
+
+
+<div class="form-group no-margin">
+<button type="submit" class="btn btn-primary btn-lg btn-t-primary btn-block" name="">Submit</button>
+
+</div>
+</form><!-- form protection -->
+<!-- </div>
+<div class="col-md-4">
+<form name = "form" ng-submit = "form.$valid && form.$submitted && basic()" novalidate>
+<p><b><h6>Rest easy with our default and most Basic plan</h6></b></p>
+<div class="radio">
+<label class="checkbox-inline " ng-init="basic='Basic'">
+<input type="hidden" class="" name="basic" ng-model = "basic" /><h3><span class="label label-success">Basic</span></h3>
+</label>
+</div>
+<p>Earn 85% of the trip price </p>
+<p>$1 million liability insurance</p>
+<p>$3,000 max out-of-pocket </p>
+<p>cost** for covered damage to your car* </p>
+<p><br></p>
+<p><br></p>
+<br>
+
+
+<div class="form-group no-margin">
+<button type="submit" class="btn btn-primary btn-lg btn-t-primary btn-block" name="changePassword">Submit</button>
+
+</div>
+</form><!-- form protection -->
+<!-- </div>
+
+</div>
+</div>
+</div>
+</div>
+
+
+</div>
+</div> -->

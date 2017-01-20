@@ -1,0 +1,154 @@
+<!-- <div class="u-contentTopPadding u-contentBottomPadding">
+     <div id="dialog-frame-container" class="container">
+          <div id="dialog-frame" class="dialog-container">
+               <div>
+                    <div id="login-dialog" class="auth-dialog-content">
+                         <h5>Sign Up</h5>
+                         <div class="login-content dialog-content u-clearFix">
+
+                              <div class="inputs">
+                                   <p>
+                                        <div ng-include = "'/elements/flashMessage.html'"></div>
+                                   </p>
+                                   <form name = "form" ng-submit = "form.$submitted && form.$valid && register()" novalidate>
+                                        <div class="input-container">
+                                             <label for="username">First Name</label>
+                                             <input placeholder="Enter Your First Name" type="firstname" autocapitalize="off" tabindex="1"  id="firstname" ng-model = "DataModel.name.first"  name="firstname"  ng-pattern="/^[a-zA-Z ]{1,25}$/"  class="form-control email required" required/>
+
+                                             <div ng-messages="form.firstname.$error" ng-if="form.firstname.$touched ||form.firstname.$error.pattern ||form.$submitted">
+                                                  <div ng-messages-include="/elements/notifyMessages.html"></div>
+                                             </div>
+                                        </div>
+                                        <div class="input-container">
+                                             <label for="username">Last Name</label>
+                                             <input placeholder="Enter Your Last Name" type="firstname" autocapitalize="off" tabindex="2"  id="lastname" ng-model = "DataModel.name.last"  name="lastname" ng-pattern="/^[a-zA-Z ]{1,25}$/"  class="form-control required" required/>
+
+                                             <div ng-messages="form.lastname.$error" ng-if="form.lastname.$touched || form.lastname.$error.pattern || form.$submitted">
+                                                  <div ng-messages-include="/elements/notifyMessages.html"></div>
+                                             </div>
+                                        </div>
+
+                                        <div class="input-container">
+                                             <label for="email">Email</label>
+                                             <input tabindex="3" type="email" class="form-control" name="email" ng-model = "DataModel.email" id="data_email" placeholder="Enter Your email" required/>
+
+                                             <div ng-messages="form.email.$error" ng-if="form.email.$touched || form.$submitted">
+                                                  <div ng-messages-include="/elements/notifyMessages.html"></div>
+                                             </div>
+                                        </div>
+
+                                        <div class="input-container">
+                                             <label for="password">Password</label>
+                                             <input tabindex="4"  placeholder="Enter Your password" id="password" type="password" ng-model ="DataModel.password" name="password" id="data_password"  minlength = "6" maxlength = "10"  class="form-control required"  required/>
+
+                                             <div ng-messages="form.password.$error" ng-if="form.password.$touched || form.$submitted">
+                                                  <div ng-messages-include="/elements/notifyMessages.html"></div>
+                                             </div>
+                                        </div>
+
+
+                                        <div class="input-container">
+                                             <button tabindex="4" id="submit" type="submit" class="submit button button--green">Sign Up</button>
+                                        </div>
+
+                                   </form>
+                              </div>
+                         </div>
+                         <p class="signup-prompt dialog-content">Already have an account? <a class="dialog-link" data-dialog-class="no-titlebar" ui-sref="anon.login">Login</a>.</p>
+                         <div class="loading-indicator">
+                              <span>Logging in...</span>
+                         </div>
+                    </div>
+               </div>
+
+          </div>
+     </div>
+
+</div> -->
+
+ <div class="u-contentTopPadding u-contentBottomPadding">
+     <div id="dialog-frame-container" class="container">
+          <div id="dialog-frame" class="dialog-container">
+<div data-init="require(['auth_dialogs'], function(auth_dialogs){auth_dialogs.initEmailSignupForm('#signup-email', 5, 72)})" id="ui-id-11" style="display: block; width: auto; min-height: 0px; max-height: none; height: auto;" class="ui-dialog-content ui-widget-content">
+    <div class="auth-dialog-content" id="signup-email">
+
+        <div class="dialog-content">
+             <p>
+                  <div ng-include = "'/elements/flashMessage.html'"></div>
+             </p>
+            <form name = "form" ng-submit = "form.$submitted && form.$valid && register()" novalidate>
+                <div class="input-container">
+                    <label for="firstName">First name (from your license)</label>
+
+                    <input placeholder="Enter Your First Name" type="text" autocapitalize="off" tabindex="1"  id="firstname" ng-model = "DataModel.name.first"  name="firstname"  ng-pattern="/^[a-zA-Z ]{1,25}$/"  class="form-control email required" required/>
+
+                    <div ng-messages="form.firstname.$error" ng-if="form.firstname.$touched ||form.firstname.$error.pattern ||form.$submitted">
+                         <div ng-messages-include="/elements/notifyMessages.html"></div>
+                    </div>
+                </div>
+
+                <div class="input-container">
+                    <label for="lastName">Last name (from your license)</label>
+
+                    <input placeholder="Enter Your Last Name" type="text"  tabindex="2"  id="lastname" ng-model = "DataModel.name.last"  name="lastname" ng-pattern="/^[a-zA-Z ]{1,25}$/"  class="form-control required" required/>
+
+                    <div ng-messages="form.lastname.$error" ng-if="form.lastname.$touched || form.lastname.$error.pattern || form.$submitted">
+                         <div ng-messages-include="/elements/notifyMessages.html"></div>
+                    </div>
+                </div>
+
+                <div class="spacer"></div>
+
+                <div class="input-container">
+                    <label for="email">Email</label>
+
+                    <input  placeholder="Enter Your email" tabindex="3" type="email" class="form-control" name="email" ng-model = "DataModel.email" id="data_email"  required/>
+
+                    <div ng-messages="form.email.$error" ng-if="form.email.$touched || form.$submitted">
+                         <div ng-messages-include="/elements/notifyMessages.html"></div>
+                    </div>
+                </div>
+
+                <div class="spacer"></div>
+
+                <div class="input-container">
+                    <label for="password">Choose a password</label>
+
+                    <input tabindex="4"  placeholder="Enter Your password" id="password" type="password" ng-model ="DataModel.password" name="password" id="data_password"  minlength = "6" maxlength = "10"  class="form-control required"  required/>
+
+                    <div ng-messages="form.password.$error" ng-if="form.password.$touched || form.$submitted">
+                         <div ng-messages-include="/elements/notifyMessages.html"></div>
+                    </div>
+                </div>
+
+                <div class="spacer"></div>
+
+                <!-- <div class="input-container full-width">
+                    <input type="checkbox" value="true" checked="checked" name="signedUpForMarketingCommunication" id="signedUpForMarketingCommunication"><input type="hidden" value="on" name="_signedUpForMarketingCommunication">
+                    <label for="signedUpForMarketingCommunication" class="checkbox-label">Promotions and announcements</label>
+                </div> -->
+
+                <div class="spacer"></div>
+
+
+
+
+
+                <button class="button button--green" type="submit">Sign up</button>
+
+
+            </form>
+            <p class="signup-prompt dialog-content">Already have an account? <a class="dialog-link" data-dialog-class="no-titlebar" ui-sref="anon.login">Login</a>.</p>
+            <div class="loading-indicator">
+                 <span>Logging in...</span>
+            </div>
+        </div>
+
+
+    </div>
+
+</div>
+</div>
+</div>
+
+</div>

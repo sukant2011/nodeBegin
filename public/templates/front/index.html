@@ -1,0 +1,366 @@
+
+
+<!--BEGIN_CONTENT-->
+
+<div id="home" class="u-hidden" data-driver-id=""></div>
+<div class="container container--fluid container--darkBackground interstitial interstitial--truckMountains">
+     <div class="container u-alignCenter">
+          <div class="slidingDrawer is-expanded js-searchFormHeadingSlidingDrawer">
+               <h5 class="supertitle"> LEVEL UP.</h5>
+               <h1 class="interstitial-heading">RENT AN EXOTIC</h1>
+          </div>
+
+          <div class="" ng-init = "showDuration == false">
+               <form  class="searchForm js-searchForm">
+                    <div class="searchForm-line js-searchFormLocationLine searchForm-searchInput">
+                         <span class="searchForm-label js-searchFormLocationLabel">At</span>
+                         <input ng-focus = "dispalyDuration()" class="searchForm-input js-searchFormLocationInput u-darkerPlaceholder"  ng-class = "isRequired?'requiredInput':''" style="text-align:center; padding-left: 0px;" type="text" size="23" name="name" gm-places-autocomplete ng-model="autocomplete"
+                         name="location" placeholder="Where are you traveling?"/>
+                    </div>
+                    <div class="searchForm-line" ng-show = "showDuration == true">
+                         <span class="searchForm-label">From</span>
+                         <div class="searchForm-dateTimePicker dateTimePicker" style="margin-left: 56px;">
+                              <!-- <input type="text" readonly="true" placeholder="Pickup date" class="dateTimePicker-date searchForm-input searchForm-input--datePicker" size="10" id="datepicker" name="startDate"> -->
+                              <input readonly ng-init = "ctrl.fromDate = fromDate" type="text" class="dateTimePicker-date searchForm-input searchForm-input--datePicker" ng-model="ctrl.fromDate" size="10" id = "startDate"/>
+
+                              <!-- <button type="button" class="btn btn-default" ng-click="ctrl.openCalendar($event, 'fromDate')"><i class="fa fa-calendar"></i></button> -->
+                              <span class="styled-select-container">
+                                   <select id="start-time" name="startTime" ng-model="ctrl.fromTime" style="margin-left: 30px; margin-top: 8px; width: 112px;">
+                                        <option value="">Pick Up Time</option>
+                                        <option value="12:30 AM">12:30 AM</option>
+                                        <option value="1:00 AM">1:00 AM</option>
+                                        <option value="1:30 AM">1:30 AM</option>
+                                        <option value="2:00 AM">2:00 AM</option>
+                                        <option value="2:30 AM">2:30 AM</option>
+                                        <option value="3:00 AM">3:00 AM</option>
+                                        <option value="3:30 AM">3:30 AM</option>
+                                        <option value="4:00 AM">4:00 AM</option>
+                                        <option value="4:30 AM">4:30 AM</option>
+                                        <option value="5:00 AM">5:00 AM</option>
+                                        <option value="5:30 AM">5:30 AM</option>
+                                        <option value="6:00 AM">6:00 AM</option>
+                                        <option value="6:30 AM">6:30 AM</option>
+                                        <option value="6:30 AM">7:00 AM</option>
+                                        <option value="7:30 AM">7:30 AM</option>
+                                        <option value="8:00 AM">8:00 AM</option>
+                                        <option value="8:30 AM0">8:30 AM</option>
+                                        <option value="9:00 AM">9:00 AM</option>
+                                        <option value="9:30 AM">9:30 AM</option>
+                                        <option value="10:00 AM">10:00 AM</option>
+                                        <option value="10:30 AM">10:30 AM</option>
+                                        <option value="11:00 AM">11:00 AM</option>
+                                        <option value="11:30 AM">11:30 AM</option>
+                                        <option value="12:00 PM">noon</option>
+                                        <option value="12:30 PM">12:30 PM</option>
+                                        <option value="1:00 PM">1:00 PM</option>
+                                        <option value="1:30 PM">1:30 PM</option>
+                                        <option value="2:00 PM">2:00 PM</option>
+                                        <option value="2:30 PM">2:30 PM</option>
+                                        <option value="3:00 PM">3:00 PM</option>
+                                        <option value="3:30 PM">3:30 PM</option>
+                                        <option value="4:00 PM">4:00 PM</option>
+                                        <option value="4:30 PM">4:30 PM</option>
+                                        <option value="5:00 PM">5:00 PM</option>
+                                        <option value="5:30 PM">5:30 PM</option>
+                                        <option value="6:00 PM">6:00 PM</option>
+                                        <option value="6:30 PM">6:30 PM</option>
+                                        <option value="7:00 PM">7:00 PM</option>
+                                        <option value="7:30 PM">7:30 PM</option>
+                                        <option value="8:00 PM">8:00 PM</option>
+                                        <option value="8:30 PM">8:30 PM</option>
+                                        <option value="9:00 PM">9:00 PM</option>
+                                        <option value="9:30 PM">9:30 PM</option>
+                                        <option value="10:00 PM">10:00 PM</option>
+                                        <option value="10:30 PM">10:30 PM</option>
+                                        <option value="11:00 PM">11:00 PM</option>
+                                        <option value="11:30 PM">11:30 PM</option>
+                                   </select>
+                                   <span class="searchForm-inputText  js-timeInput">10:00 AM</span>
+                              </span>
+                         </div>
+                    </div>
+                    <div class="searchForm-line is-expanded" ng-show = "showDuration == true">
+                         <span class="searchForm-label">Until</span>
+                         <div class="searchForm-dateTimePicker dateTimePicker">
+                              <input readonly ng-init = "ctrl.toDate = toDate" type="text" class="dateTimePicker-date searchForm-input searchForm-input--datePicker" ng-model="ctrl.toDate"  enable-time="false" size="10" id = "endDate"/>
+
+                              <!-- <button type="button" class="btn btn-default" ng-click="ctrl.openCalendar($event, 'toDate')"><i class="fa fa-calendar"></i></button> -->
+                              <span class="styled-select-container">
+                                   <select id="end-time" name="endTime" ng-model="ctrl.toTime" style="margin-left: 23px; margin-top: 9px; width: 112px;">
+                                        <option value="">Pick Up Time</option>
+                                        <option value="12:30 AM">12:30 AM</option>
+                                        <option value="1:00 AM">1:00 AM</option>
+                                        <option value="1:30 AM">1:30 AM</option>
+                                        <option value="2:00 AM">2:00 AM</option>
+                                        <option value="2:30 AM">2:30 AM</option>
+                                        <option value="3:00 AM">3:00 AM</option>
+                                        <option value="3:30 AM">3:30 AM</option>
+                                        <option value="4:00 AM">4:00 AM</option>
+                                        <option value="4:30 AM">4:30 AM</option>
+                                        <option value="5:00 AM">5:00 AM</option>
+                                        <option value="5:30 AM">5:30 AM</option>
+                                        <option value="6:00 AM">6:00 AM</option>
+                                        <option value="6:30 AM">6:30 AM</option>
+                                        <option value="6:30 AM">7:00 AM</option>
+                                        <option value="7:30 AM">7:30 AM</option>
+                                        <option value="8:00 AM">8:00 AM</option>
+                                        <option value="8:30 AM0">8:30 AM</option>
+                                        <option value="9:00 AM">9:00 AM</option>
+                                        <option value="9:30 AM">9:30 AM</option>
+                                        <option value="10:00 AM">10:00 AM</option>
+                                        <option value="10:30 AM">10:30 AM</option>
+                                        <option value="11:00 AM">11:00 AM</option>
+                                        <option value="11:30 AM">11:30 AM</option>
+                                        <option value="12:00 PM">noon</option>
+                                        <option value="12:30 PM">12:30 PM</option>
+                                        <option value="1:00 PM">1:00 PM</option>
+                                        <option value="1:30 PM">1:30 PM</option>
+                                        <option value="2:00 PM">2:00 PM</option>
+                                        <option value="2:30 PM">2:30 PM</option>
+                                        <option value="3:00 PM">3:00 PM</option>
+                                        <option value="3:30 PM">3:30 PM</option>
+                                        <option value="4:00 PM">4:00 PM</option>
+                                        <option value="4:30 PM">4:30 PM</option>
+                                        <option value="5:00 PM">5:00 PM</option>
+                                        <option value="5:30 PM">5:30 PM</option>
+                                        <option value="6:00 PM">6:00 PM</option>
+                                        <option value="6:30 PM">6:30 PM</option>
+                                        <option value="7:00 PM">7:00 PM</option>
+                                        <option value="7:30 PM">7:30 PM</option>
+                                        <option value="8:00 PM">8:00 PM</option>
+                                        <option value="8:30 PM">8:30 PM</option>
+                                        <option value="9:00 PM">9:00 PM</option>
+                                        <option value="9:30 PM">9:30 PM</option>
+                                        <option value="10:00 PM">10:00 PM</option>
+                                        <option value="10:30 PM">10:30 PM</option>
+                                        <option value="11:00 PM">11:00 PM</option>
+                                        <option value="11:30 PM">11:30 PM</option>
+                                   </select>
+                                   <span class="searchForm-inputText  js-timeInput">10:00 AM</span>
+                              </span>
+                         </div>
+                    </div>
+                    <div class="searchForm-buttonWrapper" ng-if = "showDuration == true">
+                         <button class="button button--green searchForm-button" type="button" ng-click="searchVehicle(ctrl)"></button>
+                    </div>
+               </form>
+          </div>
+     </div>
+</div>
+<div class="container container--fluid interstitial interstitial--wiggle">
+     <div class="container u-alignCenter">
+          <h2 class="interstitial-heading text--purple">Put Your Toys to Work</h2>
+          <div class="grid grid--noGutter u-marginLarger">
+               <div class="grid-item grid-item--6 grid-item--push3">
+                    <h5>Have An Exotic Car?</h5>
+                    <p>Whether you are gone for the summer, not wanting to winterize, or have an extra toy that you want to put to work, we can help.</p>
+                    <p>Not only will you create a new income stream, you will earn free rentals. Need a ride when you fly out to LA next week? Now you're covered.</p>
+               </div>
+          </div>
+          <div class="buttonWrapper buttonWrapper--largestTopMargin"> <a class="button button--purple button--large" ui-sref="anon.list-your-car">List your car</a> </div>
+     </div>
+</div>
+<!-- <div class="container container--fluid u-alignCenter interstitial">
+<div id="thumbnail-slider">
+<div class="inner">
+<ul>
+<li><a class="thumb" href="images/7.jpg"></a>
+<div>
+<h4>First Thumbnail label</h4>
+<p>elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+</div>
+</li>
+<li><a class="thumb" href="images/5.jpg"></a>
+<div>
+<h4>First Thumbnail label</h4>
+<p>elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+</div>
+</li>
+<li><a class="thumb" href="images/2.jpg"></a>
+<div>
+<h4>First Thumbnail label</h4>
+<p>elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+</div>
+</li>
+<li><a class="thumb" href="images/3.jpg"></a>
+<div>
+<h4>First Thumbnail label</h4>
+<p>elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+</div>
+</li>
+<li><a class="thumb" href="images/4.jpg"></a>
+<div>
+<h4>First Thumbnail label</h4>
+<p>elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+</div>
+</li>
+<li><a class="thumb" href="images/5.jpg"></a>
+<div>
+<h4>First Thumbnail label</h4>
+<p>elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+</div>
+</li>
+<li><a class="thumb" href="images/6.jpg"></a>
+<div>
+<h4>First Thumbnail label</h4>
+<p>elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+</div>
+</li>
+<li><a class="thumb" href="images/7.jpg"></a>
+<div>
+<h4>First Thumbnail label</h4>
+<p>elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+</div>
+</li>
+<li><a class="thumb" href="images/8.jpg"></a>
+<div>
+<h4>First Thumbnail label</h4>
+<p>elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+</div>
+</li>
+<li><a class="thumb" href="images/9.jpg"></a>
+<div>
+<h4>First Thumbnail label</h4>
+<p>elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div> -->
+<div class="container container--fluid interstitial interstitial--camper">
+     <div class="container u-alignCenter">
+          <!-- <h5 class="supertitle">Rent a car</h5> -->
+          <h1>We're Different</h1>
+          <div class="section">
+               <div class="grid grid--withVerticalSpacing">
+                    <div class="grid-item grid-item--4 grid-item--medium4 grid-item--small12">
+                         <h5>$0 DEPOSIT</h5>
+                         <div class="horizontalDivider horizontalDivider--small"></div>
+                         <p class="text--small">Traditional exotic car rental companies have you put down a security deposit that is thousands of dollars.
+                         </p>
+                         <p class="text--small">We're different.</p>
+                    </div>
+                    <div class="grid-item grid-item--4 grid-item--medium4 grid-item--small12">
+                         <h5>Save 33-50%</h5>
+                         <div class="horizontalDivider horizontalDivider--small"></div>
+                         <p class="text--small">Traditional exotic car rental companies have brick-and-mortar overhead and pass the high costs to consumers like you.
+                         </p>
+                         <p class="text--small">We're different.</p>
+                    </div>
+                    <div class="grid-item grid-item--4 grid-item--medium4 grid-item--small12">
+                         <h5>INFINITE INVENTORY</h5>
+                         <div class="horizontalDivider horizontalDivider--small"></div>
+                         <p class="text--small">Traditional exotic car rental companies are constrained by what can fit on their small showroom floor.
+                         </p>
+                         <p class="text--small">We're different.</p>
+                    </div>
+               </div>
+          </div>
+     </div>
+</div>
+
+<div class="container container--fluid container--darkBackground interstitial interstitial--pathWithCar">
+     <div class="container u-alignCenter">
+          <!-- <h2>The open road, delivered</h2> -->
+          <h2>Launching in Los Angeles.</h2>
+          <p class="text--large"> Sign up to be notified when we launch in your city </p>
+          <form name ="newsletter"  ng-submit = "newsletter.$submitted && newsletter.$valid && submitNewsletter()" novalidate>
+          <div class="input-text-field">
+          <div ng-include = "'/elements/flashMessage.html'"></div>
+          <input type="email" placeholder="Email Address" name="email" ng-model= "email" required>
+          <button type="submit">Notify Me</button>
+          <div ng-messages="newsletter.email.$error" ng-if="newsletter.email.$invalid && newsletter.email.$dirty &&  newsletter.$submitted">
+          <div ng-messages-include="/elements/notifyMessages.html"></div>
+          </div>
+         </div>
+         </form>
+          <div class="buttonWrapper buttonWrapper--largestTopMargin"> <a class="button button--green button--large" ui-sref="anon.search.list">Browse cars </a> </div>
+     </div>
+</div>
+
+<!-- full-slider -->
+<div class="container-fluid ">
+     <div class="row">
+          <div class="col-md-12 pad_o">
+               <div class="carousel slide index-slider-cls" id="carousel-743518">
+                    <ol class="carousel-indicators">
+                         <li class="active" data-slide-to="0" data-target="#carousel-743518">
+                         </li>
+                         <li data-slide-to="1" data-target="#carousel-743518">
+                         </li>
+                         <li data-slide-to="2" data-target="#carousel-743518">
+                         </li>
+                    </ol>
+                    <div class="carousel-inner">
+                         <div class="item active">
+                              <img alt="Carousel Bootstrap First" src="images/2017BentleyBentayga.jpg" />
+                              <div class="carousel-caption">
+                                   <h4>2017 Bentley Bentayga</h4>
+                                   <!-- <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p> -->
+                              </div>
+                         </div>
+                         <div class="item">
+                              <img alt="Carousel Bootstrap Second" src="images/2016-Ferrari-488-Spider-front-three-quarterse.jpg" />
+                              <div class="carousel-caption">
+                                   <h4>2016 Ferrari 488 GTB</h4>
+                                   <!-- <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p> -->
+                              </div>
+                         </div>
+                         <div class="item">
+                              <img alt="T2016 Rolls-Royce Da" src="images/2016 RollsRoyceDawn.jpg" />
+                              <div class="carousel-caption">
+                                   <h4>2016 Rolls Royce Dawn</h4>
+                                   <!-- <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p> -->
+                              </div>
+                         </div>
+                         <div class="item">
+                              <img alt="2016 Mercedes-Benz G63 6x6" src="images/2016MercedesG636x6.jpg" />
+                              <div class="carousel-caption">
+                                   <h4>2016 Mercedes-Benz G63 6x6</h4>
+                                   <!-- <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p> -->
+                              </div>
+                         </div>
+                    </div> <a class="left carousel-control" href="#carousel-743518" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a> <a class="right carousel-control" href="#carousel-743518" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+               </div>
+          </div>
+     </div>
+</div>
+
+<!-- full-slider -->
+<div class="container container--fluid container--darkBackground interstitial interstitial--mountainSwitchback u-table">
+     <div class="container u-alignCenter u-tableCell u-verticalAlignMiddle">
+          <h1>Corsa Stories</h1>
+          <p class="text--large">Unbelievable things happen when you're driving an exotic car</p>
+          <div class="buttonWrapper buttonWrapper--largestTopMargin"> <a class="button button--green" ui-sref="anon.blog">Read more</a> </div>
+     </div>
+</div>
+<div class="container container--fluid container--darkBackground interstitial interstitial--spiral u-table">
+     <div class="container u-alignCenter u-tableCell u-verticalAlignMiddle">
+          <h2>Exotic on Demand</h2>
+          <p>Is that a Ferrari in your pocket or are you just happy you downloaded the Corsa app?</p>
+          <div class="buttonWrapper buttonWrapper--largestTopMargin"> <a class="button appStoreButton appStoreButton--iTunesAppStore"
+               href="javascript:void(0)"
+               title="Download on the App Store"></a> <a class="button appStoreButton appStoreButton--googlePlayStore"
+               href="javascript:void(0)"
+               title="Get it on Google Play"></a> </div>
+          </div>
+     </div>
+     <div class="container container--fluid container--darkBackground interstitial interstitial--welcome u-positionRelative u-table">
+          <div class="container u-alignCenter u-tableCell u-verticalAlignMiddle">
+               <h1>See what moves us</h1>
+               <a href="javascript:void(0)" class="u-inlineBlock js-videoLink" ng-click = "playVideo()">
+                    <div class="videoPlayButton cardFlipper">
+                         <div class="cardFlipper-card js-videoLinkButton"> <img class="cardFlipper-face" src="stylesheets/front/cms-content/img/welcome/play_button_hover_en_2x.png"/> <img class="cardFlipper-face cardFlipper-face--back"
+                              src="stylesheets/front/cms-content/img/welcome/play_button_2x.png"/> </div>
+                         </div>
+                    </a> </div>
+                    <div class="container container--fluid videoPlayer js-videoPlayer">
+                         <div class="container u-tableCell u-verticalAlignMiddle">
+                              <div class="videoPlayer-frame fadeIn js-videoPlayerFrame">
+                                   <iframe id="videoEmbed" src="javascript:void(0)" width="500" height="212"
+                                   frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                              </div>
+                         </div>
+                    </div>
+               </div>

@@ -1,0 +1,139 @@
+<div  class="container">
+<div class="row">
+    <div class="col-lg-12">
+        <h5 class="page-header">My Trips</h5>
+        <p>
+            <div ng-include = "'/elements/flashMessage.html'"></div>
+       </p>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->
+<div class="row">
+    <div class="col-lg-12">
+        <!-- <div class="panel panel-default"> -->
+            <!-- /.panel-heading -->
+                <!-- <div class="dataTable_wrapper"> -->
+
+                    <div ng-if="orders != ''" >
+					<div class="table-responsive trip-cls-div">
+                    <table ng-table="ordersTable"  class="table table-hover table-bordered " id="">
+                        <thead>
+                            <tr>
+                                <th>Invoice</th>
+                               <th>Car Owner</th>
+                                <th>Car Name</th>
+                                <th>Payment Status</th>
+                                <th>Amount($)</th>
+                                <th>Start Date</th>
+                                <th>End Date</th>
+                                <th>Booking Date</th>
+                                 <!-- <th>Pdf</th> -->
+                                <th>Action</th>
+
+
+                        </thead>
+                        <tbody>
+
+                            <tr class="odd gradeX" ng-repeat="order in orders">
+
+                                <td>{{order.transactionId.invoice}}</td>
+                                 <td><a ui-sref="anon.publicProfile({userId : order.vehicleId.userId._id})">{{order.vehicleId.name}}</a></td>
+                                <td><a ui-sref="anon.vehicleDetail({refId : order.vehicleId._id})">{{order.vehicleId.specifications.make}} {{order.vehicleId.specifications.model}}  {{order.vehicleId.specifications.year}} </a></td>
+                                <!-- <td>{{order.vehicleId.specifications.make}}{{order.vehicleId.specifications.model}} {{order.vehicleId.specifications.year}}</td> -->
+
+                                <td>{{order.transactionId.paymentStatus}}</td>
+                                <td>{{order.transactionId.amount}}</td>
+                                <td>{{order.startDate | date : 'M/d/yy h:mm'}}</td>
+                                <td>{{order.endDate | date : 'M/d/yy h:mm'}}</td>
+                                <td>{{order.transactionId.timeStamp | date}}</td>
+                                <!-- <td>
+
+
+                               </td> -->
+                                     <!-- <a type="button" class="btn btn-link" ui-sref="user.invoice">PDF</a> -->
+                                    <td style="display:inline-flex; border:none;">
+                                          <a ng-click="downloadPdf(order)" href="javascript:void(0)" title="Download PDF" > <img  src="images/download-pdf.png" style="height:90%; width:90%;"></a>
+                                         <a  href="javascript:void(0)" ng-click="review(order.userId._id,order.vehicleId._id)" title="Review"><img  src="images/rsz_review-icon-png-1.png" style="height:100%; width:90%;"></a>
+                                     <!-- <button type="button" class="btn btn-link"  ng-click="massage(order.userId._id,order.vehicleId.userId)"> -->
+                                    <a href="javascript:void(0)" ng-click="massage(order.userId._id,order.vehicleId.userId,order.vehicleId.userId.fullname)" title="Send Message"> <img   src="images/rsz_1unnamed.png" style="height:100%; width:90%;"></a>
+                                </td>
+                                </tr>
+
+                        </tbody>
+                    </table>
+					   </div>
+               </div>
+                    <div ng-if = "orders == ''" class="alert alert-info">
+                          <div class="panel-heading" style="text-align: center; font-size: 25px;"> No Trip Found Yet </div>
+                       </div>
+
+                </div>
+                <!-- /.table-responsive -->
+            </div>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->
+</div>
+<script type="text/ng-template" id="review.html">
+     <div class="ui-dialog ui-widget ui-widget-content ui-corner-all ui-front dialog-container" style="display: block; height: auto; width: auto; top:100px;" tabindex="-1" role="dialog" aria-describedby="location-dialog" aria-labelledby="ui-id-1">
+          <div class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix">
+               <span id="ui-id-1" class="ui-dialog-title">&nbsp;</span>
+               <button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only ui-dialog-titlebar-close" role="button" aria-disabled="false" title="close"><span class="ui-button-icon-primary ui-icon ui-icon-closethick"></span><span class="ui-button-text">close</span>
+               </button>
+          </div>
+          <div data-delivery-location="" class="dialog dialog--large ui-dialog-content ui-widget-content" id="location-dialog" style="display: block; width: auto; min-height: 0px; max-height: none; height: auto;">
+         <h5>Review</h5>
+         <section>
+        <form name="review" novalidate>
+          <div class="form-group">
+           <label for="comment">Comment:</label>
+           <textarea class="form-control" rows="5" id="comment" name="comment" ng-model="$scope.paymentObj.comment" required></textarea>
+         </div>
+         <div class="form-group">
+          <label for="comment">Rating:</label>
+         <div star-rating rating-value="rating" max="5" on-rating-selected="rateFunction(rating)"></div>
+       </div>
+       </section>
+         <div class="buttonWrapper">
+                <button class="submit button button--green" ng-disabled="review.$invalid" ng-click="saveReview($scope.paymentObj)">Continue</button>
+                 <button class="js-closeLocationDialogButton button" type="button" ng-click="cancel()">Cancel</button>
+             </form>
+         </div>
+     </div></div>
+  </script>
+                                     <!-- Massage -->
+  <script type="text/ng-template" id="msg.html">
+       <div class="ui-dialog ui-widget ui-widget-content ui-corner-all ui-front dialog-container" style="display: block; height: auto; width: auto; top:100px;" tabindex="-1" role="dialog" aria-describedby="location-dialog" aria-labelledby="ui-id-1">
+            <div class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix">
+                 <span id="ui-id-1" class="ui-dialog-title">&nbsp;</span>
+                 <button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only ui-dialog-titlebar-close" role="button" aria-disabled="false" title="close"><span class="ui-button-icon-primary ui-icon ui-icon-closethick"></span><span class="ui-button-text">close</span>
+                 </button>
+            </div>
+            <div data-delivery-location="" class="dialog dialog--large ui-dialog-content ui-widget-content" id="location-dialog" style="display: block; width: auto; min-height: 0px; max-height: none; height: auto;">
+           <h5>Massage Box</h5>
+           <section>
+          <form name="review" novalidate>
+               <div class="form-group">
+               <label for="comment">To </label>
+
+               <!-- <input type="text" value="{{messageObj.name}}" name="name" /> -->
+               <h6><b>{{messageObj.name}}</b></h6>
+            </div>
+            <div class="form-group">
+             <label for="comment">Massage:</label>
+             <textarea class="form-control" rows="5" id="comment" name="comment" ng-model="msgObj.message" required></textarea>
+           </div>
+           <!-- <div class="form-group">
+            <label for="comment">Rating:</label>
+           <div star-rating rating-value="rating" max="5" on-rating-selected="rateFunction(rating)"></div>
+         </div> -->
+         </section>
+           <div class="buttonWrapper">
+                  <button class="submit button button--green" ng-disabled="review.$invalid" ng-click="SendMsg(msgObj)">send</button>
+                   <button class="js-closeLocationDialogButton button" type="button" ng-click="cancel()">Cancel</button>
+               </form>
+           </div>
+       </div></div>
+    </script>

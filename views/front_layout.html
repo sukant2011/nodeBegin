@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html  ng-app = "corsa">
+<head>
+     <title>Rent exotics for less - Corsa</title>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="icon" type="image/png" href="/images/corsa_app_flat.png"/>
+
+     <link rel="stylesheet" href="/stylesheets/front/angularcss/bootstrap.min.css">
+     <link rel="stylesheet" href="/stylesheets/front/angularcss/font-awesome.min.css">
+     <link rel="stylesheet" href="/stylesheets/front/angularcss/fullcalendar.min.css"/>
+     <link rel="stylesheet" href="/stylesheets/front/angularcss/rzslider.css">
+     <link rel='stylesheet' type='text/css' href='/stylesheets/front/webcss/main1.css' />
+     <link rel='stylesheet' type='text/css' href='/stylesheets/front/webcss/main2.css' />
+     <link rel='stylesheet' type='text/css' href='/stylesheets/front/webcss/custom.css' />
+     <link rel="stylesheet" type="text/css" href="/stylesheets/front/webcss/index.css"/>
+     <link href="/stylesheets/front/webcss/thumbnail-slider.css" rel="stylesheet" type="text/css" />
+     <style type="text/css">
+     .header .searchBar {display: none !important;}.nav-item--search {display: none !important;}.subNavList-item--search {display: block !important;}
+     </style>
+
+</head>
+               <body>
+                    <div id="pageContainer">
+                         <div id="narrow-display-test" style="display:none"></div>
+                         <header class="header container--fluid container--darkBackground js-header" ng-include="'/elements/header.html'"></header>
+                         <!--BEGIN_CONTENT-->
+                         <div class="loader-overlay" data-loading>
+                              <div class="loder-img">
+                                   <img width="120px;" src="/images/loadingspinner.gif">
+                              </div>
+                         </div>
+
+                         <div id="pageContainer-content" class="response-cls-main" ui-view>
+
+                         </div>
+                    </div>
+
+                    <footer class="container--fluid container--darkBackground footer js-footer" ng-include="'/elements/footer.html'"></footer>
+                    <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDjHcDfQM4SMKEJQDyuX7FnTkH7tKcp3JU&libraries=places"></script>
+                    <script src = "/javascripts/front/jquery.min.js"></script>
+                    <script src = "/javascripts/front/jquery-ui.min.js"></script>
+                    <script type="text/javascript" src="/javascripts/front/moment.min.js"></script>
+                    <script src = "/javascripts/front/angular.min.js"></script>
+                    <script src = "/javascripts/front/webMin.min.js"></script>
+                    <script src = "/javascripts/front/front.js"></script>
+                    <script src = "/javascripts/front/directives/anguShare.js"></script>
+                    <script src = "/javascripts/front/angularjs/ng-infinite-scroll.min.js"></script>
+
+
+               </body>
+</html>

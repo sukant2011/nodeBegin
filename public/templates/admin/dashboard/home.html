@@ -1,0 +1,28 @@
+<style>.activeChat{background: yellow}</style>
+<div>
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Dashboard</h1>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+    <div class="row">
+
+        <!-- <stats number="6" comments="Total comments!" colour="primary" type="comments"></stats> -->
+        <stats number="{{use.count}}" comments="Total Users!" colour="primary" type="user"></stats>
+        <!-- <stats number="18" comments="New Users!" colour="red" type="shopping-cart"></stats> -->
+        <stats number="{{DataModel.count}}" comments="Total Vehicles!" colour="green" type="support"></stats>
+
+    </div>
+
+    <!-- /.panel -->
+    <div class="row">
+
+            <!-- <chat></chat> -->
+             <!-- /.panel .chat-panel -->
+
+        <!-- /.col-lg-4 -->
+    </div>
+    <!-- /.row -->
+</div>

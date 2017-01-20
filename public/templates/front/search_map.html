@@ -1,0 +1,61 @@
+
+ <div class="map-container" style="width: 873.5px; height: 253.5px;">
+     <div id="map"></div>
+    <div id="repeat" ng-repeat="marker in markers" class="pop-cls-map">
+         <a id="country_container" href="#" ng-click="openInfoWindow($event, marker)"></a>
+    </div>
+          <!-- <div class="map-auto-update">
+               <label>
+                    <input type="checkbox" checked="checked" class="map-auto-update-checkbox">
+                    <span>Search for cars as I move the map</span>
+               </label>
+          </div>
+          <a class="map-redo-search-link" href="#">
+               Redo search here
+          </a> -->
+     </div>
+     <!-- <div class="js-noNearbyVehicles overlay overlay--centered u-hidden" style="display: block;">
+          No cars available in this area
+     </div> -->
+</div>
+
+    <style>
+
+    .infoWindowBlock{display:none;}
+    .gm-style-iw {
+       width: 350px !important;
+       top: 0 !important;
+       left: 0 !important;
+       border-radius: 2px 2px 0 0;
+    }
+#map{
+  height:800px;
+  box-shadow: 3px 3px 10px gray;
+  }
+#repeat{
+   display: inline;
+   }
+#country_container {
+   width: 100%;
+   margin: 13px 3px 3px 0px;
+   text-align: center;
+   min-width: 85px;
+   padding: 4px;
+   display: inline-table;
+   color: white;
+   background-color: black;
+   font-size: 12px;
+   cursor: pointer;
+   border: 1px solid black;
+   border-radius:13px;
+   }
+#country_container:hover {
+   box-shadow: 0px 0px 10px black;
+   background-color: gray;
+   border: 1px solid gray;
+   cursor: pointer;
+   }
+#names {
+   cursor: pointer;
+     }
+</style>

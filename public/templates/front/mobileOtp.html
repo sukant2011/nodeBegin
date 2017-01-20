@@ -1,0 +1,29 @@
+<div id="pageContainer-content" class="u-contentTopPadding u-contentBottomPadding">
+     <div ng-include = "'/elements/listCarNav.html'"></div>
+     <div class="container" id="list_vehicle_flow">
+          <div id="list_vehicle_base">
+               <div class="layoutSingleColumn js-listingEligibilityPage">
+                    <h5>Mobile Verification</h5>
+                    <p>
+                         <div ng-include = "'/elements/flashMessage.html'"></div>
+                    </p>
+                    <form class="form-horizontal" name = "form"  role="form" novalidate>
+                         <div class="form-line">
+                              <label for="js-listingAddressInput">Enter Your OTP</label>
+
+                              <input type="text" name="otp" class="text required ui-autocomplete-input" id="location" placeholder="Enter OTP Number" required  id="js-streetAddressInput" ng-model = "User.otp">
+
+                              <div ng-messages="form.otp.$error" ng-if="form.otp.$touched || form.$submitted">
+                                   <div ng-messages-include="/elements/notifyMessages.html"></div>
+                              </div>
+
+                         </div>
+                         <div class="buttonWrapper buttonWrapper--largeTopMargin">
+                              <input  type="submit" type = "submit" value="Confirm OTP" class="button button--purple js-submitButton" ng-disabled="form.$invalid" ng-click = "confirmOtp(User)"/>
+                         </div>
+                    </form>
+               </div>
+
+          </div>
+     </div>
+</div>

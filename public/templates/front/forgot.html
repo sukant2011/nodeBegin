@@ -1,0 +1,104 @@
+<div class="u-contentTopPadding u-contentBottomPadding">
+     <div id="dialog-frame-container" class="container" data-next="" data-referer="javascript:void(0)">
+          <div id="dialog-frame" class="dialog-container">
+               <div id="request-password-reset" >
+                    <div id="request-password-reset-container">
+                         <h5>Forgot password</h5>
+                         <div class="js-passwordResetMessages">
+
+                         </div>
+                         <p>
+                              <div ng-include = "'/elements/flashMessage.html'"></div>
+                         </p>
+                         <form name = "form" ng-submit = "form.$valid && form.$submitted && forgot()" novalidate>
+                              <div class="input-container">
+                                   <label for="email">Email</label>
+
+                                   <input type="email" class="form-control" name="email" ng-model = "DataModel.email" id="data_email" placeholder="Enter Your Email" autocomplete="off"  autofocus class="text" required/>
+                                   <div ng-messages="form.email.$error" ng-if="form.email.$touched || form.$submitted">
+                                        <div ng-messages-include="/elements/notifyMessages.html"></div>
+                                   </div>
+                                   <br/>
+                              </div>
+
+                              <div>
+                                   <button type="submit" name="sign_in" class="button button--green">Recover password</button>
+                                   <a  type="button"  class="button dialog-link"  href="#/login">
+                                        Back</a>
+                                   </div>
+                              </form>
+                         </div>
+                    </div>
+
+               </div>
+          </div>
+
+     </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="block-section bg-color4">
+     <div class="container">
+          <div class="panel panel-md">
+               <div class="panel-body">
+                    <div class="row">
+                         <div class="col-md-12">
+                              <p>
+                                   <div ng-include = "'/elements/flashMessage.html'"></div>
+                              </p> -->
+                              <!-- form login -->
+                              <!-- <form name = "form" ng-submit = "form.$valid && form.$submitted && forgot()" novalidate> -->
+                                   <!-- <div class="form-group">
+                                   <label>Mobile Number</label>
+                                   <input type="text" class="form-control" name="mobile" ng-model = "DataModel.email" id="data_mobile" placeholder="Enter Your Mobile" ng-pattern = "/^[789]\d{9}$/" minlength = "10" maxlength = "10" autocomplete="off" required/>
+                                   <div ng-messages="form.mobile.$error" ng-if="form.mobile.$touched || form.$submitted">
+                                   <div ng-messages-include="/elements/seeker_error_messages.html"></div>
+                              </div>
+                         </div> -->
+
+
+                         <!-- <div class="form-group">
+                              <label>Email</label>
+                              <input type="email" class="form-control" name="email" ng-model = "DataModel.email" id="data_email" placeholder="Enter Your email" autocomplete="off" required/>
+                              <div ng-messages="form.email.$error" ng-if="form.email.$touched || form.$submitted">
+                                   <div ng-messages-include="/elements/notifyMessages.html"></div>
+                              </div>
+
+                    </div>
+
+                    <div class="form-group no-margin">
+                         <button type="submit" class="btn btn-theme btn-lg btn-t-primary btn-block" name="login">Submit</button>
+
+                    </div>
+               </form><!- form login -->
+
+          <!-- </div>
+     </div>
+</div>
+</div>
+
+<div class="white-space-20"></div>
+<div class="text-center color-white">Not a member? &nbsp; <a ui-sref="anon.register" class="link-white"><strong>Create an account free</strong></a></div>
+</div>
+</div> -->

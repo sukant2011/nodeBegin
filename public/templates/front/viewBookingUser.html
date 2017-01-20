@@ -1,0 +1,62 @@
+
+<div class="u-contentTopPadding u-contentBottomPadding" id="pageContainer-content">
+     <div Details-reactroot="">
+          <div class="container"><h5>{{Details.userId.fullname}}'s Profile Information </h5><div class="layoutSingleColumn">
+          <div aria-busy="false">
+                <div class="emptyState emptyState">
+                    <!-- <div class="emptyState-icon emptyState-icon--noMessages"></div> -->
+                    <div class="emptyState-text u-alignCenter emptyState--noMessages">
+                         <img ng-if = "Details.userId.profile.photo" ng-src="{{Details.userId.profile.path + Details.userId.profile.photo}}" alt = "{{Details.userId.fullname}}" >
+                       <img ng-if = "!Details.userId.profile.photo" ng-src="/media/u_default.png" alt = "{{Details.userId.fullname}}">
+                    </div>
+               </div>
+          </div></div>
+          <div class="sidebar">
+               <div class="driverDetails">
+                    <div class="grid">
+                         <div class="grid-item grid-item--8 grid-item--medium8 grid-item--small8">
+                              <center><h5> Information</h5></center>
+                              <h6>Name:<b>{{Details.userId.fullname}}</b> </h6>
+                              <h6>Email:<b>{{Details.userId.email}}</b> </h6>
+                              <h6>Vehicle<b>{{Details.vehicleId.specifications.make+"-"+Details.vehicleId.specifications.model}}</b> </h6>
+                              <h6>Price:<b>${{Details.vehicleId.ridingCost}}</b> </h6>
+                              <h6>Payment:<b>{{Details.transactionId.paymentType}}</b> </h6>
+                              <h6>Start Date:<b>{{Details.startDate  | date : 'M/d/yy h:mm'}}</b></h6>
+                              <h6>End Date:<b>{{Details.startDate  | date : 'M/d/yy h:mm'}}</b></h6>
+                              <h6>Amount:<b>${{Details.transactionId.amount}}</b> </h6>
+                              <h6>Payment-status:<b>{{Details.transactionId.paymentStatus}}</b> </h6>
+
+                              </div>
+                              <!-- <div class="grid-item grid-item--4 grid-item--medium4 grid-item--small4">
+                              <div class="driverDetails-photo">
+                              <a ui-sref="user.profile"><img class="profilePhoto profilePhoto--large profilePhoto--round"ng-src="{{User.profile.path + User.profile.photo}}" alt="mangal singh"></a>
+                         </div>
+                         <!-- <div class="grid-item grid-item--4 grid-item--medium4 grid-item--small4">
+                              <div class="driverDetails-photo">
+                                   <a ui-sref="user.profile"><img class="profilePhoto profilePhoto--large profilePhoto--round"ng-src="{{User.profile.path + User.profile.photo}}" alt="mangal singh"></a>
+                              </div>
+                         </div> -->
+                    </div>
+               </div>
+          </div>
+     </div>
+</div>
+</div>
+</div>
+</div>
+<style>
+
+.emptyState-tex img {width:500px;height:450px;}
+.layoutSingleColumn {width: 502px;}
+
+
+}
+
+    .sidebar {
+        float: right;
+        margin-left: 20px;
+        margin-top: 17px;
+        width: 355px;
+
+    }
+</style>

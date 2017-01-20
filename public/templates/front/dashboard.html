@@ -1,0 +1,64 @@
+<div class="u-contentTopPadding u-contentBottomPadding" id="pageContainer-content">
+     <div class="container js-dashboard">
+          <div ng-include = "'/elements/flashMessage.html'"></div>
+          <h5>Dashboard</h5>
+          <div class="layoutSingleColumn list list--mediumSpacing">
+               <div class="box" id="dashboard-search">
+                    <h3 class="h3 h3--small u-alignCenter">Find the perfect car</h3>
+
+                    <form id="dashboard-search-form">
+                         <button type="button" class="button button--green"  ng-click ="search()">Find cars</button></a>
+                         <div>
+                              <!-- <input type="text" placeholder="Where are you traveling?" name="location" id="search-input-dashboard"> -->
+                              <input id="search-input-dashboard" gm-places-autocomplete ng-model="autocomplete"  placeholder="Where are you traveling?"/>
+                         </div>
+
+                         <div class="empty-search-error">
+                              <p>Please enter a city, airport name, or airport code</p>
+                         </div>
+                    </form>
+                    <div class="city-links">
+                         <p>Or browse these popular cities</p>
+                         <ul ng-repeat = "city in citiesArr">
+                              <li >
+                                   <a ui-sref = 'anon.search.list({message : {city : city._id}})'>{{city._id}}</a></li>
+                                   <li>
+                                   </ul>
+
+                    </div>
+                         </div>
+
+
+                         <div class="box u-alignCenter">
+                              <h3 class="h3 h3--small">Already own a car?</h3>
+                              <p>List your car to earn extra cash and fuel the adventures of travelers from around the world.</p>
+                              <div class="buttonWrapper--baseTopMargin">
+                                   <a class="button button--purple" ui-sref="anon.list-your-car">Get started</a>
+                              </div>
+                         </div>
+                    </div>
+                    <div class="sidebar list list--mediumSpacing">
+                         <div>
+                              <ul class="list list--mediumSpacing">
+                                   <!-- <li>
+                                   <a href="javascript:void(0)" class="button button--round button--fluid">
+                                   Link your Facebook account
+                              </a>
+
+
+
+                         </li> -->
+
+                         <li>
+                              <a ui-sref="user.referrals" class="button button--round button--fluid">
+                                   Refer a friend
+                              </a>
+                         </li>
+
+                    </ul>
+               </div>
+
+          </div>
+     </div>
+
+</div>

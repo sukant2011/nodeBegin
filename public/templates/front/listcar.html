@@ -1,0 +1,23 @@
+<div class="container">
+     <div class="carousel slide">
+          <ul class="nav nav-tabs">
+               <li class="active"><a ui-sref = "user.listcar.intro">Eligibility</a></li>
+               <li><a ui-sref = "user.listcar.info">Your Info</a></li>
+               <li><a ui-sref = "user.listcar.customize">Customize</a></li>
+               <li><a ui-sref = "user.listcar.photos">Photos</a></li>
+               <li><a ui-sref = "user.listcar.publish">Publish</a></li>
+
+               <li><a ui-sref = "user.listcar.driverlicense">DriverLicense</a></li>
+
+               <li><a ui-sref = "user.listcar.availability">Availability</a></li>
+               <li><a ui-sref = "user.listcar.details">Details</a></li>
+               <li><a ui-sref = "user.listcar.protection">Protection</a></li>
+               <li><a ui-sref = "user.listcar.afterpublish">After-publish</a></li>
+
+          </ul>
+          <p>
+               <div ng-include = "'/elements/flashMessage.html'"></div>
+          </p>
+          <div ui-view></div>
+     </div>
+</div>

@@ -1,0 +1,125 @@
+<div id="search-panel" class="searchListContainer panel-and-filters">
+
+     <div class="search-results-panel">
+          <div class="result-location-ribbon">
+               <div class="js-emptySearchResult"></div>
+               <div class="js-noLocationFound emptyState u-hidden">
+                    <div class="emptyState-icon--noNearbyVehicles"></div>
+                    <div class="emptyState-text">Location not found</div>
+                    <hr class="hr--small" />
+                    <p>We couldn’t find any cars near the location you entered.</p>
+                    <p>Try changing your filters, adjusting your dates, or exploring the map</p>
+                    <ul class="bulletedList">
+                         <li class="bulletedList--item">Searching for a city, ZIP code, intersection, or landmark</li>
+                    </ul>
+               </div>
+               <div class="js-noLocationProvided emptyState u-hidden">
+                    <div class="emptyState-icon--noNearbyVehicles"></div>
+                    <div class="emptyState-text">Where are you traveling?</div>
+                    <hr class="hr--small" />
+                    <p>Please enter a a city, ZIP code, intersection, or landmark.</p>
+               </div>
+          </div>
+
+          <div class="airportCurbsidePickupBanner">
+               <span class="airportCurbsidePickupBanner-dismiss"></span>
+               <div class="airportCurbsidePickupBanner-title">Curbside delivery</div>
+               <div class="airportCurbsidePickupBanner-description">Never wait at the rental counter again</div>
+               <hr />
+               <div class="airportCurbsidePickupBanner-cars">
+                    <span class="js-airportVehicleCount"></span> cars available at <span class="js-airportName"></span>
+               </div>
+          </div>
+
+          <div id="results"  ng-if = "myCars.length">
+               <div id="results">
+                    <ol class="vehicles" style="display: block;" infinite-scroll='lodingScrollData()' infinite-scroll-disabled='lodingData' infinite-scroll-distance='1'>
+                         <li ng-repeat = "car in myCars">
+                         <!-- <li ui-scroll="car in myCars">{{item}}</li> -->
+                              <a ui-sref="anon.vehicleDetail({refId : car._id})">
+                                   <span class="serach-list-cont searchListing">
+                                        <span class="image-container">
+                                             <img ng-if = "car.gallery.photos.length" ng-src="{{car.gallery.path + car.gallery.photos[0]}}">
+                                             <img ng-if = "!car.gallery.photos.length" ng-src="/media/v_default.jpg">
+                                        </span>
+                                        <span ng-if = "car.delivery.guestLocation.fee == 0" class="booking-features">
+                                             <span class="distance delivery">
+                                                  <label>FREE DELIVERY</label>
+                                             </span>
+                                        </span>
+                                        <div class="owner-photo profilePhoto--round" >
+                                             <img ng-if = "car.userId.profile.photo" ng-src="{{car.userId.profile.path + car.userId.profile.photo}}" alt = "{{car.userId.fullname}}" title = "{{car.userId.fullname}}">
+                                             <img ng-if = "!car.userId.profile.photo" ng-src="/media/u_default.png" alt = "{{car.userId.fullname}}" title = "{{car.userId.fullname}}">
+                                        </div>
+                                        <div class="details">
+                                             <span class="owner-name">{{car.userId.fullname}}</span>
+                                             <span class="make-model-year u-truncate">
+                                                  <span class="make-model">{{car.specifications.make}} {{car.specifications.model}}</span>
+                                                  <span class="year">{{car.specifications.year}}</span>
+                                             </span>
+                                             <span class="pricing">
+                                                  <span class="currency">$</span>
+                                                  <span class="value ">{{car.ridingCost}}</span>
+                                                  <span class="unit ">per day</span>
+                                             </span>
+                                             <span class="rating"> {{ car.noOfTrips }} TRIPS </span>
+                                        </div>
+                                   </a>
+                              </li>
+                         </div>
+                         <!-- <div ng-show='lodingData'>Loading data...</div> -->
+                         <div class="js-endOfSearchResults"></div>
+                    </div>
+
+                    <div class="result-location-ribbon" ng-if = "!myCars.length">
+
+                         <div class="js-emptySearchResult" style="display: block;">
+                              <div class="emptyState">
+                                   <div class="emptyState-icon--noNearbyVehicles"></div>
+                                   <div class="emptyState-text">No cars found</div>
+                                   <hr class="hr--small">
+                                   <p>Try changing your filters, adjusting your dates, or exploring the map</p>
+                                   <div class="buttonWrapper">
+                                        <span class="button button--large js-showMapViewButton js-noResultsShowMapButton"><a ui-sref = "anon.search.map">View Map</a></span>
+                                        <span class="button button--green button--large u-smallScreenOnly js-showFiltersButton js-noResultsShowFiltersButton">Change filters</span>
+                                   </div>
+                              </div>
+                         </div>
+                         <div class="js-noLocationFound emptyState u-hidden" style="display: none;">
+                              <div class="emptyState-icon--noNearbyVehicles"></div>
+                              <div class="emptyState-text">Location not found</div>
+                              <hr class="hr--small">
+                              <p>We couldn’t find any cars near the location you entered.</p>
+                              <p>Try changing your filters, adjusting your dates, or exploring the map</p>
+                              <ul class="bulletedList">
+                                   <li class="bulletedList--item">Searching for a city, ZIP code, intersection, or landmark</li>
+                              </ul>
+                         </div>
+                         <div class="js-noLocationProvided emptyState u-hidden" style="display: none;">
+                              <div class="emptyState-icon--noNearbyVehicles"></div>
+                              <div class="emptyState-text">Where are you traveling?</div>
+                              <hr class="hr--small">
+                              <p>Please enter a a city, ZIP code, intersection, or landmark.</p>
+                         </div>
+                    </div>
+
+               </div>
+
+               <!-- <div class="map-container hidden">
+               <div id="map" class="map map--fluid"></div>
+               <div id="map-refresh-controls" class="map-refresh-controls">
+               <div class="map-auto-update">
+               <label>
+               <input class="map-auto-update-checkbox" type="checkbox" checked />
+               <span>Search for cars as I move the map</span>
+          </label>
+     </div>
+     <a href="#" class="map-redo-search-link">
+     Redo search here
+</a>
+</div>
+<div class="js-noNearbyVehicles overlay overlay--centered u-hidden">
+No cars available in this area
+</div>
+</div> -->
+</div>

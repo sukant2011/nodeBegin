@@ -1,0 +1,259 @@
+
+
+<style>
+     .hideMsgDiv {display: none}
+</style>
+
+
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+
+
+<div class="u-contentTopPadding u-contentBottomPadding massage-cls-div" id="pageContainer-content">
+     <div class="container">
+          <div class="row">
+               <h3>Messages</h3>
+               <div ng-include = "'/elements/flashMessage.html'"></div>
+          </div>
+          <div class="row">
+
+                    <!-- Hide DIv  -->
+                    <div class="msg-wrap hiddenMsgDiv hideMsgDiv">
+                         <div class="media msg ">
+                              <a class="pull-left" ui-sref="anon.publicProfile({userId : msg.to._id})">
+                                   <img class="media-object" ng-if="msg.to.profile.photo" ng-src="{{msg.to.profile.path + msg.to.profile.photo}}" style="width: 32px; height: 32px;">
+                                   <img ng-if="!msg.to.profile.photo" style="width: 32px; height: 32px;" src="images/default_icon.png">
+                              </a>
+                              <div class="media-body">
+                                   <small class="pull-right time"></small>
+                                   <small class="pull-right time"><i class="fa fa-clock-o"></i></small>
+                                   <h6 class="media-heading"></h6>
+                                   <small class="col-lg-10"></small>
+                              </div>
+                         </div>
+                    </div>
+
+
+
+                   <div ng-if = "users.length">
+
+                    <div class="conversation-wrap col-lg-3" >
+                         <div  class="Autoscroll1">
+                         <div class="media conversation" ng-repeat="user in users">
+
+                              <a class="pull-left" href="javascript:void(0)" ng-click="getUserData(user._id)">
+                                   <img class="media-object" ng-if="user.portrait[0].photo" ng-src="{{user.portrait[0].path + user.portrait[0].photo}}" style="width: 50px; height: 50px;">
+                                   <img ng-if="!user.portrait[0].photo" style="width: 50px; height: 50px;" src="images/default_icon.png">
+                              </a>
+                              <div class="media-body">
+                                   <h6 class="media-heading">{{user.name[0].first}}</h6>
+                                   <small>{{user.name[0].last}}</small>
+                              </div>
+                         </div>
+                    </div>
+                    </div>
+                    <div ng-if = "toId != ''">
+                    <div class="message-wrap col-lg-8">
+                         <!-- <div ng-if = "a != ''"> -->
+                         <div  class="Autoscroll" id="messages">
+                         <div class="msg-wrap" ng-repeat="msg in allMsg">
+                              <div class="media msg ">
+                                   <a class="pull-left" ui-sref="">
+                                        <img class="media-object" ng-if="msg.from.profile.photo" ng-src="{{msg.from.profile.path + msg.from.profile.photo}}" style="width: 32px; height: 32px;">
+                                        <img ng-if="!msg.from.profile.photo" style="width: 32px; height: 32px;" src="images/default_icon.png">
+                                   </a>
+                                   <div class="media-body">
+                                        <small class="pull-right time">{{msg.createdDate | date : 'hh:mm:a'}}</small>
+                                        <small class="pull-right time"><i class="fa fa-clock-o"></i> {{msg.createdDate | date }},</small>
+                                        <h6 class="media-heading">{{msg.from.name.first}}</h6>
+                                        <small class="col-lg-10">{{msg.message}}</small>
+
+                                   </div>
+                              </div>
+                         </div>
+                    </div>
+                         <div class="send-wrap">
+                              <form name="reply" novalidate>
+                              <textarea class="form-control send-message" rows="3" ng-model="msg" placeholder="Write a reply..." required></textarea><br>
+
+                             </form>
+                             <button class="btn btn-primary   " ng-disabled="reply.$invalid"   ng-click="replyMsg(msg)"><i class="fa fa-plus"></i> Send </button>
+                         </div>
+
+                    </div>
+
+                    </div>
+                    <div class="message-wrap col-lg-8" ng-if = "toId == ''">
+                         <div   class="alert alert-warning" style="margin:60px">
+                              <div class="panel-heading" style="margin:30px;text-align: center; font-size: 25px;"> Please Click On User To see Messages </div>
+                         </div>
+                    </div>
+               </div>
+               <div class="message-wrap col-lg-12" ng-if = "!users.length">
+                    <div class="media msg ">
+                         <div   class="alert alert-warning">
+                              <div class="panel-heading" style="text-align: center; font-size: 25px;"> No Message Yet </div>
+                         </div>
+
+                    </div>
+               </div>
+          </div>
+     </div>
+</div>
+
+<style>
+.conversation-wrap
+{
+     box-shadow: -2px 0 3px #ddd;
+     padding:0;
+     max-height: 400px;
+     overflow: auto;
+}
+.conversation
+{
+     padding:5px;
+     border-bottom:1px solid #ddd;
+     margin:0;
+
+}
+
+.message-wrap
+{
+     box-shadow: 0 0 3px #ddd;
+     padding:0;
+
+
+}
+.Autoscroll{
+     overflow-y: scroll;
+     height:304px;
+}
+.Autoscroll1{
+     overflow-y: scroll;
+     height:300px;
+}
+.msg
+{
+     padding:5px;
+     /*border-bottom:1px solid #ddd;*/
+     margin:0;
+}
+.msg-wrap
+{
+     padding:10px;
+     max-height: 400px;
+
+
+}
+
+.time
+{
+     color:#bfbfbf;
+}
+
+.send-wrap
+{
+     border-top: 1px solid #eee;
+     border-bottom: 1px solid #eee;
+     padding:10px;
+     /*background: #f8f8f8;*/
+}
+
+.send-message
+{
+     resize: none;
+}
+
+.highlight
+{
+     background-color: #f7f7f9;
+     border: 1px solid #e1e1e8;
+}
+
+.send-message-btn
+{
+     border-top-left-radius: 0;
+     border-top-right-radius: 0;
+     border-bottom-left-radius: 0;
+
+     border-bottom-right-radius: 0;
+}
+.btn-panel
+{
+     background: #f7f7f9;
+}
+
+.btn-panel .btn
+{
+     color:#b8b8b8;
+
+     transition: 0.2s all ease-in-out;
+}
+
+.btn-panel .btn:hover
+{
+     color:#666;
+     background: #f8f8f8;
+}
+.btn-panel .btn:active
+{
+     background: #f8f8f8;
+     box-shadow: 0 0 1px #ddd;
+}
+
+.btn-panel-conversation .btn,.btn-panel-msg .btn
+{
+
+     background: #f8f8f8;
+}
+.btn-panel-conversation .btn:first-child
+{
+     border-right: 1px solid #ddd;
+}
+
+.msg-wrap .media-heading
+{
+     color:#003bb3;
+     font-weight: 700;
+}
+
+
+.msg-date
+{
+     background: none;
+     text-align: center;
+     color:#aaa;
+     border:none;
+     box-shadow: none;
+     border-bottom: 1px solid #ddd;
+}
+
+
+body::-webkit-scrollbar {
+     width: 12px;
+}
+
+
+/* Let's get this party started */
+::-webkit-scrollbar {
+     width: 6px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+     /*        -webkit-border-radius: 10px;
+     border-radius: 10px;*/
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+     /*        -webkit-border-radius: 10px;
+     border-radius: 10px;*/
+     background:#ddd;
+     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+}
+::-webkit-scrollbar-thumb:window-inactive {
+     background: #ddd;
+}
+
+</style>

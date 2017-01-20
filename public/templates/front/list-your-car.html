@@ -1,0 +1,253 @@
+
+ <!--BEGIN_CONTENT-->
+
+<div class="container container--fluid container--darkBackground interstitial interstitial--handOnControls u-table">
+ <div class="container u-alignCenter u-tableCell u-verticalAlignMiddle">
+
+
+
+         <h5 class="supertitle">Let your car</h5>
+         <h1>Work for you</h1>
+
+         <p>Listing your car is simple and usually takes about 10 minutes</p>
+
+     <div class="buttonWrapper">
+         <a  class="button button--purple button--large" ng-show = "!isAuthenticated" ui-sref="user.listcarIntro">List your car</a>
+     </div>
+
+
+
+         <div class="interstitial-bottom interstitial-bottom--largerMargin">
+             <ul class="horizontalMenu">
+                 <li class="horizontalMenu-item"><a class="text--white" ui-sref="anon.rent">Rent&nbsp;a&nbsp;car</a></li>
+                 <li class="horizontalMenu-item is-selected text--white"><a class="text--white" ui-sref="user.listcarIntro">List&nbsp;your&nbsp;car</a></li>
+                 <li class="horizontalMenu-item text--white"><a class="text--white" ui-sref="anon.how-corsa-works">How&nbsp;Corsa&nbsp;works</a></li>
+             </ul>
+         </div>
+ </div>
+</div>
+<!-- <div class="container container--fluid interstitial u-table"> -->
+ <!-- <div class="container u-alignCenter">
+     <h3>How much could I earn?</h3>
+
+     <div class="section grid">
+         <div class="grid-item grid-item--4 grid-item--medium6 grid-item--small10 grid-item--xsmall12 grid-item--push1 grid-item--pushSmall1">
+             <div class="text--large">Market value of your car</div>
+             <div class="slider slider--money">
+                 <input id="js-listMarketValueSlider" type="range" data-slider="true"
+                        data-slider-highlight="true"
+                        data-slider-snap="true"
+                        value="20000" data-slider-values="2000,4000,6000,8000,10000,12000,14000,16000,18000,20000,
+             24000,28000,32000,36000,40000,45000,50000,60000,75000"
+                        data-slider-equal-steps="true" min="2000" max="75000">
+             </div>
+         </div>
+         <div class="grid-item grid-item--4 grid-item--medium6 grid-item--small10 grid-item--xsmall12 grid-item--push2 grid-item--pushSmall1">
+             <div class="text--large">Days per month your car is rented</div>
+             <div class="slider">
+                 <input id="js-listRentalDaysSlider" type="range" data-slider="true" value="15"
+                        data-slider-highlight="true"
+                        min="0" max="30"
+                        data-slider-values="1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,20,25,30" data-slider-snap="true"
+                        data-slider-equal-steps="true">
+             </div>
+         </div>
+     </div>
+     <div class="section grid grid--noGutter">
+         <div class="grid-item grid-item--4 grid-item--push4">
+             <div class="text--large">You could earn</div>
+             <div class="currency currency--huge text--purple">
+                 $<span id="js-listEarningsTotal"></span>
+             </div>
+             <div class="text--large">per year</div>
+         </div>
+     </div>
+ </div>
+</div>-->
+
+<div class="container container--fluid container--darkBackground interstitial u-table">
+ <div class="container u-alignCenter u-tableCell u-verticalAlignMiddle">
+     <h3>Your earnings</h3>
+
+     <div class="section section--withMediumMargin">
+         <div class="grid grid--withVerticalSpacing">
+             <div class="grid-item grid-item--6 grid-item--medium6 grid-item--small12">
+                 <div class="supertitle">Pricing</div>
+                 <hr class="hr--small">
+                 <p>Corsa will dynamically set your car’s rental price based on market value, location, time of year, and other data sets to maximize your income and boost your listing’s competitiveness. If you prefer, you can manually set your own daily price.</p>
+             </div>
+             <div class="grid-item grid-item--6 grid-item--medium6 grid-item--small12">
+                 <div class="supertitle">Payment</div>
+                 <hr class="hr--small">
+                 <p>Corsa will pay you via direct deposit within five days. You’ll earn 65% to 85% of the trip price, depending on the vehicle protection package you choose.</p>
+             </div>
+         </div>
+     </div>
+ </div>
+</div>
+
+<!-- <div class="container container--fluid container--greyDustyBackground u-table">
+ <div class="container u-alignCenter u-tableCell u-verticalAlignMiddle">
+     <div class="mediaQuoteCarousel js-mediaQuoteCarousel">
+         <div class="mediaQuoteCarousel mediaQuoteCarousel-arrow mediaQuoteCarousel-arrow--left js-mediaQuoteLeftArrow"></div>
+         <div class="mediaQuoteCarousel-content">
+             <div class="mediaQuoteCarousel-item is-currentItem js-mediaQuoteItem">
+                 <span class="supertitle">“Car owners in the [Turo] program can recoup hundreds of dollars a month to offset car payments, insurance and other costs of ownership.”</span>
+
+                 <p><img src="../d1kal2uthwls49.cloudfront.net/cms-content/img/list_your_car/ny_times_logo_2x.png"
+                         alt="The New York Times" width="233" height="30"/></p>
+             </div>
+             <div class="mediaQuoteCarousel-item js-mediaQuoteItem">
+                 <span class="supertitle">“[Turo] is like Airbnb, but for real people’s cars.”</span>
+
+                 <p><img src="../d1kal2uthwls49.cloudfront.net/cms-content/img/list_your_car/usa_today_logo_2x.png"
+                         alt="TODAY" width="65" height="65"/></p>
+             </div>
+             <div class="mediaQuoteCarousel-item js-mediaQuoteItem">
+                 <span class="supertitle">“I’ve made over $12,000 renting out my car and it’s allowed me to live in San Francisco.”</span>
+
+                 <p><img src="../d1kal2uthwls49.cloudfront.net/cms-content/img/list_your_car/yahoo_logo_2x.png"
+                         alt="Yahoo! Finance" width="67" height="39"/></p>
+             </div>
+             <div class="mediaQuoteCarousel-item js-mediaQuoteItem">
+                 <span class="supertitle">“You can earn… up to $600 [per month]”</span>
+
+                 <p><img src="../d1kal2uthwls49.cloudfront.net/cms-content/img/list_your_car/cnn_logo_2x.png"
+                         alt="CNN" width="84" height="39"/></p>
+             </div>
+         </div>
+         <div class="mediaQuoteCarousel mediaQuoteCarousel-arrow mediaQuoteCarousel-arrow--right js-mediaQuoteRightArrow"></div>
+     </div>
+ </div>
+</div> -->
+<div class="container container--fluid container--purpleBackground interstitial u-table">
+ <div class="container u-alignCenter u-tableCell u-verticalAlignMiddle">
+     <h3>How it works</h3>
+
+     <div class="section section--withMediumMargin">
+         <div class="grid grid--withVerticalSpacing">
+             <div class="grid-item grid-item--6 grid-item--medium6 grid-item--small12 iconWithDescription">
+                 <div class="iconWithDescription-image listYourCarIcon listYourCarIcon--umbrella"></div>
+                 <div class="iconWithDescription-description">
+                     <div class="supertitle">You’re covered</div>
+
+                     <p>You’re protected with $1 million in liability insurance, and your car is covered against theft and physical damage.</p>
+                     <div class="buttonWrapper">
+                         <a class="button button--transparent button--small" ui-sref="anon.insurancefaq">Learn more</a>
+                     </div>
+                 </div>
+             </div>
+             <div class="grid-item grid-item--6 grid-item--medium6 grid-item--small12 iconWithDescription">
+                 <div class="iconWithDescription-image listYourCarIcon listYourCarIcon--car"></div>
+                 <div class="iconWithDescription-description">
+                     <div class="supertitle">You’re in control</div>
+
+                     <p>Set your minimum daily price for trips. Choose a mileage limit and get your car back re-fueled.</p>
+                     <div class="buttonWrapper">
+                         <a class="button button--transparent button--small" ui-sref="anon.insurancefaq">Learn more</a>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </div>
+     <div class="u-alignCenter supertitle section section--withMediumMargin">
+         <p>
+             <div>It’s totally free to list your car on Corsa.</div>
+             <div>No Monthly Fees, No Buy-in.</div>
+         </p>
+     </div>
+ </div>
+</div>
+
+<div class="container container--fluid interstitial interstitial--peaceOfMind u-table">
+ <div class="container u-tableCell u-verticalAlignMiddle">
+
+     <div class="u-alignCenter">
+         <h3 class="u-alignCenter">Peace of mind</h3>
+     </div>
+
+     <div class="section grid grid--withVerticalSpacing">
+         <div class="grid-item grid-item--6 grid-item--medium6 grid-item--small12 u-alignCenter list">
+             <div class="supertitle list-item">You’re safe</div>
+             <hr class="horizontalDivider horizontalDivider--small list-item">
+             <p class="list-item">We verify each traveler’s identity by running a complete background check.</p>
+             <div class="buttonWrapper list-item">
+                 <a class="text--purple" ui-sref="anon.ownerfaq">Learn more</a>
+             </div>
+         </div>
+         <div class="grid-item grid-item--6 grid-item--medium6 grid-item--small12 u-alignCenter list">
+             <div class="supertitle list-item">You’re not alone</div>
+             <hr class="horizontalDivider horizontalDivider--small list-item">
+             <p class="list-item">From our 24/7 emergency line to tips and tricks to earn more with your car, we’ll be here for you every step of the way.</p>
+             <div class="buttonWrapper list-item">
+               <a class="text--purple" href="javascript:void(0)" ng-click = "showChat()">Click to Speak with Live Specialist</a>
+             </div>
+         </div>
+     </div>
+ </div>
+</div>
+
+<div class="container container--fluid container--purpleBackground interstitial u-table">
+ <div class="container u-alignCenter u-tableCell u-verticalAlignMiddle">
+     <h3>List your car today</h3>
+     <h5>Start earning tomorrow</h5>
+
+     <div class="buttonWrapper">
+
+             <a class="button button--large button--transparent" ui-sref="anon.list-your-car">List your car</a>
+     </div>
+ </div>
+</div>
+<div class="mainchatbox" id="qnimate">
+     <div class="popup-box chat-popup" id="qnimate">
+          <div class="popup-head">
+               <div class="popup-head-left pull-left">
+                    <img  ng-if = "sessionUser && sessionUser.profile && sessionUser.profile.photo" ng-src="{{'/media/drivers/' + sessionUser.profile.photo}}">
+                    <img ng-if = "!sessionUser" ng-src="/media/u_default.png">
+                    <span ng-if = "sessionUser">
+                         CORSA CARE
+                    </span>
+               </div>
+               <div class="popup-head-right pull-right">
+                    <div class="btn-group">
+                         <!-- <button class="chat-header-button" data-toggle="dropdown" type="button" aria-expanded="false">
+                         <i class="fa fa-compress" aria-hidden="true"></i>
+                    </button> -->
+
+               </div>
+
+               <button data-widget="remove" id="removeClass" ng-click = "hideChat()" class="chat-header-button pull-right" type="button"><i class="fa fa-times" aria-hidden="true"></i>
+               </button>
+          </div>
+     </div>
+     <div class="popup-messages">
+
+
+          <form name = "chatForm" ng-show = "!sessionUser" class="support-form" ng-submit = "chatForm.$submitted && chatForm.$valid && registerChatUser(Chat)" novalidate>
+               <h2>Introduce Yourself</h2>
+               <input type="text" placeholder="Name" ng-model = "Chat.name" required="">
+               <input type="email" placeholder="Email" ng-model = "Chat.email" required="">
+               <textarea placeholder="Message"  ng-model = "Chat.msg" required=""></textarea>
+               <button type="submit">Submit</button>
+          </form>
+
+
+
+
+          <div ng-show = "sessionUser" class="popusagesd">
+
+               <div class="onchatis" ng-if = "messages.length" ng-repeat = "data in messages" ng-class = "id == data.from._id ? 'right' : 'left'">
+                    <div class="user-icon"> <h4> {{data.from.fullname}} </h4> </div>
+                    <div class="message-new"><h5> {{data.message}}</h5> </div>
+               </div>
+          </div>
+     </div>
+     <div ng-show = "sessionUser" class="popup-messages-footer">
+          <form  name = "authenticateChatForm" ng-submit = "authenticateChatForm.$submitted && authenticateChatForm.$valid && chat(Chat)" novalidate>
+               <input id="status_message" placeholder="Type a message..." name="message" ng-model = "msg" class="form-control" required="" autocomplete="off"/>
+          </form>
+     </div>
+</div>
+</div>
+
+ <!--CONTENT-->

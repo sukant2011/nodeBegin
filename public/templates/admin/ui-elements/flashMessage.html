@@ -1,0 +1,13 @@
+<div class="sixteen columns" ng-if = "serverMsg.msg && serverMsg.resStatus == 'success'">
+      <div role="alert" class="alert alert-success alert-dismissible fade in">
+                  <button aria-label="Close" data-dismiss="alert" class="close" type="button"><span aria-hidden="true">×</span></button>
+                  <strong>Success!</strong> {{serverMsg.msg}}
+      </div>
+</div>
+
+<div class="sixteen columns"  ng-if = "serverMsg.msg && serverMsg.resStatus == 'error'">
+      <div role="alert" class="alert alert-danger alert-dismissible fade in">
+                  <button aria-label="Close" data-dismiss="alert" class="close" type="button"><span aria-hidden="true">×</span></button>
+                  <strong>Error!</strong> {{serverMsg.msg}}
+      </div>
+</div>

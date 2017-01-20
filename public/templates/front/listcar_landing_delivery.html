@@ -1,0 +1,123 @@
+<div class="" id="mycar-tab-content">
+
+     <div id="your-car-edit-delivery">
+          <div class="linkedHeadingWithArrow u-smallScreenOnly">
+               <a href="javascript:void(0)">
+                    <span class="linkedHeadingWithArrow-arrow"></span><span class="linkedHeadingWithArrow-text">Your car
+                    </span>
+               </a>
+          </div>
+          <form name="form" ng-submit = "form.$valid && form.$submitted && updateInfo(DataModel)" novalidate>
+               <input type="hidden" value="192205" name="vehicleId" id="vehicleId">
+               <h5>Delivery &amp; airports</h5>
+               <p>
+                    Earn more by offering delivery. You receive 75% of the delivery fee. Because Corsa’s insurance policy will cover you while you’re delivering the car, we’ll need you to verify your eligibility.
+                    <span  uib-popover="The remainder of the delivery fee goes toward insurance, payment processing, and member screening. Be sure to make clear arrangements with your guests regarding pickup and return locations at least 24 hours before the trip starts." class="info-link"></span>
+               </p>
+               <fieldset class="airport-locations section section--first">
+                    <div id="airports" ng-model="DataModel.delivery.airports">
+                         <div class="subheader subheader--smallMargin">
+                              Airports
+                         </div>
+                         <ul>
+                              <li class="js-airportFeeList airport"  ng-repeat="airport in airports">
+
+                                   <label>
+                                        <input
+                                             type="checkbox"
+                                             class="js-airportCodeCheckbox airportCodes"
+                                             name="airportCodes"
+                                             id="airportCodes"
+                                             ng-model="DataModel.delivery.airports[$index].checked"
+                                             ng-true-value = "'1'"
+                                             ng-false-value="'0'"
+                                             ng-click = "setAirports($index,DataModel.delivery.airports[$index].checked, airport._id, DataModel.delivery.airports[$index].fee)">
+                                        <div class="airport-label">
+                                             <span class="airport-code">{{airport.name}}
+                                                  <span class="airport-name text--smallCopy">{{airport.location}}</span>
+                                             </div>
+                                        </label>
+                                        <div class="delivery-fee" >
+                                             <span class="styled-select-container styled-select-container--purple styled-select-container--currency  styled-select-container--currency-USD">
+                                                  <select
+                                                            ng-disabled = "!DataModel.delivery.airports[$index].id"
+                                                            ng-model="DataModel.delivery.airports[$index].fee"
+                                                            ng-change = "setFee($index,DataModel.delivery.airports[$index].id, airport._id, DataModel.delivery.airports[$index].fee)"
+                                                            name="airportDeliveryFee"
+                                                            class="js-airportDeliveryFee"
+                                                            id="airport-delivery-fee">
+                                                            <option value="0">Free</option>
+                                                            <option  value="10">10</option>
+                                                            <option  value="10">30</option>
+                                                            <option  value="10">50</option>
+                                                  </select>
+
+                                             </span>
+                                        </div>
+                                   </li>
+                              </ul>
+                         </div>
+                    </fieldset>
+                    <div class="custom-delivery section">
+                         <div class="subheader subheader--smallMargin">
+                              Guest’s chosen location&nbsp;
+                         </div>
+                         <div class="custom-delivery-checkbox">
+                              <input type="checkbox" name="customDeliveryEnabled" id="custom-delivery-enabled" ng-model = "DataModel.delivery.guestLocation.isAvailable">
+                              <label for="custom-delivery-enabled">Offer delivery to locations chosen by your guests</label>
+                         </div>
+                         <div ng-if = "DataModel.delivery.guestLocation.isAvailable == true" class="custom-delivery-fee">
+                              <span class="styled-select-container styled-select-container--purlple styled-select-container--currency styled-select-container--currency-USD">
+                                   <select ng-model="DataModel.delivery.guestLocation.fee" name="customDeliveryFee" id="custom-delivery-fee">
+                                        <option value="0">Free</option>
+                                        <option value="10">10</option>
+                                        <option value="20">20</option>
+                                        <option value="30">30</option>
+                                        <option value="40">40</option>
+                                        <option value="50">50</option>
+                                        <option value="60">60</option>
+                                        <option value="70">70</option>
+                                        <option value="80">80</option>
+                                        <option value="90">90</option>
+                                        <option value="100">100</option>
+                                        <option value="110">110</option>
+                                        <option value="120">120</option>
+                                   </select>
+                                   <span class="currency-symbol">$</span>
+                                   <span class="text">Free</span>
+                              </span>
+                              <label class="text--smallCopy" for="custom-delivery-fee">
+                                   Fee includes both pickup and return
+                              </label>
+                         </div>
+						 <div class="clearfix"></div>
+                         <div ng-if = "DataModel.delivery.guestLocation.isAvailable == true" class="custom-delivery-distance">
+                              <span class="styled-select-container styled-select-container--purple styled-select-container--currency">
+                                   <select name="customDeliveryDistance" id="custom-delivery-distance" ng-model=" DataModel.delivery.guestLocation.distance">
+                                        <option value="0">Any distance</option>
+                                        <option value="5">Up to 5 miles</option>
+                                        <option value="10">Up to 10 miles</option>
+                                        <option value="15">Up to 15 miles</option>
+                                        <option value="20">Up to 20 miles</option>
+                                        <option value="25">Up to 25 miles</option>
+                                        <option value="50">Up to 50 miles</option>
+                                   </select>
+                                   <span class="text placeholder">
+                                        Any distance
+                                   </span>
+                              </span>
+
+                              <label class="text--smallCopy  ml-5" for="custom-delivery-distance">
+                                   from car location
+                              </label>
+                         </div>
+                    </div>
+                    <div class="buttonWrapper">
+                         <button class="submit button button--purple vehicleBtn" type="submit"  >Save</button>
+                    </div>
+               </form>
+          </div>
+     </div>
+	 
+	 
+	 

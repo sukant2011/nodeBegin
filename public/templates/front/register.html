@@ -1,0 +1,103 @@
+<div id="pageContainer-content" class="u-contentTopPadding u-contentBottomPadding">
+	<div id="dialog-frame-container" class="container" data-next="" data-referer="javascript:void(0)">
+		<div id="dialog-frame" class="dialog-container">
+			<div data-init="require(['auth_dialogs'], function(auth_dialogs){auth_dialogs.initFacebookSignupDialog('#signup-dialog')})">
+				<div id="signup-dialog" class="auth-dialog-content" data-next="" data-referer="" data-context="">
+					<h5><b>Sign up</b></h5>
+					<p>
+						<div ng-include = "'/elements/flashMessage.html'"></div>
+					</p>
+					<p>Already have an account? <a class="dialog-link" data-dialog-class="no-titlebar" ui-sref="anon.login"><b>Log in</b></a>.</p>
+					<div class="dialog-content">
+						<div class="buttonWrapper">
+							<span id="js-googleButton" class="g-signin button button--google button--large"
+							ng-click="authenticate('google')">
+							<b>Google</b>
+						</span>
+						<span id="js-facebookSignupButton" class="button button--facebook button--large" href="" ng-click="authenticate('facebook')">Facebook</span>
+					</div>
+					<div class="errorMessage-text js-loginError u-contentTopPadding--smaller"></div>
+					<p class="details no-account">Sign up with your&nbsp;<a class="dialog-link" data-dialog-class="no-titlebar" ui-sref="anon.email" ><b>email address.</b></a></p>
+					<p class="fine-print text--small">By signing up, you agree to our <a ui-sref="anon.terms">terms of service</a>.</p>
+				</div>
+				<div class="loading-indicator">
+					<img src="../d1kal2uthwls49.cloudfront.net/resources/img/loading/white-on-green-large.v1_2x__Hd4c44a2d8b5182c54297e23e167f3483__.gif"/>
+					<span>Signing up...</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+<!-- <div class="block-section bg-color4">
+<div class="container">
+<div class="panel panel-md">
+<div class="panel-body">
+<div class="row">
+<div class="col-md-12">
+<p>
+<a  ui-sref="javascript:void(0)" class="btn btn-primary btn-theme btn-block">
+Create a Free Account</a>
+</p>
+<p>
+<div ng-include = "'/elements/flashMessage.html'"></div>
+</p> -->
+<!-- form login -->
+<!-- <form name = "form" ng-submit = "form.$valid && form.$submitted && register()" novalidate>
+<div class="form-group">
+<div class="row clearfix">
+<div class="col-xs-6">
+<input type="text" class="form-control" name="firstname" ng-model = "DataModel.name.first" id="data_firstname" placeholder="First Name" required/>
+<div ng-messages="form.firstname.$error" ng-if="form.firstname.$touched || form.$submitted">
+<div ng-messages-include="/elements/notifyMessages.html"></div>
+</div>
+</div>
+<div class="col-xs-6">
+<input type="text" class="form-control" name="lastname" placeholder="Last Name" ng-model = "DataModel.name.last" id="data_lastname" required/>
+<div ng-messages="form.lastname.$error" ng-if="form.lastname.$touched || form.$submitted">
+<div ng-messages-include="/elements/notifyMessages.html"></div>
+</div>
+</div>
+</div>
+</div> -->
+<!-- <div class="form-group">
+<input type="email" class="form-control" name="email" ng-blur = "checkUniqueEmail(DataModel.email)" ng-model = "DataModel.email" id="data_email" placeholder="Enter Your email (Optional)"/>
+<div ng-messages="form.email.$error" ng-if="form.email.$touched || form.$submitted">
+<div ng-messages-include="/elements/seeker_error_messages.html"></div>
+</div>
+</div> -->
+
+
+<!--
+<div class="form-group"> -->
+<!-- <label>Mobile</label> -->
+<!-- <input type="email" class="form-control" name="email" ng-model = "DataModel.email" id="data_email" placeholder="Enter Your Email" required/>
+<div ng-messages="form.email.$error" ng-if="form.email.$touched || form.$submitted">
+<div ng-messages-include="/elements/notifyMessages.html"></div>
+</div>
+</div>
+
+
+<div class="form-group"> -->
+<!-- <label>Password</label> -->
+<!-- <input type="password" class="form-control" name="password" ng-model = "DataModel.password" id="data_password" minlength = "6" maxlength = "10"  placeholder="Enter your Password" required/>
+<div ng-messages="form.password.$error" ng-if="form.password.$touched || form.$submitted">
+<div ng-messages-include="/elements/notifyMessages.html"></div>
+</div>
+</div>
+<div class="form-group no-margin">
+<button type="submit" class="btn btn-theme btn-lg btn-t-primary btn-block" name="login">Register</button>
+
+<button ng-click="authenticate('facebook')">Sign in with Facebook</button>
+<button ng-click="authenticate('google')">Sign in with Google</button>
+
+</div>
+</form><! form login -->
+<!--
+</div>
+</div>
+</div>
+</div>
+
+
+</div> -->

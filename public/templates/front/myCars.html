@@ -1,0 +1,38 @@
+<div id="pageContainer-content" class="u-contentTopPadding u-contentBottomPadding">
+
+	<div class="container" id="list_vehicle_flow">
+		<div id="car-photo">
+			<div class="main-blog">
+				<h5>My Cars</h5>
+				<div class="photo-edit">
+					<div class="col-sm-12 pad_0 mar-10">
+						<div class="col-sm-3"  ng-if = "dataArr.myCars.length" ng-repeat = "car in dataArr.myCars">
+							<div class="car-img">
+								<img ng-if = "car.gallery.photos.length" ng-src="{{car.gallery.path + car.gallery.photos[0]}}" class="img-responsive" alt="{{car.gallery.photos[0]}}"/>
+								<img ng-if = "!car.gallery.photos.length" src="/media/v_default.jpg" class="img-responsive" alt="Default.jpg"/>
+
+								<a  ui-sref = "user.liscarLanding.delivery({refId : car._id})">
+									<div class="car-detail">
+										<span>{{car.specifications.make}}</span>
+										<span>{{car.specifications.model}}</span>
+										<span class="b-heding">
+											Click to view Full Info
+										</span>
+										<!-- <span>100%</span> -->
+										<!-- <span class="b-heding">Renters see this photo first</span> -->
+									</div>
+								</a>
+							</div>
+						</div>
+						<div ng-if = "!dataArr.myCars.length" class="col-sm-3">
+							<div class="emptyState emptyState--noReviews  container">
+								<div class="emptyState-text">No Cars Added Yet </div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

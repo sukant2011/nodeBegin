@@ -1,0 +1,15 @@
+<div id="pageContainer-content" class="u-contentTopPadding u-contentBottomPadding">
+     <div ng-include = "'/elements/listCarNav.html'"></div>
+     
+     <div class="container">
+     <div ng-include = "'/elements/flashMessage.html'"></div>
+     <h5>Publish goes here</h5>
+          That's Everything We needed. You are now ready to list your car.
+          <br><br>
+          <a class = "button button--red" ui-sref = "user.listcarPhotos({refId : vehicleRefId})" >Back</a>&nbsp;&nbsp;&nbsp;
+
+          <input class="button button--green" type="submit"  ng-click="publish()" value="Finish">
+     </div>
+     <div class="col-sm-2">
+     </div>
+</div>

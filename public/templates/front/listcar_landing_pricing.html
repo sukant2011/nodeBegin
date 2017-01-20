@@ -1,0 +1,973 @@
+<div class="" id="mycar-tab-content">
+     <div id="your-car-edit-location">
+          <div class="linkedHeadingWithArrow u-smallScreenOnly">
+               <a href="/your-car?vehicleId=192205">
+                    <span class="linkedHeadingWithArrow-arrow"></span><span class="linkedHeadingWithArrow-text">Car Pricing</span>
+               </a>
+          </div>
+          <form class="form-horizontal" name = "form"  ng-submit = "form.$submitted && form.$valid && updateInfo(DataModel)" novalidate>
+               <fieldset class="about-location section section--first u-clearFix">
+                    <h5>Car Pricing</h5>
+                    <!-- <p>To protect your privacy, we only show this information to travelers once you’ve confirmed their trip.</p> -->
+                    <!-- <div style="display:none" id="js-locationGeocodeError">
+                    <span class="errorMessage-icon"></span>
+                    <span class="errorMessage-text">
+                    Sorry, we couldn’t find your address. Please provide a street address.
+               </span>
+          </div> -->
+          <!-- <div data-text-tpl="Sorry, we currently do not support {0}." style="display:none" id="js-locationCountryError">
+          <span class="errorMessage-icon"></span>
+          <span class="errorMessage-text"></span>
+     </div> -->
+     <!-- <div style="display: none" id="js-locationInvalidError">
+     <span class="errorMessage-icon"></span>
+     <span class="errorMessage-text"></span>
+</div> -->
+<div class="container container--flex">
+     <fieldset>
+          <div class="layoutSingleColumn layoutSingleColumn--narrow grid edit">
+               <div class="address grid-item grid-item--12 form-line">
+                    <div class="text--small">Price Per Day($)</div>
+                    <div  ng-init = "autocomplete == autocompleteData">
+                         <input autocomplete="off" type="text" name="ridingCost" ng-model="DataModel.ridingCost" class="text required" id="price" placeholder="Enter Car price" value="" required  id="js-streetAddressInput">
+                    </div>
+                    <div ng-messages="form.ridingCost.$error" ng-if="form.ridingCost.$touched || form.$submitted">
+                         <div ng-messages-include="/elements/notifyMessages.html"></div>
+                    </div>
+                    <!-- <input type="text" value="5201 Great America Parkway, Santa Clara, CA, US" class="text required ui-autocomplete-input" name="streetAddress" id="js-streetAddressInput" autocomplete="off">
+                    <span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span> -->
+               </div>
+
+
+          </div>
+     </fieldset>
+     <div class="buttonWrapper">
+
+          <button class="submit button button--purple vehicleBtn" type="submit" >Save</button>
+     </div>
+</form>
+
+</div>
+
+</div>
+<!-- <div class="container"> -->
+<!-- <h3>Tell us something about your Car</h3> -->
+<!-- {{"jjjjjjjjjjjjjjjjjjjjjjj"+DataModelRefId}} -->
+<!-- <form class="form-horizontal" name = "form"  role="form" novalidate>
+<div class="form-group">
+<label class="control-label col-sm-2" for="location">Where is your car located?</label>
+<div class="col-sm-10" ng-init = "autocomplete == autocompleteData">
+<input type="text" name="name" gm-places-autocomplete ng-model="autocomplete"  class="form-control" id="location" placeholder="Car Location" value="" required>
+<div ng-messages="form.name.$error" ng-if="form.name.$touched || form.$submitted">
+<div ng-messages-include="/elements/notifyMessages.html"></div>
+</div>
+</div>
+</div>
+
+<div class="form-group">
+<label>Plate Number</label>
+<input type="text" class="form-control" name="plate" ng-model="DataModel.details.plateNo" id="" />
+<!-- <div ng-messages="form.DataModel.$error" ng-if="form.plate.$touched || form.$submitted">
+<div ng-messages-include="/elements/notifyMessages.html"></div>
+</div> -->
+<!-- </div>
+
+<div class="form-group">
+<label class=" col-sm-2" for="year">State/Province</label>
+<div class="col-sm-10" ng-init = "stateArr= ['California', 'Delhi', 'NewYork', 'Silicon']">
+<select name = "State" ng-model = "DataModel.details.state" required>
+<option value="">Select</option>
+<option ng-repeat = "state in stateArr">{{state}}</option>
+</select>
+</div> -->
+<!-- <div ng-messages="form.State.$error" ng-if="form.State.$touched || form.$submitted">
+<div ng-messages-include="/elements/notifyMessages.html"></div>
+</div> -->
+<!-- </div>
+
+<div class="form-group">
+<label class="control-label col-sm-2"></label>
+<input type = "submit" value="Next" class="btn btn-success" ng-click = "updateInfo(DataModel)"/>
+</div>
+</form>
+</div> -->
+
+
+
+<!-- <div class="" id="mycar-tab-content">
+<div data-daily-overpriced-threshold="170" data-rate-maximum-daily="680" data-rate-minimum-daily="10" data-vehicle-id="192205" id="your-car-edit-pricing">
+<div class="linkedHeadingWithArrow u-smallScreenOnly">
+<a href="/your-car?vehicleId=192205">
+
+<span class="linkedHeadingWithArrow-arrow"></span><span class="linkedHeadingWithArrow-text">Your car</span>
+</a>
+</div>
+
+<form method="post" action="/your-car/192205/edit-pricing" id="list-vehicle">
+<fieldset id="pricing">
+<h5>Pricing</h5>
+
+<div id="enrolled-description">
+<p>These are the prices travelers will see. We may change them daily based on the most recent data to help you earn more.</p>
+</div>
+
+<div class="hidden" id="unenrolled-description">
+<p>These are the prices travelers will see. Click an unbooked day to edit the price for that day.</p>
+</div>
+
+<div id="more-information">
+
+<span>
+<a class="text--purple" target="_blank" href="https://support.turo.com/hc/en-us/sections/200711540">
+Learn more about pricing.
+</a>
+</span>
+<span data-content="
+You receive 75% of this rate. The rest goes toward insurance, payment processing, and member screening." class="info-link">
+</span>
+</div>
+
+<div class="your-car-calendar" id="pricing-calendar">
+<section class="calendar-header" date-ui-role="headers">
+<div class="js-prev-month pointer col-3-20" data-ui-role="prevMonth"><div class="calendar-arrow calendar-arrow--left"></div></div>
+<div class="js-month month col-14-20" data-ui-role="month">August 2016</div>
+<div class="js-next-month pointer col-3-20" data-ui-role="nextMonth"><div class="calendar-arrow calendar-arrow--right"></div></div>
+<div class="js-weekdays weekdays" data-ui-role="weekdays">
+
+<span class="weekday col-1-7">Sun</span>
+
+<span class="weekday col-1-7">Mon</span>
+
+<span class="weekday col-1-7">Tue</span>
+
+<span class="weekday col-1-7">Wed</span>
+
+<span class="weekday col-1-7">Thu</span>
+
+<span class="weekday col-1-7">Fri</span>
+
+<span class="weekday col-1-7">Sat</span>
+
+</div>
+</section>
+
+<section class="days" data-ui-role="days">
+<div data-year="" data-month="" data-day="" class="day col-1-7    spacer  ">
+<div class="border  ">
+<span class="day__text--date"><span></span></span>
+<span class="day__text--price "><span></span></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<svg class="day-strikeThrough">
+<line style="stroke:rgb(255,255,255);stroke-width:2" y2="0" x2="100%" y1="100%" x1="0"/>
+</svg>
+</div>
+</div>
+
+<div data-year="2016" data-month="7" data-day="1" class="day col-1-7   past   ">
+<div class="border  ">
+<span class="day__text--date"><span>1</span></span>
+<span class="day__text--price "><span>$68</span></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<svg class="day-strikeThrough">
+<line style="stroke:rgb(255,255,255);stroke-width:2" y2="0" x2="100%" y1="100%" x1="0"/>
+</svg>
+</div>
+</div>
+
+<div data-year="2016" data-month="7" data-day="2" class="day col-1-7   past   ">
+<div class="border  ">
+<span class="day__text--date"><span>2</span></span>
+<span class="day__text--price "><span>$68</span></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<svg class="day-strikeThrough">
+<line style="stroke:rgb(255,255,255);stroke-width:2" y2="0" x2="100%" y1="100%" x1="0"/>
+</svg>
+</div>
+</div>
+
+<div data-year="2016" data-month="7" data-day="3" class="day col-1-7   past   ">
+<div class="border  ">
+<span class="day__text--date"><span>3</span></span>
+<span class="day__text--price "><span>$68</span></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<svg class="day-strikeThrough">
+<line style="stroke:rgb(255,255,255);stroke-width:2" y2="0" x2="100%" y1="100%" x1="0"/>
+</svg>
+</div>
+</div>
+
+<div data-year="2016" data-month="7" data-day="4" class="day col-1-7   past   ">
+<div class="border  ">
+<span class="day__text--date"><span>4</span></span>
+<span class="day__text--price "><span>$68</span></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<svg class="day-strikeThrough">
+<line style="stroke:rgb(255,255,255);stroke-width:2" y2="0" x2="100%" y1="100%" x1="0"/>
+</svg>
+</div>
+</div>
+
+<div data-year="2016" data-month="7" data-day="5" class="day col-1-7   past   ">
+<div class="border  ">
+<span class="day__text--date"><span>5</span></span>
+<span class="day__text--price "><span>$68</span></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<svg class="day-strikeThrough">
+<line style="stroke:rgb(255,255,255);stroke-width:2" y2="0" x2="100%" y1="100%" x1="0"/>
+</svg>
+</div>
+</div>
+
+<div data-year="2016" data-month="7" data-day="6" class="day col-1-7   past   ">
+<div class="border  ">
+<span class="day__text--date"><span>6</span></span>
+<span class="day__text--price "><span>$68</span></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<svg class="day-strikeThrough">
+<line style="stroke:rgb(255,255,255);stroke-width:2" y2="0" x2="100%" y1="100%" x1="0"/>
+</svg>
+</div>
+</div>
+
+<div data-year="2016" data-month="7" data-day="7" class="day col-1-7   past   ">
+<div class="border  ">
+<span class="day__text--date"><span>7</span></span>
+<span class="day__text--price "><span>$68</span></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<svg class="day-strikeThrough">
+<line style="stroke:rgb(255,255,255);stroke-width:2" y2="0" x2="100%" y1="100%" x1="0"/>
+</svg>
+</div>
+</div>
+
+<div data-year="2016" data-month="7" data-day="8" class="day col-1-7   past   ">
+<div class="border  ">
+<span class="day__text--date"><span>8</span></span>
+<span class="day__text--price "><span>$68</span></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<svg class="day-strikeThrough">
+<line style="stroke:rgb(255,255,255);stroke-width:2" y2="0" x2="100%" y1="100%" x1="0"/>
+</svg>
+</div>
+</div>
+
+<div data-year="2016" data-month="7" data-day="9" class="day col-1-7   past   ">
+<div class="border  ">
+<span class="day__text--date"><span>9</span></span>
+<span class="day__text--price "><span>$68</span></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<svg class="day-strikeThrough">
+<line style="stroke:rgb(255,255,255);stroke-width:2" y2="0" x2="100%" y1="100%" x1="0"/>
+</svg>
+</div>
+</div>
+
+<div data-year="2016" data-month="7" data-day="10" class="day col-1-7   past   ">
+<div class="border  ">
+<span class="day__text--date"><span>10</span></span>
+<span class="day__text--price "><span>$68</span></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<svg class="day-strikeThrough">
+<line style="stroke:rgb(255,255,255);stroke-width:2" y2="0" x2="100%" y1="100%" x1="0"/>
+</svg>
+</div>
+</div>
+
+<div data-year="2016" data-month="7" data-day="11" class="day col-1-7   past   ">
+<div class="border  ">
+<span class="day__text--date"><span>11</span></span>
+<span class="day__text--price "><span>$68</span></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<svg class="day-strikeThrough">
+<line style="stroke:rgb(255,255,255);stroke-width:2" y2="0" x2="100%" y1="100%" x1="0"/>
+</svg>
+</div>
+</div>
+
+<div data-year="2016" data-month="7" data-day="12" class="day col-1-7   past   ">
+<div class="border  ">
+<span class="day__text--date"><span>12</span></span>
+<span class="day__text--price "><span>$68</span></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<svg class="day-strikeThrough">
+<line style="stroke:rgb(255,255,255);stroke-width:2" y2="0" x2="100%" y1="100%" x1="0"/>
+</svg>
+</div>
+</div>
+
+<div data-year="2016" data-month="7" data-day="13" class="day col-1-7   past   ">
+<div class="border  ">
+<span class="day__text--date"><span>13</span></span>
+<span class="day__text--price "><span>$68</span></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<svg class="day-strikeThrough">
+<line style="stroke:rgb(255,255,255);stroke-width:2" y2="0" x2="100%" y1="100%" x1="0"/>
+</svg>
+</div>
+</div>
+
+<div data-year="2016" data-month="7" data-day="14" class="day col-1-7   past   ">
+<div class="border  ">
+<span class="day__text--date"><span>14</span></span>
+<span class="day__text--price "><span>$68</span></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<svg class="day-strikeThrough">
+<line style="stroke:rgb(255,255,255);stroke-width:2" y2="0" x2="100%" y1="100%" x1="0"/>
+</svg>
+</div>
+</div>
+
+<div data-year="2016" data-month="7" data-day="15" class="day col-1-7   past   ">
+<div class="border  ">
+<span class="day__text--date"><span>15</span></span>
+<span class="day__text--price "><span>$68</span></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<svg class="day-strikeThrough">
+<line style="stroke:rgb(255,255,255);stroke-width:2" y2="0" x2="100%" y1="100%" x1="0"/>
+</svg>
+</div>
+</div>
+
+<div data-year="2016" data-month="7" data-day="16" class="day col-1-7   past   ">
+<div class="border  ">
+<span class="day__text--date"><span>16</span></span>
+<span class="day__text--price "><span>$68</span></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<svg class="day-strikeThrough">
+<line style="stroke:rgb(255,255,255);stroke-width:2" y2="0" x2="100%" y1="100%" x1="0"/>
+</svg>
+</div>
+</div>
+
+<div data-year="2016" data-month="7" data-day="17" class="day col-1-7   past   ">
+<div class="border  ">
+<span class="day__text--date"><span>17</span></span>
+<span class="day__text--price "><span>$68</span></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<svg class="day-strikeThrough">
+<line style="stroke:rgb(255,255,255);stroke-width:2" y2="0" x2="100%" y1="100%" x1="0"/>
+</svg>
+</div>
+</div>
+
+<div data-year="2016" data-month="7" data-day="18" class="day col-1-7   past   ">
+<div class="border  ">
+<span class="day__text--date"><span>18</span></span>
+<span class="day__text--price "><span>$68</span></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<svg class="day-strikeThrough">
+<line style="stroke:rgb(255,255,255);stroke-width:2" y2="0" x2="100%" y1="100%" x1="0"/>
+</svg>
+</div>
+</div>
+
+<div data-year="2016" data-month="7" data-day="19" class="day col-1-7   past   ">
+<div class="border  ">
+<span class="day__text--date"><span>19</span></span>
+<span class="day__text--price "><span>$68</span></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<svg class="day-strikeThrough">
+<line style="stroke:rgb(255,255,255);stroke-width:2" y2="0" x2="100%" y1="100%" x1="0"/>
+</svg>
+</div>
+</div>
+
+<div data-year="2016" data-month="7" data-day="20" class="day col-1-7   past   ">
+<div class="border  ">
+<span class="day__text--date"><span>20</span></span>
+<span class="day__text--price "><span>$68</span></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<svg class="day-strikeThrough">
+<line style="stroke:rgb(255,255,255);stroke-width:2" y2="0" x2="100%" y1="100%" x1="0"/>
+</svg>
+</div>
+</div>
+
+<div data-year="2016" data-month="7" data-day="21" class="day col-1-7   past   ">
+<div class="border  ">
+<span class="day__text--date"><span>21</span></span>
+<span class="day__text--price "><span>$68</span></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<svg class="day-strikeThrough">
+<line style="stroke:rgb(255,255,255);stroke-width:2" y2="0" x2="100%" y1="100%" x1="0"/>
+</svg>
+</div>
+</div>
+
+<div data-year="2016" data-month="7" data-day="22" class="day col-1-7   past   ">
+<div class="border  ">
+<span class="day__text--date"><span>22</span></span>
+<span class="day__text--price "><span>$68</span></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<svg class="day-strikeThrough">
+<line style="stroke:rgb(255,255,255);stroke-width:2" y2="0" x2="100%" y1="100%" x1="0"/>
+</svg>
+</div>
+</div>
+
+<div data-year="2016" data-month="7" data-day="23" class="day col-1-7  today    ">
+<div class="border  ">
+<span class="day__text--date"><span>23</span></span>
+<span class="day__text--price custom"><span>$68</span></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<svg class="day-strikeThrough">
+<line style="stroke:rgb(255,255,255);stroke-width:2" y2="0" x2="100%" y1="100%" x1="0"/>
+</svg>
+</div>
+</div>
+
+<div data-year="2016" data-month="7" data-day="24" class="day col-1-7      ">
+<div class="border  ">
+<span class="day__text--date"><span>24</span></span>
+<span class="day__text--price custom"><span>$68</span></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<svg class="day-strikeThrough">
+<line style="stroke:rgb(255,255,255);stroke-width:2" y2="0" x2="100%" y1="100%" x1="0"/>
+</svg>
+</div>
+</div>
+
+<div data-year="2016" data-month="7" data-day="25" class="day col-1-7      ">
+<div class="border  ">
+<span class="day__text--date"><span>25</span></span>
+<span class="day__text--price custom"><span>$68</span></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<svg class="day-strikeThrough">
+<line style="stroke:rgb(255,255,255);stroke-width:2" y2="0" x2="100%" y1="100%" x1="0"/>
+</svg>
+</div>
+</div>
+
+<div data-year="2016" data-month="7" data-day="26" class="day col-1-7      ">
+<div class="border  ">
+<span class="day__text--date"><span>26</span></span>
+<span class="day__text--price custom"><span>$73</span></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<svg class="day-strikeThrough">
+<line style="stroke:rgb(255,255,255);stroke-width:2" y2="0" x2="100%" y1="100%" x1="0"/>
+</svg>
+</div>
+</div>
+
+<div data-year="2016" data-month="7" data-day="27" class="day col-1-7      ">
+<div class="border  ">
+<span class="day__text--date"><span>27</span></span>
+<span class="day__text--price custom"><span>$80</span></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<svg class="day-strikeThrough">
+<line style="stroke:rgb(255,255,255);stroke-width:2" y2="0" x2="100%" y1="100%" x1="0"/>
+</svg>
+</div>
+</div>
+
+<div data-year="2016" data-month="7" data-day="28" class="day col-1-7      ">
+<div class="border  ">
+<span class="day__text--date"><span>28</span></span>
+<span class="day__text--price custom"><span>$80</span></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<svg class="day-strikeThrough">
+<line style="stroke:rgb(255,255,255);stroke-width:2" y2="0" x2="100%" y1="100%" x1="0"/>
+</svg>
+</div>
+</div>
+
+<div data-year="2016" data-month="7" data-day="29" class="day col-1-7      ">
+<div class="border  ">
+<span class="day__text--date"><span>29</span></span>
+<span class="day__text--price custom"><span>$68</span></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<svg class="day-strikeThrough">
+<line style="stroke:rgb(255,255,255);stroke-width:2" y2="0" x2="100%" y1="100%" x1="0"/>
+</svg>
+</div>
+</div>
+
+<div data-year="2016" data-month="7" data-day="30" class="day col-1-7      ">
+<div class="border  ">
+<span class="day__text--date"><span>30</span></span>
+<span class="day__text--price custom"><span>$68</span></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<svg class="day-strikeThrough">
+<line style="stroke:rgb(255,255,255);stroke-width:2" y2="0" x2="100%" y1="100%" x1="0"/>
+</svg>
+</div>
+</div>
+
+<div data-year="2016" data-month="7" data-day="31" class="day col-1-7      ">
+<div class="border  ">
+<span class="day__text--date"><span>31</span></span>
+<span class="day__text--price custom"><span>$68</span></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<span class="day__part "></span>
+<svg class="day-strikeThrough">
+<line style="stroke:rgb(255,255,255);stroke-width:2" y2="0" x2="100%" y1="100%" x1="0"/>
+</svg>
+</div>
+</div>
+</section>
+
+<section class="js-calendarCurrencyHint calendar-currencyHint"></section>
+
+</div>
+<div id="yourcar-calendar-error"></div>
+
+<div class="arrow-up" style="display: none;">
+<div class="inner-arrow-up"></div>
+</div>
+
+
+
+<div id="dynamic-prices">
+<div class="dynamic-prices-toggle"><p><input type="checkbox" checked="" id="enable-dynamic-pricing">
+<label for="enable-dynamic-pricing">Dynamic Pricing</label>
+</p></div>
+<div id="enrolled-explanation">
+<p>You’re maximizing your earnings and saving time by allowing Turo to dynamically adjust your prices each day.</p>
+</div>
+<div class="hidden" id="unenrolled-explanation">
+<p>Maximize your earnings and save time by allowing Turo to dynamically adjust your prices each day.</p>
+</div>
+</div>
+<input type="hidden" value="192205" name="vehicleId" id="vehicleId">
+<input type="hidden" value="true" name="dynamicPricingEnrolled" id="dynamic-pricing-enrolled">
+<div data-price-ranges="{&quot;dailyPriceRange&quot;:{&quot;maximumPrice&quot;:680.0,&quot;maximumPriceWithCurrency&quot;:{&quot;amount&quot;:680.00,&quot;currencyCode&quot;:&quot;USD&quot;},&quot;minimumPrice&quot;:10.0,&quot;minimumPriceWithCurrency&quot;:{&quot;amount&quot;:10.00,&quot;currencyCode&quot;:&quot;USD&quot;}},&quot;monthlyPercentageDiscountRange&quot;:{&quot;maximumPercentage&quot;:85.0,&quot;minimumPercentage&quot;:0.0},&quot;monthlyPercentageRange&quot;:{&quot;maximumPrice&quot;:85.0,&quot;maximumPriceWithCurrency&quot;:{&quot;amount&quot;:85.00,&quot;currencyCode&quot;:&quot;USD&quot;},&quot;minimumPrice&quot;:0.0,&quot;minimumPriceWithCurrency&quot;:{&quot;amount&quot;:0.00,&quot;currencyCode&quot;:&quot;USD&quot;}},&quot;weeklyPercentageDiscountRange&quot;:{&quot;maximumPercentage&quot;:85.0,&quot;minimumPercentage&quot;:0.0},&quot;weeklyPercentageRange&quot;:{&quot;maximumPrice&quot;:85.0,&quot;maximumPriceWithCurrency&quot;:{&quot;amount&quot;:85.00,&quot;currencyCode&quot;:&quot;USD&quot;},&quot;minimumPrice&quot;:0.0,&quot;minimumPriceWithCurrency&quot;:{&quot;amount&quot;:0.00,&quot;currencyCode&quot;:&quot;USD&quot;}}}" class="hidden" id="manual-pricing-container">
+<div class="buttonWrapper">
+<a href="/_dialog/preview_dynamic_pricing?vehicleId=192205" class="button button--purple dialog-link">
+Preview Dynamic Pricing
+</a>
+</div>
+<div class="section">
+<div class="subheader">Default price</div>
+<div class="message">The default price if you don’t change a price for a specific calendar day.</div>
+</div>
+<div id="price">
+<div id="custom-price">
+<ul>
+<li>
+<span class="input-holder">
+<span>$</span>
+<input type="text" maxlength="4" value="68" class="text" pattern="[0-9]*" name="defaultDaily" id="default-daily">
+</span>
+<span class="separator">/</span>
+<span>day</span>
+<button class="submit button button--purple hidden" id="default-daily-save-button">Save</button>
+</li>
+</ul>
+
+
+
+<div data-overpriced="Your car is priced higher than similar cars on Turo. Consider lowering your price to attract more travelers." data-error="The daily price must be at least $10 and no more than $680" class="errorMessage" id="js-dailyRateError">
+<span class="errorMessage-icon"></span>
+<span class="errorMessage-text"></span>
+</div>
+</div>
+</div>
+<div class="subheader">
+Duration discounts
+</div>
+<div class="message">
+Set a discount for longer trips.
+</div>
+
+<div class="js-weeklyDiscountSlider sliderPricing">
+<div class="sliderMessage">
+<span class="text--purple">
+<span class="js-sliderMessageCurrentValue">15</span>%
+</span>
+<span>
+discount for trips a week or longer
+</span>
+</div>
+<div class="sliderContainer">
+<div class="js-sliderValueLabel sliderValueLabel is-visible">
+<span class="js-sliderMinValue">0</span>%
+</div>
+<div class="js-slider slider slider--purple slider--pricing">
+<div class="noUi-target noUi-ltr noUi-horizontal noUi-background"><div class="noUi-base"><div class="noUi-origin noUi-connect" style="left: 17.6471%;"><div class="noUi-handle noUi-handle-lower"></div></div></div></div>
+<input type="hidden" value="15" class="js-currentValue js-weeklyDiscountCurrentValue">
+</div>
+<div class="js-sliderValueLabel sliderValueLabel u-alignRight is-visible">
+<span class="js-sliderMaxValue">85</span>%
+</div>
+</div>
+</div>
+
+
+<div class="js-monthlyDiscountSlider sliderPricing">
+<div class="sliderMessage">
+<span class="text--purple">
+<span class="js-sliderMessageCurrentValue">25</span>%
+</span>
+<span>
+discount for trips a month or longer
+</span>
+</div>
+<div class="sliderContainer">
+<div class="js-sliderValueLabel sliderValueLabel is-visible">
+<span class="js-sliderMinValue">0</span>%
+</div>
+<div class="js-slider slider slider--purple slider--pricing">
+<div class="noUi-target noUi-ltr noUi-horizontal noUi-background"><div class="noUi-base"><div class="noUi-origin noUi-connect" style="left: 29.4118%;"><div class="noUi-handle noUi-handle-lower"></div></div></div></div>
+<input type="hidden" value="25" class="js-currentValue js-monthlyDiscountCurrentValue">
+</div>
+<div class="js-sliderValueLabel sliderValueLabel u-alignRight is-visible">
+<span class="js-sliderMaxValue">85</span>%
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="dynamic-pricing-container">
+<div class="subheader">
+Minimum price
+</div>
+<p class="message">
+Renters will pay at least your minimum daily price less any duration discount. You’ll earn 75% of that amount.
+</p>
+<div data-floor-options="{&quot;sliderIntervals&quot;:[{&quot;positionPercentage&quot;:25,&quot;value&quot;:24},{&quot;positionPercentage&quot;:75,&quot;value&quot;:44}],&quot;sliderProperties&quot;:{&quot;increment&quot;:1,&quot;maximum&quot;:340,&quot;minimum&quot;:10},&quot;sliderPropertiesWithCurrency&quot;:{&quot;increment&quot;:1,&quot;maximum&quot;:{&quot;amount&quot;:340.00,&quot;currencyCode&quot;:&quot;USD&quot;},&quot;minimum&quot;:{&quot;amount&quot;:10.00,&quot;currencyCode&quot;:&quot;USD&quot;}}}" class="js-dynamicPricingFloor sliderPricing">
+<div class="sliderMessage">
+<span class="text--purple">$
+<span class="js-sliderMessageCurrentValue">34</span>
+</span>
+<span>per day</span>
+</div>
+<div class="sliderContainer">
+<div class="sliderValueLabel">$</div>
+<div class="slider slider--purple slider--pricing">
+<div class="noUi-target noUi-ltr noUi-horizontal noUi-background"><div class="noUi-base"><div class="noUi-origin noUi-connect" style="left: 50%;"><div class="noUi-handle noUi-handle-lower"></div></div></div></div>
+<input type="hidden" value="34" class="js-currentValue js-dynamicPricingCurrentValue">
+</div>
+<div class="sliderValueLabel u-alignRight">$$$</div>
+</div>
+</div>
+
+<div class="subheader">Duration discounts</div>
+
+<div id="discounts-overlay">
+<ul>
+<li class="weekly">
+<span class="amount">15%</span>
+<span>weekly discount</span>
+</li>
+<li class="monthly">
+<span class="amount">25%</span>
+<span>monthly discount</span>
+</li>
+</ul>
+</div>
+</div>
+<div style="display:none">
+<div id="confirm-dynamic-pricing-dialog">
+<h5>Enable Dynamic Pricing</h5>
+<p>You’re one step away from Turo optimizing your prices to maximize your earnings.</p>
+<p>You can choose to set your own prices again at any time.</p>
+<div class="buttonWrapper">
+<button class="button button--purple close-dialog confirm">Confirm</button>
+<button class="button close-dialog cancel">Cancel</button>
+</div>
+</div>
+</div>
+</fieldset>
+</form>
+
+
+
+<div class="saveConfirmation">
+<div class="savedIndicator">
+<div class="icon"></div>
+<p>Changes saved</p>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+<div id="calendar-tooltip" style="display: none;">
+<div class="pricing-tooltip">
+<div class="display-daily-pricing pricing-only">
+<div id="price-container">
+<div id="price-text">Daily price:</div>
+<div id="price-value">
+$<span></span>
+</div>
+</div>
+<button type="submit" class="submit button">Change price</button>
+</div>
+<div class="set-daily-pricing">
+<form method="post" action="#" id="daily-price" style="display: none;">
+<input type="hidden" value="192205" name="vehicleId" id="vehicleId">
+<div id="price-text">Daily price</div>
+<div id="price-input-form">
+<span class="input-holder">
+<span>$</span><input type="text" maxlength="4" value="" class="text price" pattern="[0-9]*" name="price" id="price">
+</span>
+<div id="description">
+<span class="pricing-description custom">This price overrides your daily base price. If left blank, your base price of 68 will be restored.</span>
+<span class="pricing-description standard">Set a price for this day that will override your daily base price.</span>
+</div>
+<div class="js-pricingError errorMessage">
+<span class="errorMessage-icon"></span>
+<span class="errorMessage-text"></span>
+</div>
+</div>
+
+<div class="date-time-selector" id="date-range">
+<div class="price-start-date">
+<div><label for="start">From</label></div>
+<div><input type="text" value="" readonly="readonly" class="dateTimePicker-date dateTimePicker-date--fluid" name="start" id="priceStartDate"></div>
+</div>
+<div class="price-end-date">
+<div><label for="end">Until</label></div>
+<div><input type="text" value="" readonly="readonly" class="dateTimePicker-date dateTimePicker-date--fluid" name="end" id="priceEndDate"></div>
+</div>
+<input type="hidden" id="priceStartTime">
+<input type="hidden" id="priceEndTime">
+</div>
+
+<button disabled="disabled" type="submit" class="submit button--purple button--fluid">Save</button>
+<button class="button button--fluid js-close" id="back">Back</button>
+</form>
+</div>
+</div>
+</div>
+
+<script id="booked-trip-calendar-tooltip-template" type="text/template">
+&lt;a class="booked-trip-link" href=":tripLinkUrl"&gt;
+&lt;span class="booked-trip-content"&gt;
+&lt;div class="driver-name"&gt;:driverName&lt;/div&gt;
+&lt;div class="trip-earning"&gt;You earn &lt;span class="earnings-number"&gt;:tripEarning&lt;/span&gt; for this trip&lt;/div&gt;
+&lt;div class="trip-time"&gt;:tripTime&lt;/div&gt;
+&lt;/span&gt;
+&lt;span class="linkArrow"&gt;&lt;/span&gt;
+&lt;/a&gt;
+</script>
+
+
+</div> -->

@@ -1,0 +1,243 @@
+<div class=" " id="pageContainer-content">
+     <div id="profile">
+          <div class="container container--fluid container--darkBackground">
+               <div class="profile-background">
+                    <div class="container">
+                         <div class="profile-edit-button">
+                 <input type="hidden" value="false" name="isRedirect" id="isRedirect">
+                         </div>
+                    </div>
+               </div>
+          </div>
+          <div class="container u-alignCenter  " id="js-profileContent">
+               <div class="profile-photo-wrapper">
+                    <span class="profilePhoto profilePhoto--noBorder profilePhoto--uploader u-inlineBlock u-positionRelative" id="js-profile-image-container">
+                         <div class="js-driverPhotoUploader">
+                              <img ng-if = "cbResponse.user.profile.photo" alt="{{cbResponse.user.profile.fullname}}" ng-src="{{cbResponse.user.profile.path + cbResponse.user.profile.photo}}" class="js-driverPhoto media profilePhoto--round profilePhoto--uploader">
+                              <img ng-if = "!cbResponse.user.profile.photo" alt="{{cbResponse.user.profile.fullname}}" ng-src="/media/u_default.png" class="js-driverPhoto media profilePhoto--round profilePhoto--uploader">
+                         </div>
+                         <div class="button button--green enabled" id="upload-photo-overlay" style="position: relative; overflow: hidden; direction: ltr;">Change profile photo<input type="file" qq-button-id="29c83a8f-0d2b-484c-ac07-5e6d07a89e04" accept="image/*" name="file" style="position: absolute; right: 0px; top: 0px; font-family: Arial; font-size: 118px; margin: 0px; padding: 0px; cursor: pointer; opacity: 0; height: 100%;"></div>
+                    </span>
+               </div>
+               <div class="section section--first u-alignCenter">
+                    <h2 class="profile-name">{{cbResponse.user.fullname}}</h2>
+                    <div class="profile-join-date">{{cbResponse.user.email}}</div>
+                    <div class="profile-join-date">Joined {{cbResponse.user.createdDate | date : 'fullDate'}}</div>
+                    <div class="u-hidden" id="js-editDriverProfileData">
+                         <form enctype="multipart/form-data" method="POST" action="/edit-profile-data" id="edit-driver-profile-form">
+                              <div class="u-inlineBlock u-alignCenter profile-item">
+                                   <div class="label u-alignCenter">Works</div>
+                                   <input type="text" maxlength="255" size="25" value="" class="text profile-text-data" name="employment" id="employment">
+                              </div>
+                              <div class="u-inlineBlock u-alignCenter profile-item">
+                                   <div class="label u-alignCenter">Lives</div>
+                                   <input type="text" maxlength="255" size="25" value="" class="text profile-text-data" name="home" id="home">
+                              </div>
+                              <div class="u-inlineBlock u-alignCenter profile-item">
+                                   <div class="label u-alignCenter">School</div>
+                                   <input type="text" maxlength="255" size="25" value="" class="text profile-text-data" name="school" id="school">
+                              </div>
+                              <div class="u-block u-alignCenter profile-openText">
+                                   <p><textarea class="textArea textArea--mediumHeight" maxlength="5000" size="1000" name="openEndedText" id="open-ended-text"></textarea></p>
+                              </div>
+                              <div class="buttonWrapper">
+                                   <button class="button button--green" type="submit">Save profile</button>
+                                   <a id="js-editStop" href="#" class="button">Cancel</a>
+                              </div>
+                         </form>
+                    </div>
+                    <div id="js-driverProfileData">
+                    </div>
+               </div>
+          </div>
+          <div ng-if = "cbResponse.myCars.length > 0" class="container" ng-cloak>
+               <div class="section profile-vehicles" id="js-ownerVehicleCarousel">
+                    <h5>{{cbResponse.user.fullname + '\'s'}} Cars</h5>
+                    <div data-item-selector="ownerVehicle" data-items-per-page="1" data-item-count="2" class="js-carousel carousel">
+                         <div class="">
+                              <div class="carouselNavigation-item ">
+                                   <div class="grid carousel-grid">
+                                        <div ng-if = "cbResponse.myCars.length"  class="js-carouselItem grid-item grid-item--12 grid-item--medium12">
+                                             <div class="vehicleListingSummary vehicleListingSummary--large">
+                                                  <div class="vehicleListingSummary-vehicleImage">
+                                                       <div>
+                                                            <!-- <a href="/car-rental/walnut-creek/lexus-es-350/149302"> -->
+                                                            <div uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
+                                                                 <div uib-slide ng-repeat="car in cbResponse.myCars" index="$index">
+                                                                 <a ui-sref="anon.vehicleDetail({refId : car._id})">
+                                                                      <img ng-src="{{car.gallery.path + car.gallery.photos[0]}}" style="margin:0 auto;">
+                                                                      <div class="carousel-caption left">
+                                                                           <div>
+                                                                                <span class="vehicleListingSummary-currencySymbol">$</span>
+                                                                                <span class="vehicleListingSummary-dollars">{{car.ridingCost}}</span>
+                                                                           </div>
+                                                                           <div>
+                                                                                <div class="vehicleListingSummary-pricingUnits">per day</div>
+                                                                           </div>
+                                                                      </div>
+                                                                      <div class="carousel-caption right">
+                                                                           <div class="vehicleListingSummary-vehicleInformation">
+                                                                                <div>{{cbResponse.user.fullname + '\'s'}}</div>
+                                                                                <div>
+                                                                                <div class="vehicleListingSummary-vehicleName u-truncate">{{car.specifications.make+'-'+car.specifications.model}}<span class="vehicleListingSummary-vehicleYear">{{car.specifications.year}}</span></div>
+
+                                                                                <div class="vehicleListingSummary-tripCount">{{car.noOfTrips}} trips</div>
+                                                                               </div>
+                                                                           </div>
+                                                                      </div>
+                                                                 </a>
+                                                                 </div>
+                                                            </div>
+                                                            <!-- </a> -->
+                                                       </div>
+                                                  </div>
+                                             </div>
+                                        </div>
+                                        <div ng-if = "!cbResponse.myCars.length" class="js-carouselItem grid-item grid-item--12 grid-item--medium12">
+                                             <div class="emptyState emptyState--noReviews">
+                                                  <div class="emptyState-text">No Cars Added Yet </div>
+                                             </div>
+                                        </div>
+                                   </div>
+                              </div>
+
+
+                              <!-- <div class="carouselNavigation-item carouselNavigation-item--arrow">
+                              <div class="js-carouselRightArrow carousel-rightArrow arrow arrow-right is-RightArrowDisabled"></div>
+                         </div> -->
+
+                    </div>
+               </div>
+
+          </div>
+     </div>
+     <div ng-if = "cbResponse.myCars.length " class="container">
+          <div class="section feedback-container">
+               <div class="feedback-container">
+                    <div ng-if="cbResponse.reviews.length > 0 " class="feedback-and-ratings" itemtype="http://schema.org/AggregateRating" itemscope="" itemprop="aggregateRating">
+                         <h5 class="u-alignCenter">Reviews from travelers</h5>
+                         <div class="as-an-owner" ng-if="rating">
+                              <div class="label u-alignCenter feedback-title">Overall rating</div>
+                                <div class="star-rating" star-rating rating-value="5" >
+                             </div>
+                            </div>
+                              <div data-reviews-per-page="5" data-review-count="5" class="js-feedbackAndRatingsPaging">
+                                   <ul>
+                                        <li id="review-0" class="review-list-item page1-review-list-item" ng-repeat="review in cbResponse.reviews">
+
+                                             <div class="messageItem   ">
+                                                  <a ui-sref="anon.publicProfile({userId : review.userId._id})" class="messageItem-authorPhoto">
+                                                       <img ng-if = "review.userId.profile.photo" alt="{{review.userId.profile.fullname}}" ng-src="{{review.userId.profile.path + review.userId.profile.photo}}" class="profilePhoto profilePhoto--large profilePhoto--round profilePhoto--noBorder profilePhoto--renter">
+                                                       <img ng-if = "!review.userId.profile.photo" alt="{{review.userId.profile.fullname}}" ng-src="/media/u_default.png" class="profilePhoto profilePhoto--large profilePhoto--round profilePhoto--noBorder profilePhoto--renter">
+                                                  </a>
+                                                  <div class="messageItem-details">
+                                                       <div class="messageItem-body">
+                                                            {{review.comment}}
+                                                       </div>
+
+                                                       <div>
+                                                            <a ui-sref="anon.publicProfile({userId : review.userId._id})" class="messageItem-authorName">{{review.userId.fullname}}</a>
+                                                            <span class="messageItem-createdTime">
+                                                                 &ndash;
+                                                                 {{review.createdDate | date}}
+
+                                                            </span>
+                                                       </div>
+                                                  </div>
+                                             </div>
+                                        </li>
+                                   </ul>
+                              </div>
+                         </div>
+                    </div>
+               </div>
+          </div>
+
+
+     <div class="container" ng-cloak>
+          <div class="section profile-vehicles" id="js-ownerVehicleCarousel" ng-if="cbResponse.user.favourites.length > 0">
+               <h5>{{cbResponse.user.fullname + '\'s'}} Favourites</h5>
+               <div data-item-selector="ownerVehicle" data-items-per-page="1" data-item-count="2" class="js-carousel carousel">
+                    <div class="">
+                         <div class="carouselNavigation-item ">
+                              <div class="grid carousel-grid">
+                                   <div ng-if = "cbResponse.user.favourites.length > 0"  class="js-carouselItem grid-item grid-item--12 grid-item--medium12">
+                                        <div class="vehicleListingSummary vehicleListingSummary--large">
+                                             <div class="vehicleListingSummary-vehicleImage">
+                                                  <div>
+                                                       <!-- <a href="/car-rental/walnut-creek/lexus-es-350/149302"> -->
+                                                       <div uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
+                                                            <div uib-slide ng-repeat="car in cbResponse.user.favourites" index="$index">
+                                                                  <a ui-sref="anon.vehicleDetail({refId : car._id})">
+                                                                 <img ng-src="{{car.gallery.path + car.gallery.photos[0]}}" style="margin:auto;">
+
+                                                                 <div class="carousel-caption left">
+                                                                      <div>
+                                                                           <span class="vehicleListingSummary-currencySymbol">$</span>
+                                                                           <span class="vehicleListingSummary-dollars">{{car.ridingCost}}</span>
+                                                                      </div>
+                                                                      <div>
+                                                                           <div class="vehicleListingSummary-pricingUnits">per day</div>
+                                                                      </div>
+                                                                 </div>
+                                                                 <div class="carousel-caption right">
+                                                                      <div class="vehicleListingSummary-vehicleInformation">
+                                                                           <div>{{car.name}}</div>
+                                                                           <div>
+                                                                           <div class="vehicleListingSummary-vehicleName u-truncate">{{car.specifications.make+'-'+car.specifications.model}}<span class="vehicleListingSummary-vehicleYear">{{car.specifications.year}}</span></div>
+
+                                                                           <!-- <div class="vehicleListingSummary-tripCount">31 trips</div>
+                                                                          </div> -->
+                                                                      </div>
+                                                                 </div>
+                                                            </a>
+
+
+
+
+
+
+
+                                                                 <!--<div class="carousel-caption left">
+                                                                      <div>
+                                                                           <span class="vehicleListingSummary-currencySymbol">$</span>
+                                                                           <span class="vehicleListingSummary-dollars">{{car.ridingCost}}</span>
+                                                                      </div>
+                                                                      <div>
+                                                                           <div class="vehicleListingSummary-pricingUnits">per day</div>
+                                                                      </div>
+                                                                 </div>-->
+
+
+
+
+
+                                                            </div>
+                                                       </div>
+                                                       <!-- </a> -->
+                                                  </div>
+                                             </div>
+                                        </div>
+                                   </div>
+                                   <div ng-if = "!cbResponse.user.favourites.length" class="js-carouselItem grid-item grid-item--12 grid-item--medium12">
+                                        <div class="emptyState emptyState--noReviews">
+                                             <div class="emptyState-text">No favourites Cars</div>
+                                        </div>
+                                   </div>
+                              </div>
+                         </div>
+
+
+                         <!-- <div class="carouselNavigation-item carouselNavigation-item--arrow">
+                         <div class="js-carouselRightArrow carousel-rightArrow arrow arrow-right is-RightArrowDisabled"></div>
+                    </div> -->
+
+                    </div>
+               </div>
+
+          </div>
+     </div>
+</div>
+
+</div>
+</div>

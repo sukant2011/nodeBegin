@@ -1,0 +1,50 @@
+<div id="pageContainer-content" class="u-contentTopPadding u-contentBottomPadding">
+	<div ng-include = "'/elements/listCarNav.html'"></div>
+		<div class="container" id="list_vehicle_flow">
+			<div id="car-photo">
+				<div class="main-blog">
+					<h5>Car Photos</h5>
+					<p>It's important for travelers to see car before the request it. Once you have a good photo that shows the whole car, add more photo displaying the car's details the interior. Learn more about <a href="javascript:void(0)">taking great Photos.</a>
+					<br/><br/>
+					<span>Photo must be at least 640px by 320px.</span>
+					<br/>
+					</p>
+					<div class="row">
+					<div class="col-sm-12 pad_0 mar-10">
+                              <div class="col-sm-3 previewFiles"  ng-if = "DataModel.gallery.photos.length"  ng-repeat = "img in DataModel.gallery.photos">
+							<div class="car-img">
+								<img src="{{DataModel.gallery.path + img}}" class="img-responsive" alt="img"/>
+								<div class="car-detail">
+									<span>{{img}}</span>
+									<span>100%</span>
+									<!-- <span class="b-heding">Renters see this photo first</span> -->
+								</div>
+								<button ng-click = "removePhoto(DataModel._id, img)" class="remove"><span aria-hidden="true" class="glyphicon glyphicon-remove"></span></button>
+							</div>
+						</div>
+
+						<div class="col-sm-3" id = "selectIMg">
+							<div class="car-img add-car">
+								<button id="uploadTrigger" class="add"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Add photo</button>
+								<input id="uploadFile" type="file" file-model="myFile" multiple="" style="right: 0px; top: 0px; font-family: Arial;  padding: 0px; cursor: pointer; opacity: 0;" >
+							</div>
+						</div>
+					</div>
+
+					<!-- <button class="back">Back</button> -->
+
+				</div>
+				<button name="savedetail" class="btn btn-primary vehicleBtn" type="submit" ng-click="addPhotos('Publish')">Next</button>
+		</div>
+	</div>
+</div>
+</div>
+<script type="text/ng-template" id="myModalContent.html">
+      <div class="modal-header">
+          <span class="modal-title" id="modal-title">Are you sure to remove this photo?</span>
+      </div>
+     <div class="modal-footer">
+          <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+          <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+      </div>
+  </script>

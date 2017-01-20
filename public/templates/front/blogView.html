@@ -1,0 +1,97 @@
+<!-- <div style=" height: 100vh;" class="background parallax-bg" id="background">
+
+		<div class="overlay"></div>
+				<div style="background: url(&quot;https://i2.wp.com/blog.turo.com/wp-content/uploads/2016/09/photo-1444492964720-877b17cdb041.jpg?resize=1920%2C1080&amp;ssl=1&quot;) repeat scroll center -34.2px transparent;" data-src="https://i2.wp.com/blog.turo.com/wp-content/uploads/2016/09/photo-1444492964720-877b17cdb041.jpg?resize=1920%2C1080&amp;ssl=1" class="parallax"></div>
+
+
+				<div class="title-full">
+			<h1 style="font-size: 64px;">Autumn escapes</h1>
+			<ul class="post-meta-alt">
+                    <li><span class="entry-date">September 23rd, 2016</span></li>
+
+			<li></li>
+
+		</ul>
+     </div>
+
+	<div class="arrow"></div>	</div> -->
+<div class="wrapper">
+		<div class="container" id="container">
+			<main role="main" id="main">
+
+				<div class=" content-header">
+
+
+					 <div class="breadcrumb">
+					<center><h2><b>{{DataModel.title}}</b></h2><p></center>
+				     </p></div>
+
+					<div class="author">
+
+						<div class="gravatar">
+							<!-- <img width="70" height="70" src="https://blog.turo.com/wp-content/uploads/2016/01/Virginia-Fay-70x70.jpg" class="avatar avatar-70 photo avatar-default" alt="">	-->
+							<img ng-if="DataModel.userId.profile.photo"  class="" ng-src="{{DataModel.userId.profile.path + DataModel.userId.profile.photo}}" >
+					    	     <img ng-if="!DataModel.userId.profile.photo"  class="" src="images/default_icon.png" style="height:100px; width:100px;">
+
+						</div>
+
+						<div class="author-bio">
+							<a rel="author" href="https://www.rentcorsa.com" class="author-link">Posted By <strong>{{DataModel.userId.fullname}}</strong></a>
+
+							<p class="subtitle">Posted on <strong> {{DataModel.createdDate | date :" MM/dd/y"}}</strong></p>
+						</div>
+
+					</div>
+
+<article class=" article post-2771 post type-post status-publish format-standard has-post-thumbnail hentry category-wayfaring"  id="post-2771">
+
+
+	<header class="entry-header">
+		<h4><b>{{DataModel.title}}</b></h4>
+
+	</header>
+
+
+
+
+
+	<div class="entry-content">
+ <img style=" width: 100%; height: 400px;" alt=""  ng-src="{{DataModel.image.path + DataModel.image.photo}}">
+
+      <div compile="DataModel.description">
+
+
+
+	</div><!-- .entry-content -->
+
+
+<div class="author-info">
+
+	<div class="gravatar">
+		<!-- <img width="70" height="70" src="https://blog.turo.com/wp-content/uploads/2016/01/Virginia-Fay-70x70.jpg" class="avatar avatar-70 photo avatar-default" alt="">	-->
+		<img ng-if="DataModel.userId.profile.photo" ng-src="{{DataModel.userId.profile.path + DataModel.userId.profile.photo}}" >
+    	     <img ng-if="!DataModel.userId.profile.photo" src="images/default_icon.png" style="height:100px; width:100px;">
+	</div>
+
+	<div class="author-bio">
+		<a rel="author" href="https://www.rentcorsa.com" class="author-link"><strong>{{DataModel.userId.fullname}}</strong></a>
+
+		<p>
+			{{DataModel.userId.profile.description}}
+		</p><!-- .author-bio -->
+	</div>
+
+</div><!-- .author-info -->
+
+
+</article>
+					<div class="tags">
+					</div>
+					<div class="clear"></div>
+					</div>
+			</main>
+		</div>
+
+
+</div>
+<link rel='stylesheet' type='text/css' href='/stylesheets/front/webcss/blog.css' />
